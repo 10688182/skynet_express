@@ -183,8 +183,9 @@
       <div class="container mx-auto px-4">
         <div class="max-w-3xl mx-auto text-center mb-12" data-aos="fade-up">
           <span class="text-sm font-medium text-primary mb-2 inline-block">
-            <span class="inline-block animate-pulse">✦</span> HOW TO REACH US
-            <span class="inline-block animate-pulse">✦</span>
+            <span class="inline-block animate-bounce">✦</span>
+            <span class="inline-block animate-bounce">HOW TO REACH US</span>
+            <span class="inline-block animate-bounce">✦</span>
           </span>
           <h2 class="text-3xl font-bold mb-4">Multiple Ways to Connect</h2>
           <p class="text-gray-600">
@@ -216,7 +217,7 @@
               >
                 +233 (0) 24 205 0501<br />+233 (0) 30 223 0516
               </a>
-              <p class="text-gray-500 text-sm mt-1">24/7 Customer Support</p>
+              <p class="text-gray-500 text-sm mt-1">Available 7AM - 6PM GMT</p>
             </div>
           </div>
 
@@ -257,9 +258,11 @@
             >
               <i class="ri-chat-3-line ri-2x text-primary"></i>
             </div>
-            <h3 class="text-xl font-semibold mb-3 text-center">Live Chat</h3>
+            <h3 class="text-xl font-semibold mb-3 text-center">
+              Virtual Assistant
+            </h3>
             <p class="text-gray-600 mb-4 text-center">
-              Get instant answers from our support team
+              Need help? Our Assistant is here to assist you anytime
             </p>
             <div class="text-center">
               <button
@@ -268,7 +271,7 @@
               >
                 Start Chat
               </button>
-              <p class="text-gray-500 text-sm mt-2">Available 8am-8pm EST</p>
+              <p class="text-gray-500 text-sm mt-2">Available 24/7</p>
             </div>
           </div>
         </div>
@@ -298,7 +301,9 @@
             data-aos="fade-left"
             data-aos-delay="200"
           >
-            <span class="text-sm font-medium text-primary mb-2 inline-block">
+            <span
+              class="text-sm font-medium text-primary mb-2 inline-block animate-bounce"
+            >
               OUR HEADQUARTERS
             </span>
             <h2 class="text-3xl font-bold mb-6">Nationwide Headquarters</h2>
@@ -369,8 +374,11 @@
       <div class="container mx-auto px-4">
         <div class="max-w-3xl mx-auto text-center mb-12" data-aos="fade-up">
           <span class="text-sm font-medium text-primary mb-2 inline-block">
-            <span class="inline-block animate-pulse">✦</span> OUR NATIONWIDE
-            PRESENCE <span class="inline-block animate-pulse">✦</span>
+            <span class="inline-block animate-bounce">✦</span>
+            <span class="inline-block animate-bounce"
+              >OUR NATIONWIDE PRESENCE</span
+            >
+            <span class="inline-block animate-bounce">✦</span>
           </span>
           <h2 class="text-3xl font-bold mb-4">Nationwide Branch Network</h2>
           <p class="text-gray-600">
@@ -1439,8 +1447,8 @@
             Ready to Ship With Confidence?
           </h2>
           <p class="text-white/90 mb-8">
-            Join thousands of businesses that trust SkyNet Express Ltd for
-            their shipping needs. Get started today with a personalized quote.
+            Join thousands of businesses that trust SkyNet Express Ltd for their
+            shipping needs. Get started today with a personalized quote.
           </p>
           <div class="flex flex-wrap justify-center gap-4">
             <a
@@ -1467,7 +1475,7 @@
             <a href="index.html" class="inline-block mb-6 hover-grow">
               <img
                 src="images/logo_white.png"
-                alt="FastTrack Logistics Logo"
+                alt="SkyNet Express Logo"
                 class="h-10 w-auto"
               />
             </a>
@@ -1728,7 +1736,6 @@
       </div>
     </footer>
 
-    <!-- Chatbot UI -->
     <!-- Chatbot Container -->
     <div
       id="chatbot-container"
@@ -1737,13 +1744,12 @@
       <div class="bg-white shadow-xl rounded-lg overflow-hidden">
         <!-- Header -->
         <div
-          class="bg-blue-600 text-white px-4 py-2 flex justify-between items-center"
-          style="background-color: #f4050b"
+          class="bg-blue-600 bg-gradient-to-r from-primary to-secondary/80 text-white px-4 py-2 flex justify-between items-center"
         >
           <span>Chat with us</span>
           <button
             onclick="toggleChatbot()"
-            class="text-white hover:text-gray-300"
+            class="text-white hover:text-gray-300 hover-rotate"
           >
             ✕
           </button>
@@ -1769,8 +1775,7 @@
           />
           <button
             onclick="sendMessage()"
-            style="background-color: #f4050b"
-            class="bg-blue-600 text-white px-4 py-2 rounded-r-md hover:bg-blue-700"
+            class="bg-blue-600 bg-gradient-to-r from-primary to-secondary/80 text-white px-4 py-2 rounded-r-md hover:bg-blue-700 btn-hover"
           >
             Send
           </button>
@@ -1785,8 +1790,7 @@
     >
       <button
         onclick="toggleChatbot()"
-        style="background-color: #f4050b"
-        class="w-14 h-14 text-white rounded-full shadow-lg flex items-center justify-center hover:bg-red-800 transition-all animate-pulse-slow"
+        class="w-14 h-14 bg-gradient-to-r from-primary to-secondary/80 text-white rounded-full shadow-lg flex items-center justify-center hover:bg-red-800 transition-all animate-pulse-slow hover-grow"
       >
         <i class="ri-chat-3-line text-xl"></i>
       </button>
