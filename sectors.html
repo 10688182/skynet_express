@@ -39,7 +39,7 @@
         <a href="index.html" class="flex items-center">
           <img
             src="images/logo_red.png"
-            alt="FastTrack Logistics Logo"
+            alt="skynet express Logo"
             class="h-10 w-auto"
           />
         </a>
@@ -186,10 +186,10 @@
             data-aos-delay="400"
           >
             <a
-              href="#services"
+              href="services.html"
               class="bg-white text-primary px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-gray-100 transition-colors btn-hover"
             >
-              Explore Sectors
+              Explore Services
             </a>
             <a
               href="contact.html"
@@ -206,13 +206,16 @@
     <div id="services" class="py-16 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-          <h2
-            class="text-base font-semibold text-red-600 tracking-wide uppercase"
-          >
-            What We Offer
-          </h2>
-          <p class="mt-2 text-3xl font-extrabold text-gray-900 sm:text-4xl">
-            Our Core Sectors
+          <span class="text-sm font-medium text-primary mb-2 inline-block">
+            <span class="inline-block animate-bounce">
+              <i class="ri-star-fill mr-1"></i>
+              WHAT WE OFFER
+              <i class="ri-star-fill ml-1"></i>
+            </span>
+          </span>
+          <p class="text-3xl font-bold mb-4">
+            Our
+            <span class="text-gradient">Core Sectors</span>
           </p>
           <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
             We provide end-to-end logistics solutions tailored to your specific
@@ -220,7 +223,7 @@
           </p>
         </div>
 
-        <!-- Service Tabs -->
+        <!-- Sector Tabs -->
         <div class="mt-12">
           <div class="flex flex-wrap justify-center gap-2 mb-8">
             <button
@@ -1013,7 +1016,7 @@
             <a href="index.html" class="inline-block mb-6 hover-grow">
               <img
                 src="images/logo_white.png"
-                alt="FastTrack Logistics Logo"
+                alt="skynet express Logistics Logo"
                 class="h-10 w-auto"
               />
             </a>
@@ -1281,13 +1284,12 @@
       <div class="bg-white shadow-xl rounded-lg overflow-hidden">
         <!-- Header -->
         <div
-          class="bg-blue-600 text-white px-4 py-2 flex justify-between items-center"
-          style="background-color: #f4050b"
+          class="bg-blue-600 bg-gradient-to-r from-primary to-secondary/80 text-white px-4 py-2 flex justify-between items-center"
         >
           <span>Chat with us</span>
           <button
             onclick="toggleChatbot()"
-            class="text-white hover:text-gray-300"
+            class="text-white hover:text-gray-300 hover-rotate"
           >
             ✕
           </button>
@@ -1313,8 +1315,7 @@
           />
           <button
             onclick="sendMessage()"
-            style="background-color: #f4050b"
-            class="bg-blue-600 text-white px-4 py-2 rounded-r-md hover:bg-blue-700"
+            class="bg-blue-600 bg-gradient-to-r from-primary to-secondary/80 text-white px-4 py-2 rounded-r-md hover:bg-blue-700 btn-hover"
           >
             Send
           </button>
@@ -1329,8 +1330,7 @@
     >
       <button
         onclick="toggleChatbot()"
-        style="background-color: #f4050b"
-        class="w-14 h-14 text-white rounded-full shadow-lg flex items-center justify-center hover:bg-red-800 transition-all animate-pulse-slow"
+        class="w-14 h-14 bg-gradient-to-r from-primary to-secondary/80 text-white rounded-full shadow-lg flex items-center justify-center hover:bg-red-800 transition-all animate-pulse-slow hover-grow"
       >
         <i class="ri-chat-3-line text-xl"></i>
       </button>
