@@ -9,11 +9,12 @@ const faqAnswers = {
   payment:
     "We accept credit cards, bank transfers, and offer net 30 terms for approved accounts.",
   thank: "You are most welcome, thank you for choosing SkyNet Express Ltd.",
-  hello: "Welcome to SkyNet Express Ltd, my name is Kofi. What is your name?",
-  hi: "Welcome to SkyNet Express Ltd, my name is Kofi. What is your name?",
+  hello: "Welcome to SkyNet Express Ltd, my name is Aseye. What is your name?",
+  hi: "Welcome to SkyNet Express Ltd, my name is Aseye. What is your name?",
   howareyou: "I'm doing great, thank you! How can I assist you today?",
   whereismypackage:
     "Use our online tracking portal. You’ll need your tracking number.",
+  cost: "",
 };
 
 function toggleChatbot() {
@@ -39,33 +40,41 @@ function sendMessage() {
   let botReply =
     "I'm sorry, I didn’t understand that. Could you please rephrase?";
 
-  if (lowerMsg.includes("quote")) botReply = faqAnswers.quote;
-  else if (lowerMsg.includes("document")) botReply = faqAnswers.documents;
-  else if (lowerMsg.includes("insurance")) botReply = faqAnswers.insurance;
-  else if (lowerMsg.includes("track")) botReply = faqAnswers.track;
-  else if (lowerMsg.includes("payment")) botReply = faqAnswers.payment;
-  else if (lowerMsg.includes("thank")) botReply = faqAnswers.thank;
-  else if (lowerMsg.includes("hello")) botReply = faqAnswers.hello;
-  else if (lowerMsg.includes("hi")) botReply = faqAnswers.hi;
-  else if (lowerMsg.startsWith("my name is ")) {
+  // Check for specific keywords or phrases and assign corresponding reply
+  if (lowerMsg.includes("quote")) {
+    botReply = faqAnswers.quote;
+  } else if (lowerMsg.includes("document")) {
+    botReply = faqAnswers.documents;
+  } else if (lowerMsg.includes("insurance")) {
+    botReply = faqAnswers.insurance;
+  } else if (lowerMsg.includes("track")) {
+    botReply = faqAnswers.track;
+  } else if (lowerMsg.includes("payment")) {
+    botReply = faqAnswers.payment;
+  } else if (lowerMsg.includes("thank")) {
+    botReply = faqAnswers.thank;
+  } else if (lowerMsg.includes("hello")) {
+    botReply = faqAnswers.hello;
+  } else if (lowerMsg.includes("hi")) {
+    botReply = faqAnswers.hi;
+  } else if (lowerMsg.startsWith("my name is ")) {
     const name = userMsg.substring(11).trim();
-    botReply = `Nice to meet you ${
-      name.charAt(0).toUpperCase() + name.slice(1)
-    }. How may I help you today?`;
+    const formattedName = name.charAt(0).toUpperCase() + name.slice(1);
+    botReply = `Nice to meet you ${formattedName}. How may I help you today?`;
   } else if (
     lowerMsg.includes("how are you") ||
     lowerMsg.includes("how are you doing")
-  )
+  ) {
     botReply = faqAnswers.howareyou;
-  else if (
+  } else if (
     lowerMsg.includes("where is my parcel") ||
-    lowerMsg.includes("where is my shipment") ||
     lowerMsg.includes("where is my package")
-  )
-    botReply = faqAnswers.whereismypackage;
+  ) {
+    botReply = faqAnswers.track;
+  }
 
   setTimeout(() => {
-    chatWindow.innerHTML += `<div class="text-left text-primary"><strong>Kofi:</strong> ${botReply}</div>`;
+    chatWindow.innerHTML += `<div class="text-left text-primary"><strong>Aseye:</strong> ${botReply}</div>`;
     chatWindow.scrollTop = chatWindow.scrollHeight;
   }, 600);
 
