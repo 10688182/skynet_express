@@ -4,12 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      About Us | SkyNet Express Ltd - The Nationwide Parcel Delivery Service
+      Our Sectors | SkyNet Express Ltd. - The Nationwide Parcel Delivery Service
     </title>
     <link rel="icon" href="images/favicon.ico" type="image/png" />
-    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="js/tailwind.config.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
@@ -23,10 +24,14 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body class="bg-gray-50">
-    <!-- Header -->
+  <body class="font-sans antialiased">
+    <!-- Navigation -->
     <header class="bg-white shadow-sm fixed w-full z-50">
       <div
         class="container mx-auto px-4 py-3 flex items-center justify-between"
@@ -51,7 +56,7 @@
           >
           <a
             href="about.html"
-            class="text-primary font-medium hover:text-secondary transition-colors duration-300 nav-link"
+            class="text-gray-700 font-medium hover:text-primary transition-colors"
             >About Us</a
           >
           <a
@@ -61,7 +66,7 @@
           >
           <a
             href="sectors.html"
-            class="text-gray-700 font-medium hover:text-primary transition-colors duration-300 nav-link"
+            class="text-primary font-medium hover:text-secondary transition-colors duration-300 nav-link"
             >Sectors</a
           >
           <a
@@ -89,6 +94,7 @@
           </div>
         </div>
       </div>
+
       <!-- Mobile Menu -->
       <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
         <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
@@ -104,7 +110,7 @@
           >
           <a
             href="about.html"
-            class="text-primary font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300"
+            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300"
             >About Us</a
           >
           <a
@@ -114,7 +120,7 @@
           >
           <a
             href="sectors.html"
-            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300"
+            class="text-primary font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300"
             >Sectors</a
           >
           <a
@@ -135,759 +141,867 @@
     <section
       class="pt-32 pb-20 bg-gradient-to-r from-primary to-secondary/80 relative overflow-hidden"
     >
-      <div class="absolute top-0 left-0 w-full h-full opacity-10">
+      <!-- Animated background elements -->
+      <div class="absolute top-0 left-0 w-full h-full overflow-hidden">
         <div
-          class="absolute top-1/4 left-1/4 w-40 h-40 rounded-full bg-white animate-pulse-slow"
+          class="absolute top-20 left-10 w-16 h-16 rounded-full bg-white/10 animate-float"
         ></div>
         <div
-          class="absolute top-1/3 right-1/3 w-60 h-60 rounded-full bg-white animate-pulse-slow animation-delay-1000"
+          class="absolute top-1/3 right-20 w-24 h-24 rounded-full bg-white/5 animate-float-slow"
         ></div>
         <div
-          class="absolute bottom-1/4 right-1/4 w-50 h-50 rounded-full bg-white animate-pulse-slow animation-delay-2000"
+          class="absolute bottom-1/4 left-1/4 w-20 h-20 rounded-full bg-white/7 animate-float"
+        ></div>
+        <div
+          class="absolute bottom-10 right-10 w-12 h-12 rounded-full bg-white/10 animate-float-slow"
         ></div>
       </div>
+
       <div class="container mx-auto px-4 relative z-10">
-        <div class="max-w-4xl mx-auto text-center animate-fade-in">
-          <h1
-            class="text-4xl md:text-5xl font-bold text-white mb-6 animate-slide-up"
-          >
-            <span class="inline-block animate-pulse-slow">Our Story,</span>
-            <span class="inline-block animate-bounce-slow">Your Success</span>
+        <div
+          class="max-w-4xl mx-auto text-center"
+          data-aos="fade-up"
+          data-aos-duration="800"
+        >
+          <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">
+            <span class="inline-block animate-pulse-slow"
+              >Industry-Specific</span
+            >
+            <span class="inline-block animate-bounce-slow"
+              >Delivery Solutions</span
+            >
           </h1>
           <p
-            class="text-xl text-white/90 mb-8 animate-slide-up animation-delay-100"
+            class="text-xl text-white/90 mb-8"
+            data-aos="fade-up"
+            data-aos-delay="200"
           >
-            Driving logistics innovation since 1995 to connect your business
-            with the world
+            SkyNet Express delivers precision-driven logistics services across
+            diverse sectors including retail, healthcare, corporate, and
+            e-commerce.
           </p>
           <div
-            class="flex justify-center space-x-4 animate-slide-up animation-delay-200"
+            class="flex justify-center space-x-4"
+            data-aos="fade-up"
+            data-aos-delay="400"
           >
             <a
-              href="#mission"
-              class="bg-white text-primary px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-gray-100 transition-colors"
-              >Our Mission</a
+              href="services.html"
+              class="bg-white text-primary px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-gray-100 transition-colors btn-hover"
             >
+              Explore Services
+            </a>
             <a
               href="contact.html"
-              class="bg-secondary text-white px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-secondary/90 transition-colors"
-              >Get in Touch</a
+              class="bg-secondary text-white px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-secondary/90 transition-colors btn-hover"
             >
+              Get a Quote
+            </a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- About Intro -->
-    <section class="py-16 bg-white">
-      <div class="container mx-auto px-4">
-        <div class="flex flex-col lg:flex-row items-center gap-12">
-          <div class="lg:w-1/2 animate-fade-in">
-            <span class="text-sm font-medium text-primary mb-2 inline-block"
-              ><span class="inline-block animate-bounce">
-                <i class="ri-star-fill mr-1"></i>
-                WHO WE ARE
-                <i class="ri-star-fill ml-1"></i> </span
-            ></span>
-            <h2 class="text-3xl font-bold mb-6">
-              Pioneers in Nationwide Logistics Solutions
-            </h2>
-            <p class="text-gray-600 mb-6">
-              SkyNet Express Ltd, a wholly Ghanaian owned courier company was
-              incorporated in February 2007 as a Company Limited by Liability
-              and has been in operation since its establishment. The company is
-              duly registered with all the appropriate government agencies
-              including, Postal and Courier Services Regulatory Commission of
-              Ghana, the Social Security and National Insurance Trust (SSNIT),
-              Value Added Tax (VAT) and Ghana Revenue Authority (GRA)
-            </p>
-            <p class="text-gray-600 mb-8">
-              Today, we operate in all 16 regions with over 12 offices
-              nationwide, employing more than 300 logistics professionals
-              dedicated to moving your business forward. Our integrated approach
-              combines cutting-edge technology with deep industry expertise to
-              deliver seamless logistics experiences.
-            </p>
-            <div class="flex flex-wrap gap-4">
-              <div class="flex items-center">
-                <div
-                  class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4 rotate-icon"
-                >
-                  <i class="ri-global-line ri-xl text-primary"></i>
+    <!-- Main Services Section -->
+    <div id="services" class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <span class="text-sm font-medium text-primary mb-2 inline-block">
+            <span class="inline-block animate-bounce-slow">
+              <i class="ri-star-fill mr-1"></i>
+              WHAT WE OFFER
+              <i class="ri-star-fill ml-1"></i>
+            </span>
+          </span>
+          <p class="text-3xl font-bold mb-4">
+            Our
+            <span class="text-gradient">Core Sectors</span>
+          </p>
+          <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+            We provide end-to-end logistics solutions tailored to your specific
+            needs.
+          </p>
+        </div>
+
+        <!-- Sector Tabs -->
+        <div class="mt-12">
+          <div class="flex flex-wrap justify-center gap-2 mb-8">
+            <button
+              onclick="changeServiceTab('pharma')"
+              class="tab-button active px-4 py-2 rounded-md font-medium text-sm bg-blue-100 text-gray-800"
+            >
+              <i class="fas fa-medkit mr-2"></i> Pharma-Logistics
+            </button>
+            <button
+              onclick="changeServiceTab('oil')"
+              class="tab-button px-4 py-2 rounded-md font-medium text-sm bg-gray-100 text-gray-800"
+            >
+              <i class="fas fa-warehouse mr-2"></i> Oil and Gas
+            </button>
+            <button
+              onclick="changeServiceTab('supply')"
+              class="tab-button px-4 py-2 rounded-md font-medium text-sm bg-gray-100 text-gray-800"
+            >
+              <i class="fas fa-automobile mr-2"></i> Automobile
+            </button>
+            <button
+              onclick="changeServiceTab('express')"
+              class="tab-button px-4 py-2 rounded-md font-medium text-sm bg-gray-100 text-gray-800"
+            >
+              <i class="fas fa-mobile-phone mr-2"></i> Telecommunication
+            </button>
+            <button
+              onclick="changeServiceTab('customs')"
+              class="tab-button px-4 py-2 rounded-md font-medium text-sm bg-gray-100 text-gray-800"
+            >
+              <i class="fas fa-leaf mr-2"></i> Agriculture
+            </button>
+            <button
+              onclick="changeServiceTab('special')"
+              class="tab-button px-4 py-2 rounded-md font-medium text-sm bg-gray-100 text-gray-800"
+            >
+              <i class="fas fa-shopping-bag mr-2"></i> E-commerce
+            </button>
+          </div>
+
+          <!-- Tab Content -->
+          <div id="pharma-tab" class="service-tab">
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+              <div>
+                <h3 class="text-2xl font-bold text-gray-900">
+                  PHARMA-LOGISTICS & HEALTH DISTRIBUTION
+                </h3>
+                <p class="mt-4 text-gray-500">
+                  At Skynet Express Ltd, we play a vital role in Ghana’s
+                  healthcare logistics ecosystem. We’ve partnered with
+                  institutions like CHI Medical, Nationwide Mutual Healthcare,
+                  C&J Pharmaceuticals, and Rimal Ghana Limited to ensure timely
+                  and secure delivery of critical medical equipment, laboratory
+                  supplies, and diagnostic films across the country. From
+                  temperature-sensitive pharmaceuticals to general hospital
+                  supplies, we ensure safe, trackable, and compliant last-mile
+                  delivery.
+                </p>
+                <div class="mt-6">
+                  <ul class="space-y-4">
+                    <li class="flex items-start">
+                      <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                      </div>
+                      <p class="ml-3 text-gray-700">
+                        Temperature-controlled medical and drug deliveries
+                      </p>
+                    </li>
+                    <li class="flex items-start">
+                      <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                      </div>
+                      <p class="ml-3 text-gray-700">
+                        Nationwide same-day and next-day distribution
+                      </p>
+                    </li>
+                    <li class="flex items-start">
+                      <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                      </div>
+                      <p class="ml-3 text-gray-700">
+                        Door-to-door delivery with real-time tracking
+                      </p>
+                    </li>
+                    <li class="flex items-start">
+                      <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                      </div>
+                      <p class="ml-3 text-gray-700">
+                        Licensed courier services for regulated health
+                        commodities
+                      </p>
+                    </li>
+                  </ul>
                 </div>
-                <div>
-                  <h4 class="font-semibold">Nationwide Reach</h4>
-                  <p class="text-sm text-gray-500">16 regions</p>
+                <div class="mt-8">
+                  <a
+                    href="contact.html"
+                    style="background-color: lch(51.11% 99.15 38.87)"
+                    class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white hover:bg-red-700"
+                  >
+                    Get a Quote
+                    <i class="fas fa-arrow-right ml-2"></i>
+                  </a>
                 </div>
               </div>
-              <div class="flex items-center">
-                <div
-                  class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4 rotate-icon"
-                >
-                  <i class="ri-user-star-line ri-xl text-primary"></i>
-                </div>
-                <div>
-                  <h4 class="font-semibold">Expert Team</h4>
-                  <p class="text-sm text-gray-500">250+ professionals</p>
+              <div class="flex items-center justify-center">
+                <div class="relative w-full h-64 md:h-80">
+                  <div class="absolute inset-0 bg-blue-100 rounded-xl"></div>
+                  <img
+                    src="images/pharmacy.jpg"
+                    alt="Pharma logistics"
+                    class="absolute top-4 left-4 w-full h-full object-cover rounded-xl shadow-lg transform rotate-1"
+                  />
                 </div>
               </div>
             </div>
           </div>
-          <div class="lg:w-1/2 relative animate-scale-in">
-            <div class="relative">
-              <img
-                src="images/hero.jpg"
-                alt="Our Team"
-                class="rounded-xl shadow-xl w-full h-auto"
-              />
-              <div
-                class="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-lg glow-box"
-              >
-                <div class="flex items-center">
-                  <div
-                    class="w-14 h-14 bg-primary rounded-full flex items-center justify-center text-white mr-4"
+
+          <div id="oil-tab" class="service-tab hidden">
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+              <div>
+                <h3 class="text-2xl font-bold text-gray-900">
+                  OIL & GAS LOGISTICS
+                </h3>
+                <p class="mt-4 text-gray-500">
+                  Skynet Express Ltd supports Ghana’s energy sector through
+                  efficient and secure logistics solutions tailored for oil
+                  marketing and engineering companies. We transport fuel
+                  dispensing machines, critical components, and boxes of
+                  lubricant oils to and from filling stations and distribution
+                  centers nationwide.
+                  <br /><br />
+                  Our trusted partnerships include Ghana Oil Company Limited
+                  (GOIL), Cardinal Engineering, Oando Ghana, Engen Ghana
+                  Limited, Star Oil, and Universal Engineering — ensuring
+                  seamless supply chain operations for the nation’s fuel
+                  infrastructure.
+                </p>
+                <div class="mt-6">
+                  <ul class="space-y-4">
+                    <li class="flex items-start">
+                      <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                      </div>
+                      <p class="ml-3 text-gray-700">
+                        Safe transport of heavy and sensitive fuel dispensing
+                        machinery
+                      </p>
+                    </li>
+                    <li class="flex items-start">
+                      <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                      </div>
+                      <p class="ml-3 text-gray-700">
+                        Coordinated delivery across all fuel station zones
+                      </p>
+                    </li>
+                    <li class="flex items-start">
+                      <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                      </div>
+                      <p class="ml-3 text-gray-700">
+                        Real-time location and delivery tracking
+                      </p>
+                    </li>
+                    <li class="flex items-start">
+                      <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                      </div>
+                      <p class="ml-3 text-gray-700">
+                        Timely and dependable just-in-time delivery model
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="mt-8">
+                  <a
+                    href="contact.html"
+                    style="background-color: #f4050b"
+                    class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white hover:bg-red-700"
                   >
-                    <i class="ri-trophy-line ri-2x"></i>
+                    Get a Quote
+                    <i class="fas fa-arrow-right ml-2"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="flex items-center justify-center">
+                <div class="relative w-full h-64 md:h-80">
+                  <div class="absolute inset-0 bg-blue-100 rounded-xl"></div>
+                  <img
+                    src="images/oil-industry.jpg"
+                    alt="Oil and Gas Logistics"
+                    class="absolute top-4 left-4 w-full h-full object-cover rounded-xl shadow-lg transform rotate-1"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="supply-tab" class="service-tab hidden">
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+              <div>
+                <h3 class="text-2xl font-bold text-gray-900">
+                  AUTOMOTIVE LOGISTICS
+                </h3>
+                <p class="mt-4 text-gray-500">
+                  For over 15 years, SkyNet Express Ltd has been a strategic
+                  logistics partner to Ghana’s growing automobile industry. As
+                  Ghana’s auto market evolves—projected to surpass USD 10.6
+                  billion by 2027—we have scaled our capabilities to serve both
+                  new and used vehicle sectors.
+                  <br /><br />
+                  With automotive assembly plants from brands like Volkswagen,
+                  Nissan, and Toyota now operating locally, SkyNet Express plays
+                  a vital role in transporting vehicle parts and components
+                  across the country—ensuring timely delivery and robust supply
+                  chain support for manufacturers, dealers, and service centers.
+                </p>
+                <div class="mt-6">
+                  <ul class="space-y-4">
+                    <li class="flex items-start">
+                      <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                      </div>
+                      <p class="ml-3 text-gray-700">
+                        End-to-end vendor coordination and part consolidation
+                      </p>
+                    </li>
+                    <li class="flex items-start">
+                      <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                      </div>
+                      <p class="ml-3 text-gray-700">
+                        Nationwide transportation and warehousing management
+                      </p>
+                    </li>
+                    <li class="flex items-start">
+                      <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                      </div>
+                      <p class="ml-3 text-gray-700">
+                        Demand forecasting and inventory optimization
+                      </p>
+                    </li>
+                    <li class="flex items-start">
+                      <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                      </div>
+                      <p class="ml-3 text-gray-700">
+                        Reverse logistics and returns management for auto parts
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="mt-8">
+                  <a
+                    href="contact.html"
+                    style="background-color: #f4050b"
+                    class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white hover:bg-red-700"
+                  >
+                    Get a Quote
+                    <i class="fas fa-arrow-right ml-2"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="flex items-center justify-center">
+                <div class="relative w-full h-64 md:h-80">
+                  <div class="absolute inset-0 bg-blue-100 rounded-xl"></div>
+                  <img
+                    src="images/automobile_indus.jpg"
+                    alt="Automotive Logistics"
+                    class="absolute top-4 left-4 w-full h-full object-cover rounded-xl shadow-lg transform rotate-1"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="express-tab" class="service-tab hidden">
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+              <div>
+                <h3 class="text-2xl font-bold text-gray-900">
+                  TELECOMMUNICATION LOGISTICS
+                </h3>
+                <p class="mt-4 text-gray-500">
+                  The telecommunications industry is a critical driver of
+                  Ghana’s digital economy, supported by a liberalized market
+                  since 2007. With major investments flowing into ICT and
+                  communications, SkyNet Express plays a strategic logistics
+                  role in facilitating seamless operations within the sector.
+                  <br /><br />
+                  From warehousing and last-mile distribution of telecom
+                  equipment to expedited delivery of SIM cards and devices, we
+                  support key telecom providers with reliable, tech-enabled
+                  logistics solutions. Backed by recent investments in system
+                  digitalization and customer experience, SkyNet Express is
+                  well-positioned to scale with the industry's anticipated
+                  growth.
+                  <br /><br />
+                  Over the next five years, we plan to expand our nationwide
+                  branch network to meet the increasing demands of telecom
+                  partners—delivering speed, security, and efficiency at every
+                  stage.
+                </p>
+                <div class="mt-6">
+                  <ul class="space-y-4">
+                    <li class="flex items-start">
+                      <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                      </div>
+                      <p class="ml-3 text-gray-700">
+                        Same-day and next-day delivery for critical telecom
+                        components
+                      </p>
+                    </li>
+                    <li class="flex items-start">
+                      <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                      </div>
+                      <p class="ml-3 text-gray-700">
+                        Dedicated couriers for high-priority and time-sensitive
+                        shipments
+                      </p>
+                    </li>
+                    <li class="flex items-start">
+                      <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                      </div>
+                      <p class="ml-3 text-gray-700">
+                        Advanced tracking and delivery confirmation systems
+                      </p>
+                    </li>
+                    <li class="flex items-start">
+                      <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                      </div>
+                      <p class="ml-3 text-gray-700">
+                        Guaranteed service levels with money-back assurance
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="mt-8">
+                  <a
+                    href="contact.html"
+                    style="background-color: #f4050b"
+                    class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white hover:bg-red-700"
+                  >
+                    Get a Quote
+                    <i class="fas fa-arrow-right ml-2"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="flex items-center justify-center">
+                <div class="relative w-full h-64 md:h-80">
+                  <div class="absolute inset-0 bg-blue-100 rounded-xl"></div>
+                  <img
+                    src="images/telecom.jpg"
+                    alt="Telecommunication Logistics"
+                    class="absolute top-4 left-4 w-full h-full object-cover rounded-xl shadow-lg transform rotate-1"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="customs-tab" class="service-tab hidden">
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+              <div>
+                <h3 class="text-2xl font-bold text-gray-900">
+                  AGRICULTURAL LOGISTICS
+                </h3>
+                <p class="mt-4 text-gray-500">
+                  SkyNet Express supports Ghana's agricultural sector by
+                  offering dedicated logistics solutions to agrochemical
+                  companies, seed producers, and farming equipment suppliers. We
+                  deliver agrochemicals for Adam West Africa to locations
+                  including Kpando and Tamale, directly from their warehouses in
+                  Tema.
+                  <br /><br />
+                  For AgriSeed Limited, we ensure the safe and timely
+                  distribution of agro products and seeds from Accra to all
+                  regional capitals. Additionally, our partnership with
+                  Dizengoff West Africa involves transporting agricultural
+                  machinery to farm sites across the country.
+                  <br /><br />
+                  Our reliable delivery systems, specialized handling, and
+                  nationwide coverage help optimize operations for
+                  agribusinesses—ensuring farming communities get the tools and
+                  materials they need on time.
+                </p>
+                <div class="mt-6">
+                  <ul class="space-y-4">
+                    <li class="flex items-start">
+                      <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                      </div>
+                      <p class="ml-3 text-gray-700">
+                        Temperature-controlled transport for sensitive products
+                      </p>
+                    </li>
+                    <li class="flex items-start">
+                      <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                      </div>
+                      <p class="ml-3 text-gray-700">
+                        Certified handling of hazardous agrochemicals
+                      </p>
+                    </li>
+                    <li class="flex items-start">
+                      <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                      </div>
+                      <p class="ml-3 text-gray-700">
+                        Transport of oversized and heavy farming equipment
+                      </p>
+                    </li>
+                    <li class="flex items-start">
+                      <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                      </div>
+                      <p class="ml-3 text-gray-700">
+                        Secure delivery of high-value or confidential shipments
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="mt-8">
+                  <a
+                    href="contact.html"
+                    style="background-color: #f4050b"
+                    class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white hover:bg-red-700"
+                  >
+                    Get a Quote
+                    <i class="fas fa-arrow-right ml-2"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="flex items-center justify-center">
+                <div class="relative w-full h-64 md:h-80">
+                  <div class="absolute inset-0 bg-blue-100 rounded-xl"></div>
+                  <img
+                    src="images/organic-food-farm.jpg"
+                    alt="Agricultural Logistics"
+                    class="absolute top-4 left-4 w-full h-full object-cover rounded-xl shadow-lg transform rotate-1"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="special-tab" class="service-tab hidden">
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+              <div>
+                <h3 class="text-2xl font-bold text-gray-900">E-COMMERCE</h3>
+                <p class="mt-4 text-gray-500">
+                  The e-commerce sector in Ghana has seen exponential growth,
+                  driven by digital transformation and accelerated by the
+                  COVID-19 pandemic. As more consumers and businesses turn to
+                  online platforms and social media for trade, the need for
+                  fast, reliable, and scalable delivery services is greater than
+                  ever.
+                  <br /><br />
+                  SkyNet Express partners with online businesses—ranging from
+                  major platforms to independent sellers—to provide complete
+                  e-commerce logistics solutions. From order fulfillment and
+                  warehousing to delivery and cash handling, we help streamline
+                  operations so sellers can focus on growth.
+                </p>
+                <div class="mt-6">
+                  <ul class="space-y-4">
+                    <li class="flex items-start">
+                      <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                      </div>
+                      <p class="ml-3 text-gray-700">
+                        Fast and reliable nationwide delivery across Ghana
+                      </p>
+                    </li>
+                    <li class="flex items-start">
+                      <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                      </div>
+                      <p class="ml-3 text-gray-700">
+                        Secure e-commerce product warehousing and inventory
+                        control
+                      </p>
+                    </li>
+                    <li class="flex items-start">
+                      <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                      </div>
+                      <p class="ml-3 text-gray-700">
+                        Cash-on-delivery (COD) services with real-time updates
+                      </p>
+                    </li>
+                    <li class="flex items-start">
+                      <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                      </div>
+                      <p class="ml-3 text-gray-700">
+                        Instant remittance for social commerce transactions
+                      </p>
+                    </li>
+                    <li class="flex items-start">
+                      <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                      </div>
+                      <p class="ml-3 text-gray-700">
+                        Seamless API integration for order syncing and tracking
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="mt-8">
+                  <a
+                    href="contact.html"
+                    style="background-color: #f4050b"
+                    class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white hover:bg-red-700"
+                  >
+                    Get a Quote
+                    <i class="fas fa-arrow-right ml-2"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="flex items-center justify-center">
+                <div class="relative w-full h-64 md:h-80">
+                  <div class="absolute inset-0 bg-blue-100 rounded-xl"></div>
+                  <img
+                    src="images/e-com.jpg"
+                    alt="E-Commerce Logistics"
+                    class="absolute top-4 left-4 w-full h-full object-cover rounded-xl shadow-lg transform rotate-1"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Technology Section -->
+    <!-- <div class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="lg:grid lg:grid-cols-2 lg:gap-16 lg:items-center">
+          <div>
+            <h2
+              class="text-base font-semibold text-red-600 tracking-wide uppercase"
+            >
+              Our Technology
+            </h2>
+            <p class="mt-2 text-3xl font-extrabold text-gray-900 sm:text-4xl">
+              Advanced Logistics Technology
+            </p>
+            <p class="mt-4 text-lg text-gray-500">
+              We leverage cutting-edge technology to provide real-time
+              visibility, predictive analytics, and automated processes that
+              streamline your supply chain.
+            </p>
+            <div class="mt-8">
+              <div class="inline-flex rounded-md shadow">
+                <a
+                  href="#"
+                  class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700"
+                >
+                  <i class="fas fa-laptop mr-2"></i> Platform Demo
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="mt-12 lg:mt-0">
+            <div class="relative max-w-lg mx-auto lg:max-w-none">
+              <div class="relative w-full rounded-lg shadow-lg overflow-hidden">
+                <div
+                  class="relative w-full h-96 bg-red-50 flex items-center justify-center"
+                >
+                  <div class="text-center p-8">
+                    <i
+                      class="fas fa-mobile-alt text-5xl text-red-600 mb-4 animate-float"
+                    ></i>
+                    <h3 class="text-xl font-bold text-gray-900">
+                      SkyNet Express Ltd Mobile App
+                    </h3>
+                    <p class="mt-2 text-gray-600">
+                      Track shipments, manage inventory, and receive alerts -
+                      all from your mobile device.
+                    </p>
+                    <div class="mt-6 flex justify-center space-x-4">
+                      <a href="#" class="flex items-center">
+                        <i class="fab fa-apple text-2xl text-gray-800 mr-2"></i>
+                        <span class="text-xs"
+                          >Download on the<br /><span class="font-medium"
+                            >App Store</span
+                          ></span
+                        >
+                      </a>
+                      <a href="#" class="flex items-center">
+                        <i
+                          class="fab fa-google-play text-2xl text-gray-800 mr-2"
+                        ></i>
+                        <span class="text-xs"
+                          >Get it on<br /><span class="font-medium"
+                            >Google Play</span
+                          ></span
+                        >
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- Contact CTA -->
+    <section
+      id="contact"
+      class="py-16 bg-gradient-to-r from-primary to-secondary animate-fade-in"
+    >
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div class="animate-slide-left">
+              <h2 class="text-3xl font-bold text-white mb-6">Get in Touch</h2>
+              <p class="text-white/80 mb-8">
+                Have questions about our services or ready to get started? Our
+                team is here to help you find the perfect logistics solution for
+                your business.
+              </p>
+              <div class="space-y-6">
+                <div class="flex items-start">
+                  <div
+                    class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center mr-4 mt-1 hover-rotate"
+                  >
+                    <i class="ri-map-pin-line text-white"></i>
                   </div>
                   <div>
-                    <h4 class="font-bold text-lg">25+ Industry Awards</h4>
-                    <p class="text-sm text-gray-600">
-                      Recognized for excellence
+                    <h4 class="text-white font-medium mb-1">
+                      Our Headquarters
+                    </h4>
+                    <p class="text-white/80">
+                      Adabla Plaza No.5 Asafoatse Oman Street, Kokomlemle,
+                      Accra<br />Ghana
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div
+                    class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center mr-4 mt-1 hover-rotate"
+                  >
+                    <i class="ri-phone-line text-white"></i>
+                  </div>
+                  <div>
+                    <h4 class="text-white font-medium mb-1">Call Us</h4>
+                    <p class="text-white/80">
+                      +233 (0) 30 223 0516 <br />+233 (0) 24 205 0501
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div
+                    class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center mr-4 mt-1 hover-rotate"
+                  >
+                    <i class="ri-mail-line text-white"></i>
+                  </div>
+                  <div>
+                    <h4 class="text-white font-medium mb-1">Email Us</h4>
+                    <p class="text-white/80">info@skynetexpressgh.com</p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div
+                    class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center mr-4 mt-1 hover-rotate"
+                  >
+                    <i class="ri-time-line text-white"></i>
+                  </div>
+                  <div>
+                    <h4 class="text-white font-medium mb-1">Business Hours</h4>
+                    <p class="text-white/80">
+                      Monday - Friday: 7:00 AM - 6:00 PM<br />Saturday: 9:00 AM
+                      - 1:00 PM
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Mission & Values -->
-    <section id="mission" class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center mb-16 animate-fade-in">
-          <span class="text-sm font-medium text-primary mb-2 inline-block"
-            ><span class="inline-block animate-bounce">
-              <i class="ri-star-fill mr-1"></i>
-              OUR CORE
-              <i class="ri-star-fill ml-1"></i> </span
-          ></span>
-          <h2 class="text-3xl font-bold mb-4">
-            Mission & Values That Drive Us
-          </h2>
-          <p class="text-gray-600">
-            These principles guide every decision we make and every service we
-            provide
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          <!-- Mission Card -->
-          <div
-            class="bg-white p-8 rounded-xl shadow-md glow-box animate-slide-up"
-          >
             <div
-              class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6 mx-auto"
+              class="bg-white rounded-lg p-6 shadow-lg hover-shadow-lg animate-slide-right"
             >
-              <i class="ri-flashlight-line ri-2x text-primary"></i>
-            </div>
-            <h3 class="text-xl font-semibold mb-3 text-center">Our Mission</h3>
-            <p class="text-gray-600 text-center">
-              Our mission is to become a premier courier company providing
-              top-quality reliable services to corporate bodies. We seek to
-              assist in expediting the collection, conveyance and
-              distribution/delivery of courier items making it an easy and
-              stress free experience. SkyNet seeks to be viewed as a highly
-              visible company in the courier industry and will work to keep
-              employees satisfied in order to maintain impeccable customer
-              service.
-            </p>
-          </div>
-
-          <!-- Vision Card -->
-          <div
-            class="bg-white p-8 rounded-xl shadow-md glow-box animate-slide-up animation-delay-100"
-          >
-            <div
-              class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6 mx-auto"
-            >
-              <i class="ri-eye-line ri-2x text-primary"></i>
-            </div>
-            <h3 class="text-xl font-semibold mb-3 text-center">Our Vision</h3>
-            <p class="text-gray-600 text-center">
-              To be the most trusted logistics partner nationwide, recognized
-              for our commitment to operational excellence, sustainable
-              transportation, and delivering consistent value to our clients. We
-              aim to lead the logistics industry by providing innovative supply
-              chain solutions, ensuring timely and secure deliveries, and
-              fostering long-term partnerships that drive nationwide commerce
-              forward.
-            </p>
-          </div>
-
-          <!-- Promise Card -->
-          <div
-            class="bg-white p-8 rounded-xl shadow-md glow-box animate-slide-up animation-delay-200"
-          >
-            <div
-              class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6 mx-auto"
-            >
-              <i class="ri-hand-heart-line ri-2x text-primary"></i>
-            </div>
-            <h3 class="text-xl font-semibold mb-3 text-center">Our Promise</h3>
-            <p class="text-gray-600 text-center">
-              To deliver reliable, transparent, and customized logistics
-              solutions that exceed expectations while building lasting
-              partnerships.
-            </p>
-          </div>
-        </div>
-
-        <!-- Values -->
-        <div class="max-w-4xl mx-auto">
-          <h3 class="text-2xl font-semibold mb-8 text-center animate-fade-in">
-            Our Core Values at Skynet Express
-          </h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Value 1 -->
-            <div
-              class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow animate-slide-up"
-            >
-              <div
-                class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4"
-              >
-                <i class="ri-user-5-line ri-xl text-primary"></i>
-              </div>
-              <h4 class="font-semibold mb-2">Customer Centricity</h4>
-              <p class="text-gray-600 text-sm">
-                Every parcel, document, and delivery is handled with a deep
-                commitment to customer satisfaction.
-              </p>
-            </div>
-
-            <!-- Value 2 -->
-            <div
-              class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow animate-slide-up animation-delay-100"
-            >
-              <div
-                class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4"
-              >
-                <i class="ri-lightbulb-flash-line ri-xl text-primary"></i>
-              </div>
-              <h4 class="font-semibold mb-2">Smart Innovation</h4>
-              <p class="text-gray-600 text-sm">
-                We leverage technology and creative thinking to enhance our
-                courier and logistics solutions.
-              </p>
-            </div>
-
-            <!-- Value 3 -->
-            <div
-              class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow animate-slide-up animation-delay-200"
-            >
-              <div
-                class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4"
-              >
-                <i class="ri-shield-check-line ri-xl text-primary"></i>
-              </div>
-              <h4 class="font-semibold mb-2">Trust & Integrity</h4>
-              <p class="text-gray-600 text-sm">
-                We operate transparently, securely, and ethically—ensuring
-                confidence in every transaction.
-              </p>
-            </div>
-
-            <!-- Value 4 -->
-            <div
-              class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow animate-slide-up animation-delay-300"
-            >
-              <div
-                class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4"
-              >
-                <i class="ri-team-line ri-xl text-primary"></i>
-              </div>
-              <h4 class="font-semibold mb-2">Collaboration</h4>
-              <p class="text-gray-600 text-sm">
-                We partner with our clients and teams to deliver seamless
-                logistics experiences across Ghana.
-              </p>
-            </div>
-
-            <!-- Value 5 -->
-            <div
-              class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow animate-slide-up"
-            >
-              <div
-                class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4"
-              >
-                <i class="ri-leaf-line ri-xl text-primary"></i>
-              </div>
-              <h4 class="font-semibold mb-2">Sustainability</h4>
-              <p class="text-gray-600 text-sm">
-                We promote green practices by optimizing delivery routes and
-                embracing eco-friendly operations.
-              </p>
-            </div>
-
-            <!-- Value 6 -->
-            <div
-              class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow animate-slide-up animation-delay-100"
-            >
-              <div
-                class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4"
-              >
-                <i class="ri-medal-line ri-xl text-primary"></i>
-              </div>
-              <h4 class="font-semibold mb-2">Service Excellence</h4>
-              <p class="text-gray-600 text-sm">
-                Our commitment to consistency and professionalism ensures
-                top-tier delivery services every time.
-              </p>
-            </div>
-
-            <!-- Value 7 -->
-            <div
-              class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow animate-slide-up animation-delay-200"
-            >
-              <div
-                class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4"
-              >
-                <i class="ri-flashlight-line ri-xl text-primary"></i>
-              </div>
-              <h4 class="font-semibold mb-2">Agility</h4>
-              <p class="text-gray-600 text-sm">
-                We’re fast, flexible, and always ready to respond to changing
-                customer or market demands.
-              </p>
-            </div>
-
-            <!-- Value 8 -->
-            <div
-              class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow animate-slide-up animation-delay-300"
-            >
-              <div
-                class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4"
-              >
-                <i class="ri-heart-line ri-xl text-primary"></i>
-              </div>
-              <h4 class="font-semibold mb-2">Community Impact</h4>
-              <p class="text-gray-600 text-sm">
-                As a proudly Ghanaian company, we invest in our local
-                communities and support national growth.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Our Journey -->
-    <section class="py-16 bg-white">
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center mb-16 animate-fade-in">
-          <span class="text-sm font-medium text-primary mb-2 inline-block"
-            ><span class="inline-block animate-bounce">
-              <i class="ri-star-fill mr-1"></i>
-              OUR HISTORY
-              <i class="ri-star-fill ml-1"></i> </span
-          ></span>
-          <h2 class="text-3xl font-bold mb-4">Milestones in Our Journey</h2>
-          <p class="text-gray-600">
-            From humble beginnings to global logistics leader
-          </p>
-        </div>
-
-        <div class="relative timeline pl-12 max-w-3xl mx-auto">
-          <!-- Timeline Item 1 -->
-          <div class="relative mb-12 timeline-item animate-slide-up">
-            <div
-              class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-100"
-            >
-              <div class="flex items-center mb-3">
-                <span
-                  class="bg-primary text-white text-sm font-medium px-3 py-1 rounded-full"
-                  >1995</span
+              <h3 class="text-xl font-semibold mb-4">Send Us a Message</h3>
+              <form id="contact-form">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                  <div>
+                    <label
+                      for="name"
+                      class="block text-sm font-medium text-gray-700 mb-1"
+                      >Full Name</label
+                    >
+                    <input
+                      type="text"
+                      id="name"
+                      placeholder="Your name"
+                      class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label
+                      for="email"
+                      class="block text-sm font-medium text-gray-700 mb-1"
+                      >Email Address</label
+                    >
+                    <input
+                      type="email"
+                      id="email"
+                      placeholder="Your email"
+                      class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="mb-4">
+                  <label
+                    for="subject"
+                    class="block text-sm font-medium text-gray-700 mb-1"
+                    >Subject</label
+                  >
+                  <input
+                    type="text"
+                    id="subject"
+                    placeholder="Message subject"
+                    class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm"
+                    required
+                  />
+                </div>
+                <div class="mb-4">
+                  <label
+                    for="message"
+                    class="block text-sm font-medium text-gray-700 mb-1"
+                    >Message</label
+                  >
+                  <textarea
+                    id="message"
+                    rows="4"
+                    placeholder="Your message"
+                    class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm"
+                    required
+                  ></textarea>
+                </div>
+                <div class="mb-6">
+                  <label class="flex items-center">
+                    <div class="relative h-5 w-5 mr-2">
+                      <input
+                        type="checkbox"
+                        id="privacy"
+                        class="absolute h-5 w-5"
+                        required
+                      />
+                      <div class="checkmark"></div>
+                    </div>
+                    <span class="text-sm text-gray-600"
+                      >I agree to the
+                      <a href="#" class="text-primary hover:underline"
+                        >Privacy Policy</a
+                      ></span
+                    >
+                  </label>
+                </div>
+                <button
+                  type="submit"
+                  class="w-full bg-primary text-white px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-primary/90 transition-colors btn-hover"
                 >
-              </div>
-              <h3 class="text-xl font-semibold mb-2">Company Founded</h3>
-              <p class="text-gray-600">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
-                maxime reprehenderit labore magnam nisi velit, deserunt ut!
-                Explicabo necessitatibus atque laborum quis, minima magni
-                laudantium quaerat tempora vero commodi incidunt!
-              </p>
-            </div>
-          </div>
-
-          <!-- Timeline Item 2 -->
-          <div
-            class="relative mb-12 timeline-item animate-slide-up animation-delay-100"
-          >
-            <div
-              class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-100"
-            >
-              <div class="flex items-center mb-3">
-                <span
-                  class="bg-primary text-white text-sm font-medium px-3 py-1 rounded-full"
-                  >2002</span
-                >
-              </div>
-              <h3 class="text-xl font-semibold mb-2">
-                First Nationwide Office
-              </h3>
-              <p class="text-gray-600">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
-                maxime reprehenderit labore magnam nisi velit, deserunt ut!
-                Explicabo necessitatibus atque laborum quis, minima magni
-                laudantium quaerat tempora vero commodi incidunt!
-              </p>
-            </div>
-          </div>
-
-          <!-- Timeline Item 3 -->
-          <div
-            class="relative mb-12 timeline-item animate-slide-up animation-delay-200"
-          >
-            <div
-              class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-100"
-            >
-              <div class="flex items-center mb-3">
-                <span
-                  class="bg-primary text-white text-sm font-medium px-3 py-1 rounded-full"
-                  >2008</span
-                >
-              </div>
-              <h3 class="text-xl font-semibold mb-2">Nationwide Expansion</h3>
-              <p class="text-gray-600">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
-                maxime reprehenderit labore magnam nisi velit, deserunt ut!
-                Explicabo necessitatibus atque laborum quis, minima magni
-                laudantium quaerat tempora vero commodi incidunt!
-              </p>
-            </div>
-          </div>
-
-          <!-- Timeline Item 4 -->
-          <div
-            class="relative mb-12 timeline-item animate-slide-up animation-delay-300"
-          >
-            <div
-              class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-100"
-            >
-              <div class="flex items-center mb-3">
-                <span
-                  class="bg-primary text-white text-sm font-medium px-3 py-1 rounded-full"
-                  >2015</span
-                >
-              </div>
-              <h3 class="text-xl font-semibold mb-2">Technology Revolution</h3>
-              <p class="text-gray-600">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
-                maxime reprehenderit labore magnam nisi velit, deserunt ut!
-                Explicabo necessitatibus atque laborum quis, minima magni
-                laudantium quaerat tempora vero commodi incidunt!
-              </p>
-            </div>
-          </div>
-
-          <!-- Timeline Item 5 -->
-          <div
-            class="relative timeline-item animate-slide-up animation-delay-400"
-          >
-            <div
-              class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-100"
-            >
-              <div class="flex items-center mb-3">
-                <span
-                  class="bg-primary text-white text-sm font-medium px-3 py-1 rounded-full"
-                  >2023</span
-                >
-              </div>
-              <h3 class="text-xl font-semibold mb-2">
-                Sustainability Leadership
-              </h3>
-              <p class="text-gray-600">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
-                maxime reprehenderit labore magnam nisi velit, deserunt ut!
-                Explicabo necessitatibus atque laborum quis, minima magni
-                laudantium quaerat tempora vero commodi incidunt!
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Leadership Team -->
-    <section class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center mb-16 animate-fade-in">
-          <span class="text-sm font-medium text-primary mb-2 inline-block"
-            ><span class="inline-block animate-bounce">
-              <i class="ri-star-fill mr-1"></i>
-              MEET THE TEAM
-              <i class="ri-star-fill ml-1"></i> </span
-          ></span>
-          <h2 class="text-3xl font-bold mb-4">Our Leadership Team</h2>
-          <p class="text-gray-600">
-            Experienced professionals guiding our company's vision and growth
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <!-- Team Member 1 -->
-          <div
-            class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow animate-scale-in"
-          >
-            <div class="relative h-64 overflow-hidden">
-              <img
-                src="images/dr_babson.jpg"
-                alt="CEO"
-                class="w-full h-full object-cover"
-              />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"
-              ></div>
-              <div class="absolute bottom-4 left-4">
-                <h3 class="text-white font-bold text-xl">Dr. Stephen Babson</h3>
-                <p class="text-primary/90">CEO</p>
-              </div>
-            </div>
-            <div class="p-6">
-              <p class="text-gray-600 text-sm mb-4">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
-                maxime reprehenderit labore magnam nisi velit, deserunt ut!
-                Explicabo necessitatibus atque laborum quis, minima magni
-                laudantium quaerat tempora vero commodi incidunt!
-              </p>
-              <div class="flex space-x-3">
-                <a
-                  href="#"
-                  class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
-                >
-                  <i class="ri-linkedin-fill"></i>
-                </a>
-                <a
-                  href="#"
-                  class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
-                >
-                  <i class="ri-twitter-fill"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Team Member 2 -->
-          <div
-            class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow animate-scale-in animation-delay-100"
-          >
-            <div class="relative h-64 overflow-hidden">
-              <img
-                src="images/portia.jpg"
-                alt="COO"
-                class="w-full h-full object-cover"
-              />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"
-              ></div>
-              <div class="absolute bottom-4 left-4">
-                <h3 class="text-white font-bold text-xl">Portia Norteye</h3>
-                <p class="text-primary/90">Business Development Manager</p>
-              </div>
-            </div>
-            <div class="p-6">
-              <p class="text-gray-600 text-sm mb-4">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
-                maxime reprehenderit labore magnam nisi velit, deserunt ut!
-                Explicabo necessitatibus atque laborum quis, minima magni
-                laudantium quaerat tempora vero commodi incidunt!
-              </p>
-              <div class="flex space-x-3">
-                <a
-                  href="#"
-                  class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
-                >
-                  <i class="ri-linkedin-fill"></i>
-                </a>
-                <a
-                  href="#"
-                  class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
-                >
-                  <i class="ri-twitter-fill"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Team Member 3 -->
-          <div
-            class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow animate-scale-in animation-delay-200"
-          >
-            <div class="relative h-64 overflow-hidden">
-              <img
-                src="images/Lyd.jpg"
-                alt="CTO"
-                class="w-full h-full object-cover"
-              />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"
-              ></div>
-              <div class="absolute bottom-4 left-4">
-                <h3 class="text-white font-bold text-xl">Lydia Ankomah</h3>
-                <p class="text-primary/90">Human Resource Manager</p>
-              </div>
-            </div>
-            <div class="p-6">
-              <p class="text-gray-600 text-sm mb-4">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
-                maxime reprehenderit labore magnam nisi velit, deserunt ut!
-                Explicabo necessitatibus atque laborum quis, minima magni
-                laudantium quaerat tempora vero commodi incidunt!
-              </p>
-              <div class="flex space-x-3">
-                <a
-                  href="#"
-                  class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
-                >
-                  <i class="ri-linkedin-fill"></i>
-                </a>
-                <a
-                  href="#"
-                  class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
-                >
-                  <i class="ri-twitter-fill"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Team Member 4 -->
-          <div
-            class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow animate-scale-in animation-delay-300"
-          >
-            <div class="relative h-64 overflow-hidden">
-              <img
-                src="images/hero.jpg"
-                alt="CFO"
-                class="w-full h-full object-cover"
-              />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"
-              ></div>
-              <div class="absolute bottom-4 left-4">
-                <h3 class="text-white font-bold text-xl">Emily Wong</h3>
-                <p class="text-primary/90">Chief Financial Officer</p>
-              </div>
-            </div>
-            <div class="p-6">
-              <p class="text-gray-600 text-sm mb-4">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
-                maxime reprehenderit labore magnam nisi velit, deserunt ut!
-                Explicabo necessitatibus atque laborum quis, minima magni
-                laudantium quaerat tempora vero commodi incidunt!
-              </p>
-              <div class="flex space-x-3">
-                <a
-                  href="#"
-                  class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
-                >
-                  <i class="ri-linkedin-fill"></i>
-                </a>
-                <a
-                  href="#"
-                  class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
-                >
-                  <i class="ri-twitter-fill"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section
-      class="py-16 bg-primary bg-gradient-to-r from-primary to-secondary text-white"
-    >
-      <div class="container mx-auto px-4">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-          <!-- Stat 1 -->
-          <div class="text-center animate-fade-in">
-            <div
-              class="text-4xl md:text-5xl font-bold mb-2 flex justify-center items-center"
-            >
-              <span class="counter" data-target="20">0</span
-              ><span class="wave-animation">+</span>
-            </div>
-            <p class="text-white/90">Years of Experience</p>
-          </div>
-
-          <!-- Stat 2 -->
-          <div class="text-center animate-fade-in animation-delay-100">
-            <div class="text-4xl md:text-5xl font-bold mb-2">
-              <span class="counter" data-target="16">0</span>
-            </div>
-            <p class="text-white/90">Regions Served</p>
-          </div>
-
-          <!-- Stat 3 -->
-          <div class="text-center animate-fade-in animation-delay-200">
-            <div class="text-4xl md:text-5xl font-bold mb-2">
-              <span class="counter" data-target="12">0</span>
-            </div>
-            <p class="text-white/90">Nationwide Offices</p>
-          </div>
-
-          <!-- Stat 4 -->
-          <div class="text-center animate-fade-in animation-delay-300">
-            <div class="text-4xl md:text-5xl font-bold mb-2">
-              <span class="counter" data-target="120">0</span>+
-            </div>
-            <p class="text-white/90">Dedicated Employees</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-16 bg-white">
-      <div class="container mx-auto px-4">
-        <div
-          class="bg-gradient-to-r from-primary to-secondary rounded-2xl p-8 md:p-12 text-white relative overflow-hidden animate-scale-in"
-        >
-          <div
-            class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32"
-          ></div>
-          <div
-            class="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full -ml-32 -mb-32"
-          ></div>
-          <div class="relative z-10">
-            <div class="max-w-3xl mx-auto text-center">
-              <h2 class="text-3xl font-bold mb-6">
-                Ready to
-                <span class="inline-block animate-bounce">Transform</span> Your
-                Logistics?
-              </h2>
-              <p class="text-white/90 mb-8">
-                Our team of experts is ready to analyze your current logistics
-                operations and recommend the most efficient solutions tailored
-                to your business needs.
-              </p>
-              <div class="flex flex-wrap justify-center gap-4">
-                <a
-                  href="https://app.skynetexpressgh.com"
-                  class="bg-white text-primary px-8 py-4 !rounded-button whitespace-nowrap font-medium hover:bg-gray-100 transition-colors"
-                  >Send a Parcel</a
-                >
-                <a
-                  href="tel:+233242050501"
-                  class="bg-transparent border-2 border-white text-white px-8 py-4 !rounded-button whitespace-nowrap font-medium hover:bg-white/10 transition-colors"
-                >
-                  <i class="ri-phone-line mr-2"></i> Call Us Now
-                </a>
-              </div>
+                  Send Message
+                </button>
+              </form>
             </div>
           </div>
         </div>
@@ -902,7 +1016,7 @@
             <a href="index.html" class="inline-block mb-6 hover-grow">
               <img
                 src="images/logo_white.png"
-                alt="skynet express Logo"
+                alt="skynet express Logistics Logo"
                 class="h-10 w-auto"
               />
             </a>
@@ -919,17 +1033,17 @@
                 <i class="ri-facebook-fill"></i>
               </a>
               <!-- <a
-              href="#"
-              class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-300 hover:-translate-y-1"
-            >
-              <i class="ri-twitter-x-fill"></i>
-            </a> -->
+                href="#"
+                class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-300 hover:-translate-y-1"
+              >
+                <i class="ri-twitter-x-fill"></i>
+              </a> -->
               <!-- <a
-              href="#"
-              class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-300 hover:-translate-y-1"
-            >
-              <i class="ri-linkedin-fill"></i>
-            </a> -->
+                href="#"
+                class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-300 hover:-translate-y-1"
+              >
+                <i class="ri-linkedin-fill"></i>
+              </a> -->
               <a
                 href="https://instagram.com/skynetexpressgh?igshid=YTY2NzY3YTc="
                 class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-300 hover:-translate-y-1"
@@ -1162,99 +1276,6 @@
         </div>
       </div>
     </footer>
-
-    <script>
-      // Mobile menu toggle
-      document
-        .getElementById("mobile-menu-button")
-        .addEventListener("click", function () {
-          const menu = document.getElementById("mobile-menu");
-          menu.classList.toggle("hidden");
-        });
-
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-
-          const targetId = this.getAttribute("href");
-          if (targetId === "#") return;
-
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            const headerHeight = document.querySelector("header").offsetHeight;
-            const targetPosition =
-              targetElement.getBoundingClientRect().top +
-              window.pageYOffset -
-              headerHeight;
-
-            window.scrollTo({
-              top: targetPosition,
-              behavior: "smooth",
-            });
-
-            // Close mobile menu if open
-            const mobileMenu = document.getElementById("mobile-menu");
-            if (!mobileMenu.classList.contains("hidden")) {
-              mobileMenu.classList.add("hidden");
-            }
-          }
-        });
-      });
-
-      // Counter animation
-      const counters = document.querySelectorAll(".counter");
-      const speed = 200;
-
-      function animateCounters() {
-        counters.forEach((counter) => {
-          const target = +counter.getAttribute("data-target");
-          const count = +counter.innerText;
-          const increment = target / speed;
-
-          if (count < target) {
-            counter.innerText = Math.ceil(count + increment);
-            setTimeout(animateCounters, 1);
-          } else {
-            counter.innerText = target;
-          }
-        });
-      }
-
-      // Start counter animation when stats section is in view
-      const statsSection = document.querySelector("section.bg-primary");
-      const observer = new IntersectionObserver(
-        (entries) => {
-          if (entries[0].isIntersecting) {
-            animateCounters();
-            observer.unobserve(statsSection);
-          }
-        },
-        { threshold: 0.5 }
-      );
-
-      observer.observe(statsSection);
-
-      // Add animation classes when elements come into view
-      const animateElements = document.querySelectorAll('[class*="animate-"]');
-      const elementObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add(
-                entry.target.dataset.animation || "fade-in"
-              );
-              elementObserver.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.1 }
-      );
-
-      animateElements.forEach((element) => {
-        elementObserver.observe(element);
-      });
-    </script>
     <!-- Chatbot Container -->
     <div
       id="chatbot-container"
@@ -1325,7 +1346,17 @@
           }
         });
     </script>
-
+    <script>
+      // Mobile menu toggle
+      document
+        .getElementById("mobile-menu-button")
+        .addEventListener("click", function () {
+          const menu = document.getElementById("mobile-menu");
+          menu.classList.toggle("hidden");
+        });
+    </script>
+    <script src="js/tracking.js"></script>
     <script src="js/chatbot.js"></script>
+    <script src="js/oursectors.js"></script>
   </body>
 </html>
