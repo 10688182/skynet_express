@@ -385,9 +385,9 @@ document.addEventListener("DOMContentLoaded", () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           animateCounter("counter-countries", 16, 1500);
-          animateCounter("counter-shipments", 250000, 2000);
-          animateCounter("counter-clients", 12500, 1800);
-          animateCounter("counter-employees", 1200, 1600);
+          animateCounter("counter-shipments", 197000, 2000);
+          animateCounter("counter-clients", 573, 1800);
+          animateCounter("counter-employees", 120, 1600);
           counterObserver.unobserve(entry.target);
         }
       });
