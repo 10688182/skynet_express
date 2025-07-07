@@ -38,6 +38,20 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
+    <style>
+      /* Additional styles for mobile menu */
+      .mobile-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+      }
+      .mobile-menu.open {
+        max-height: 500px; /* Adjust based on your content */
+      }
+      .rotate-180 {
+        transform: rotate(180deg);
+      }
+    </style>
   </head>
   <body class="bg-gray-50">
     <!-- Header -->
@@ -79,9 +93,9 @@
             >Sectors</a
           >
           <a
-            href="gallery.html"
+            href="careers.html"
             class="text-gray-700 font-medium hover:text-primary transition-colors duration-300 nav-link"
-            >Gallery</a
+            >Careers</a
           >
           <a
             href="contact.html"
@@ -95,12 +109,13 @@
             class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap hover:bg-primary/90 transition-colors"
             >Track Shipment</a
           >
-          <div
-            class="md:hidden w-10 h-10 flex items-center justify-center cursor-pointer hover:text-primary transition-colors hover-rotate"
+          <button
             id="mobile-menu-button"
+            class="md:hidden w-10 h-10 flex items-center justify-center cursor-pointer hover:text-primary transition-colors hover-rotate"
+            aria-label="Toggle menu"
           >
-            <i class="ri-menu-line ri-lg"></i>
-          </div>
+            <i class="ri-menu-line ri-lg" id="menu-icon"></i>
+          </button>
         </div>
       </div>
 
@@ -112,37 +127,37 @@
         <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
           <a
             href="index.html"
-            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300"
+            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300 gradient-border"
             >Home</a
           >
           <a
             href="services.html"
-            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300"
+            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300 gradient-border"
             >Services</a
           >
           <a
             href="about.html"
-            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300"
+            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300 gradient-border"
             >About Us</a
           >
           <a
             href="tracking.html"
-            class="text-primary font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300"
+            class="text-primary font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300 gradient-border"
             >Track Shipment</a
           >
           <a
             href="sectors.html"
-            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300"
+            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300 gradient-border"
             >Sectors</a
           >
           <a
-            href="gallery.html"
-            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300"
-            >Gallery</a
+            href="careers.html"
+            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300 gradient-border"
+            >Careers</a
           >
           <a
             href="contact.html"
-            class="text-gray-700 font-medium py-2 hover:pl-2 transition-all duration-300"
+            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300 gradient-border"
             >Contact</a
           >
         </div>
@@ -201,37 +216,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Hero Section -->
-    <!-- <section
-      class="pt-32 pb-20 bg-gradient-to-r from-primary to-secondary animate-fade-in"
-    >
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center">
-          <h1
-            class="text-4xl md:text-5xl font-bold text-white mb-6 animate-slide-up"
-          >
-            <span class="inline-block animate-pulse-slow">Track Your</span>
-            <span class="inline-block animate-bounce-slow">Shipment</span>
-          </h1>
-          <p
-            class="text-xl text-white/90 mb-8 animate-slide-up animate-delay-200"
-          >
-            Get real-time updates on your package's journey from pickup to
-            delivery
-          </p>
-
-          
-          <div
-            class="truck-animation-container relative w-full h-12 mb-8 overflow-hidden"
-          >
-            <div class="truck-animation absolute">
-              <i class="ri-truck-line truck-icon text-4xl text-white/90"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section> -->
 
     <!-- Tracking Section -->
     <section id="track" class="py-16 bg-white">
@@ -353,28 +337,7 @@
                     <span class="text-gray-600">Weight:</span>
                     <span id="weight" class="font-medium">2.5 kg</span>
                   </li>
-                  <li class="flex justify-between">
-                    <span class="text-gray-600">Dimensions:</span>
-                    <span id="dimensions" class="font-medium">30x20x10 cm</span>
-                  </li>
-                  <li class="flex justify-between">
-                    <span class="text-gray-600">Estimated Delivery:</span>
-                    <span id="est-delivery" class="font-medium"
-                      >May 20, 2025</span
-                    >
-                  </li>
                 </ul>
-              </div>
-              <div>
-                <h4 class="text-md font-semibold mb-3">Current Location</h4>
-                <div
-                  class="h-48 bg-gray-100 rounded overflow-hidden hover-grow"
-                  style="
-                    background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png');
-                    background-size: cover;
-                    background-position: center;
-                  "
-                ></div>
               </div>
             </div>
           </div>
@@ -594,18 +557,6 @@
               >
                 <i class="ri-facebook-fill"></i>
               </a>
-              <!-- <a
-                  href="#"
-                  class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-300 hover:-translate-y-1"
-                >
-                  <i class="ri-twitter-x-fill"></i>
-                </a> -->
-              <!-- <a
-                  href="#"
-                  class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-300 hover:-translate-y-1"
-                >
-                  <i class="ri-linkedin-fill"></i>
-                </a> -->
               <a
                 href="https://instagram.com/skynetexpressgh?igshid=YTY2NzY3YTc="
                 class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-300 hover:-translate-y-1"
@@ -892,15 +843,19 @@
       });
 
       // Mobile menu toggle
-      document
-        .getElementById("mobile-menu-button")
-        .addEventListener("click", function () {
-          const menu = document.getElementById("mobile-menu");
-          menu.classList.toggle("hidden");
+      document.addEventListener("DOMContentLoaded", function () {
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const menuIcon = document.getElementById("menu-icon");
+
+        mobileMenuButton.addEventListener("click", function () {
+          mobileMenu.classList.toggle("open");
+          menuIcon.classList.toggle("ri-menu-line");
+          menuIcon.classList.toggle("ri-close-line");
         });
+      });
 
       // FAQ accordion functionality
-
       document.addEventListener("DOMContentLoaded", function () {
         const accordionHeaders = document.querySelectorAll(".accordion-header");
 
@@ -916,124 +871,6 @@
           });
         });
       });
-
-      // Tracking form submission
-      document
-        .getElementById("tracking-form")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-
-          // Show loading animation
-          document.getElementById("lottie-loader").classList.remove("hidden");
-
-          // Hide any previous results or errors
-          document.getElementById("tracking-results").classList.add("hidden");
-          document.getElementById("tracking-error").classList.add("hidden");
-
-          // Simulate API call with timeout
-          setTimeout(function () {
-            document.getElementById("lottie-loader").classList.add("hidden");
-
-            const trackingNumber =
-              document.getElementById("tracking-number").value;
-
-            // Simple validation - in a real app this would be an API call
-            if (trackingNumber && trackingNumber.length >= 8) {
-              // Show tracking results
-              document
-                .getElementById("tracking-results")
-                .classList.remove("hidden");
-
-              // Update tracking details
-              document.getElementById("display-tracking-number").textContent =
-                trackingNumber;
-
-              // Animate progress bar
-              const progressBar = document.getElementById("progress-bar");
-              progressBar.style.width = "75%";
-              progressBar.style.animation = "progress 2s ease-out forwards";
-
-              // Update progress percentage
-              document.getElementById("progress-percent").textContent = "75%";
-
-              // Create timeline items
-              const timeline = document.getElementById("tracking-timeline");
-              timeline.innerHTML = "";
-
-              const events = [
-                {
-                  status: "completed",
-                  time: "May 20, 2025 09:30 AM",
-                  location: "Delivered to recipient",
-                  description: "Package has been successfully delivered",
-                },
-                {
-                  status: "active",
-                  time: "May 19, 2025 08:15 AM",
-                  location: "Out for delivery",
-                  description: "Package is with the delivery driver",
-                },
-                {
-                  status: "",
-                  time: "May 18, 2025 11:45 PM",
-                  location: "Arrived at local facility",
-                  description: "Package is being processed for delivery",
-                },
-                {
-                  status: "",
-                  time: "May 17, 2025 03:20 PM",
-                  location: "In transit",
-                  description: "Package is moving through our network",
-                },
-                {
-                  status: "",
-                  time: "May 16, 2025 10:00 AM",
-                  location: "Picked up",
-                  description: "Package has been collected from sender",
-                },
-              ];
-
-              events.forEach((event, index) => {
-                const item = document.createElement("div");
-                item.className = `timeline-item ${event.status}`;
-
-                item.innerHTML = `
-                <div class="flex flex-col">
-                  <div class="flex justify-between">
-                    <span class="font-medium ${
-                      event.status === "active"
-                        ? "text-primary"
-                        : "text-gray-700"
-                    }">${event.location}</span>
-                    <span class="text-sm text-gray-500">${event.time}</span>
-                  </div>
-                  <p class="text-sm text-gray-500 mt-1">${event.description}</p>
-                </div>
-              `;
-
-                timeline.appendChild(item);
-
-                // Add slight delay to each timeline item animation
-                setTimeout(() => {
-                  item.classList.add(event.status);
-                }, index * 200);
-              });
-            } else {
-              // Show error message
-              document
-                .getElementById("tracking-error")
-                .classList.remove("hidden");
-            }
-          }, 1500);
-        });
-
-      // Try again button
-      document
-        .getElementById("try-again")
-        .addEventListener("click", function () {
-          document.getElementById("tracking-error").classList.add("hidden");
-          document.getElementById("tracking-number").focus();
-        });
 
       // Chatbot toggle
       function toggleChatbot() {
@@ -1084,5 +921,6 @@
         });
     </script>
     <script src="js/chatbot.js"></script>
+    <script src="js/tracking.js"></script>
   </body>
 </html>
