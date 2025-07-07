@@ -38,6 +38,42 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#F4050B",
+              secondary: "#000000",
+            },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+            animation: {
+              float: "float 6s ease-in-out infinite",
+              "float-slow": "float 8s ease-in-out infinite",
+              "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+              "bounce-slow": "bounce 3s infinite",
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-20px)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
   </head>
   <body class="bg-gray-50">
     <!-- Header -->
@@ -79,9 +115,9 @@
             >Sectors</a
           >
           <a
-            href="gallery.html"
+            href="careers.html"
             class="text-gray-700 font-medium hover:text-primary transition-colors duration-300 nav-link"
-            >Gallery</a
+            >Careers</a
           >
           <a
             href="contact.html"
@@ -112,37 +148,37 @@
         <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
           <a
             href="index.html"
-            class="text-primary font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300"
+            class="text-primary font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300 gradient-border"
             >Home</a
           >
           <a
             href="services.html"
-            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300"
+            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300 gradient-border"
             >Services</a
           >
           <a
             href="about.html"
-            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300"
+            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300 gradient-border"
             >About Us</a
           >
           <a
             href="tracking.html"
-            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300"
+            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300 gradient-border"
             >Track Shipment</a
           >
           <a
             href="sectors.html"
-            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300"
+            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300 gradient-border"
             >Sectors</a
           >
           <a
-            href="gallery.html"
-            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300"
-            >Gallery</a
+            href="careers.html"
+            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300 gradient-border"
+            >Careers</a
           >
           <a
             href="contact.html"
-            class="text-gray-700 font-medium py-2 hover:pl-2 transition-all duration-300"
+            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300 gradient-border"
             >Contact</a
           >
         </div>
@@ -352,13 +388,12 @@
                   type="text"
                   id="tracking-number"
                   placeholder="Enter tracking number"
-                  class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm"
+                  class="w-full tracking_number pl-10 pr-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm"
                   required
                 />
               </div>
               <button
-                type="submit"
-                class="bg-primary text-white px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-primary/90 transition-colors btn-hover"
+                class="bg-primary track text-white px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-primary/90 transition-colors btn-hover"
               >
                 Track Now
               </button>
@@ -375,31 +410,6 @@
 
           <!-- Tracking Results -->
           <div id="tracking-results" class="hidden">
-            <div class="border-b border-gray-200 pb-4 mb-6">
-              <div class="flex justify-between items-center mb-2">
-                <h3 class="text-lg font-semibold">Shipment Status</h3>
-                <span
-                  id="tracking-status"
-                  class="px-3 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800"
-                  >In Transit</span
-                >
-              </div>
-              <p class="text-sm text-gray-500">
-                Tracking Number:
-                <span
-                  id="display-tracking-number"
-                  class="font-medium text-gray-700"
-                  >FTL1234567890</span
-                >
-              </p>
-              <p class="text-sm text-gray-500">
-                Last Updated:
-                <span id="last-update" class="font-medium text-gray-700"
-                  >May 17, 2025 at 10:24 AM</span
-                >
-              </p>
-            </div>
-
             <div class="mb-8">
               <h4 class="text-md font-semibold mb-4">Shipment Progress</h4>
               <div class="relative">
@@ -461,6 +471,7 @@
             </h3>
             <p class="text-gray-600 mb-4">
               We couldn't find any shipment with the provided tracking number.
+              Please check the number and try again.
             </p>
             <button
               id="try-again"
@@ -1321,7 +1332,7 @@
                   <i
                     class="ri-arrow-right-s-line mr-2 text-primary group-hover:translate-x-1 transition-transform"
                   ></i>
-                  Gallery
+                  Careers
                 </a>
               </li>
               <li>
@@ -1643,6 +1654,53 @@
             sendMessage(); // Call the same function as the send button
           }
         });
+
+      const trackshipment = async (waybill_number) => {
+        const data = await fetch(
+          `https://www.app.skynetexpressgh.com/api/v1/track-shipment?waybill_number=${waybill_number}`
+        );
+        const res = await data.json();
+        console.log(res.data);
+
+        document.querySelector("#tracking-results").insertAdjacentHTML(
+          "afterbegin",
+
+          res.data.map(() => {
+            return `<div class="border-b border-gray-200 pb-4 mb-6">
+              <div class="flex justify-between items-center mb-2">
+                <h3 class="text-lg font-semibold">Shipment Status</h3>
+                <span
+                  id="tracking-status"
+                  class="px-3 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800"
+                  >In Transit</span
+                >
+              </div>
+              <p class="text-sm text-gray-500">
+                Tracking Number:
+                <span
+                  id="display-tracking-number"
+                  class="font-medium text-gray-700"
+                  >FTL1234567890</span
+                >
+              </p>
+              <p class="text-sm text-gray-500">
+                Last Updated:
+                <span id="last-update" class="font-medium text-gray-700"
+                  >May 17, 2025 at 10:24 AM</span
+                >
+              </p>
+            </div>`;
+          })
+        );
+      };
+      document.querySelector(".track").addEventListener("click", function () {
+        const tracking_number = document
+          .querySelector(".tracking_number")
+          .value.trim();
+
+        console.log(tracking_number);
+        const res = trackshipment("1287843318");
+      });
     </script>
 
     <script src="js/index.js"></script>
