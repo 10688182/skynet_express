@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderer: "svg",
     loop: true,
     autoplay: true,
-    path: "https://lottie.host/b360b8ee-fa0f-4f02-86f4-ef964625012c/rlZ6Ilgk25.json",
+    path: "https://lottie.host/700fd06f-47b5-45c8-9399-e9c1b2c21970/HcC8YNJt0W.json",
   });
 
   function showLoader() {
@@ -271,83 +271,161 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   };
 
-  trackingForm?.addEventListener("submit", (e) => {
+  const trackshipment = async (waybill_number) => {
+    const data = await fetch(
+      `https://www.app.skynetexpressgh.com/api/v1/track-shipment?waybill_number=${waybill_number}`
+    );
+    const res = await data.json();
+    return res;
+  };
+  trackingForm?.addEventListener("submit", async (e) => {
     e.preventDefault();
     const number = document.getElementById("tracking-number").value.trim();
 
+    const tracking = await trackshipment(number);
+    console.log(tracking);
     showLoader();
 
     setTimeout(() => {
-      const shipment = trackingData[number];
+      // const shipment = trackingData[number];
 
-      if (shipment) {
+      if (tracking.status == "success") {
         trackingResults.classList.remove("hidden");
         trackingError.classList.add("hidden");
+        const tracking_data = tracking.data[0];
+        console.log(tracking.data[0]);
+        // document.getElementById("display-tracking-number").textContent = number;
+        // document.getElementById("tracking-status").textContent =
+        //   tracking_data.activity_name;
+        // document.getElementById("last-update").textContent =
+        // tracking_data.activity_name;
+        // document.getElementById("service-type").textContent =
+        // tracking_data.activity_name;
+        // document.getElementById("weight").textContent =tracking_data.activity_name;
+        // document.getElementById("dimensions").textContent =tracking_data.activity_name;
+        // document.getElementById("est-delivery").textContent = tracking_data.activity_name;
 
-        document.getElementById("display-tracking-number").textContent = number;
-        document.getElementById("tracking-status").textContent =
-          shipment.status;
-        document.getElementById("last-update").textContent =
-          shipment.lastUpdate;
-        document.getElementById("service-type").textContent =
-          shipment.serviceType;
-        document.getElementById("weight").textContent = shipment.weight;
-        document.getElementById("dimensions").textContent = shipment.dimensions;
-        document.getElementById("est-delivery").textContent =
-          shipment.estDelivery;
+        // document.querySelector("#tracking-results").insertAdjacentHTML(
+        // "afterbegin",
+        // null)
 
-        const statusEl = document.getElementById("tracking-status");
-        statusEl.className = "px-3 py-1 rounded-full text-xs font-medium";
-        const colours = {
-          Delivered: ["bg-green-100", "text-green-800"],
-          "In Transit": ["bg-yellow-100", "text-yellow-800"],
-          "Out for Delivery": ["bg-yellow-100", "text-yellow-800"],
-          Processing: ["bg-blue-100", "text-blue-800"],
-          "At Local Facility": ["bg-blue-100", "text-blue-800"],
-          Picked: ["bg-blue-100", "text-blue-800"],
-          "Order Received": ["bg-blue-100", "text-blue-800"],
-        };
-        statusEl.classList.add(
-          ...(colours[shipment.status] || ["bg-gray-100", "text-gray-800"])
+        //   document.querySelector("#tracking-results").insertAdjacentHTML(
+        // "afterbegin",
+        // `<div class="border-b border-gray-200 pb-4 mb-6">
+        //     <div class="flex justify-between items-center mb-2">
+        //       <h3 class="text-lg font-semibold">Shipment Status</h3>
+        //       <span
+        //         id="tracking-status"
+        //         class="px-3 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800"
+        //         >${tracking_data.description}</span>
+        //     </div>`
+        //     )
+
+        document.querySelector("#tracking-results").innerHTML = "";
+        document.querySelector("#tracking-results").insertAdjacentHTML(
+          "afterbegin",
+          tracking.data
+            .map((data, index) => {
+              return `
+  <div class="border-b border-gray-200 pb-4 mb-6">
+    <div class="flex justify-between items-center mb-2">
+      <h3 class="text-lg font-semibold">${
+        index === 0 ? "SHIPMENT STATUS" : ""
+      }</h3>
+      <div class="flex flex-col items-center w-80 gap-2">
+        <span class="px-3 py-1 rounded-full text-xs text-center w-36 font-bold bg-blue-600 text-white">
+          ${data.description}
+        </span>
+      </div>
+    </div>
+
+    ${
+      index === 0
+        ? `
+      <p class="text-sm text-gray-500">
+        Tracking Number:
+        <span class="font-bold text-gray-700">${number}</span>
+      </p>
+    `
+        : ""
+    }
+
+    <p class="text-sm text-gray-500">
+      Last Updated:
+      <span class="font-bold text-gray-700">${data.date_scaned}</span>
+    </p>
+
+    ${
+      data.activity_name === "Delivered"
+        ? `
+      <div class="mt-4 text-sm text-slate-600 font-medium">
+        <p><span class="font-bold">Recipient Full name:</span> ${data.consignee_first_name} ${data.consignee_last_name}</p>
+        <p><span class="font-bold">Recipient Contact:</span> ${data.consignee_contact}</p>
+        <img class="w-52 h-16 mt-2 rounded shadow border" src="${data.pod}" alt="Proof of Delivery" />
+      </div>
+    `
+        : ""
+    }
+  </div>
+`;
+            })
+            .join("") // join the array into a single string
         );
 
-        trackingTimeline.innerHTML = "";
-        shipment.timeline.forEach((ev) => {
-          const item = document.createElement("div");
-          item.className = "flex";
+        // const statusEl = document.getElementById("tracking-status");
+        // statusEl.className = "px-3 py-1 rounded-full text-xs font-medium";
+        // const colours = {
+        //   Delivered: ["bg-green-100", "text-green-800"],
+        //   "In Transit": ["bg-yellow-100", "text-yellow-800"],
+        //   "Out for Delivery": ["bg-yellow-100", "text-yellow-800"],
+        //   Processing: ["bg-blue-100", "text-blue-800"],
+        //   "At Local Facility": ["bg-blue-100", "text-blue-800"],
+        //   Picked: ["bg-blue-100", "text-blue-800"],
+        //   "Order Received": ["bg-blue-100", "text-blue-800"],
+        // };
+        // statusEl.classList.add(
+        //   ...(colours[shipment.status] || ["bg-gray-100", "text-gray-800"])
+        // );
 
-          const indicator = document.createElement("div");
-          indicator.className =
-            "relative flex items-center justify-center w-8 mr-4";
-          const circle = document.createElement("div");
-          if (ev.completed) {
-            circle.className =
-              "z-10 w-8 h-8 rounded-full bg-primary flex items-center justify-center";
-            circle.innerHTML = `<i class="${
-              ev.current ? "ri-checkbox-blank-circle-fill" : "ri-check-line"
-            } text-white"></i>`;
-          } else {
-            circle.className =
-              "z-10 w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center";
-            circle.innerHTML =
-              '<i class="ri-checkbox-blank-circle-line text-gray-400"></i>';
-          }
-          indicator.appendChild(circle);
+        // trackingTimeline.innerHTML = "";
+        // tracking.data.forEach((data) => {
+        //   // console.log(data.description)
+        //   const item = document.createElement("div");
+        //   item.className = "flex";
 
-          const details = document.createElement("div");
-          details.className = "flex-grow pb-6";
-          details.innerHTML = `
-            <div class="flex justify-between items-center mb-1">
-              <h4 class="font-medium">${ev.status}</h4>
-              <span class="text-sm text-gray-500">${ev.date}${
-            ev.time ? " · " + ev.time : ""
-          }</span>
-            </div>
-            <p class="text-sm text-gray-600">${ev.location}</p>`;
+        //   const indicator = document.createElement("div");
+        //   indicator.className =
+        //     "relative flex items-center justify-center w-8 mr-4";
+        //   const circle = document.createElement("div");
+        //   if (data.description) {
+        //     circle.className =
+        //       "z-10 w-8 h-8 rounded-full bg-primary flex items-center justify-center";
+        //     circle.innerHTML = `<i class="${
+        //       data.current ? "ri-checkbox-blank-circle-fill" : "ri-check-line"
+        //     } text-white"></i>`;
+        //   } else {
+        //     circle.className =
+        //       "z-10 w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center";
+        //     circle.innerHTML =
+        //       '<i class="ri-checkbox-blank-circle-line text-gray-400"></i>';
+        //   }
+        //   indicator.appendChild(circle);
+        //   const details = document.createElement("div");
+        //   details.className = "flex-grow pb-6";
+        //   details.innerHTML = `
+        //     <div class="flex justify-between items-center mb-1">
+        //       <h4 class="font-medium">${data.description}</h4>
+        //       <span class="text-sm text-gray-500">${data.description}${
+        //     data.description ? " · " + data.description : ""
+        //   }</span>
+        //     </div>
+        //     <p class="text-sm text-gray-600">${data.description}</p>`;
 
-          item.append(indicator, details);
-          trackingTimeline.appendChild(item);
-        });
+        //   item.append(indicator, details);
+        //   trackingTimeline.appendChild(item);
+        // });
+
+        // console.log(document.querySelector("#tracking-results"))
       } else {
         trackingResults.classList.add("hidden");
         trackingError.classList.remove("hidden");
@@ -385,7 +463,7 @@ document.addEventListener("DOMContentLoaded", () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           animateCounter("counter-countries", 16, 1500);
-          animateCounter("counter-shipments", 197000, 2000);
+          animateCounter("counter-shipments", 180000, 3000);
           animateCounter("counter-clients", 573, 1800);
           animateCounter("counter-employees", 120, 1600);
           counterObserver.unobserve(entry.target);
