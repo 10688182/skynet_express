@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      Gallery | SkyNet Express Ltd. - The Nationwide Parcel Delivery Service.
+      Careers | SkyNet Express Ltd - Join Our Team of Logistics Professionals
     </title>
     <link rel="icon" href="images/favicon.ico" type="image/png" />
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
@@ -29,8 +29,127 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <link rel="stylesheet" href="css/style.css" />
+    <style>
+      /* Custom styles for careers page */
+      .job-card {
+        transition: all 0.3s ease;
+        transform-style: preserve-3d;
+      }
+      .job-card:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+      .job-card:hover .apply-btn {
+        background-color: #f4050b;
+        color: white;
+      }
+      .job-tag {
+        transition: all 0.2s ease;
+      }
+      .job-tag:hover {
+        transform: scale(1.05);
+      }
+      .pulse-dot {
+        animation: pulse 2s infinite;
+      }
+      @keyframes pulse {
+        0% {
+          transform: scale(0.95);
+          box-shadow: 0 0 0 0 rgba(244, 5, 11, 0.7);
+        }
+        70% {
+          transform: scale(1);
+          box-shadow: 0 0 0 10px rgba(244, 5, 11, 0);
+        }
+        100% {
+          transform: scale(0.95);
+          box-shadow: 0 0 0 0 rgba(244, 5, 11, 0);
+        }
+      }
+      .floating {
+        animation: floating 6s ease-in-out infinite;
+      }
+      @keyframes floating {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-15px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+      .rotate-in {
+        animation: rotateIn 0.6s ease-out forwards;
+      }
+      @keyframes rotateIn {
+        from {
+          transform: rotateY(90deg);
+          opacity: 0;
+        }
+        to {
+          transform: rotateY(0deg);
+          opacity: 1;
+        }
+      }
+      .fade-in {
+        animation: fadeIn 0.8s ease-out forwards;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .bounce-in {
+        animation: bounceIn 0.8s ease-out forwards;
+      }
+      @keyframes bounceIn {
+        0% {
+          transform: scale(0.8);
+          opacity: 0;
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        70% {
+          transform: scale(0.95);
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      .shake {
+        animation: shake 0.5s ease-in-out;
+      }
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        20%,
+        60% {
+          transform: translateX(-5px);
+        }
+        40%,
+        80% {
+          transform: translateX(5px);
+        }
+      }
+    </style>
   </head>
+
   <body class="bg-gray-50 font-['Inter']">
     <!-- Header -->
     <header class="bg-white shadow-sm fixed w-full z-50">
@@ -40,55 +159,55 @@
         <a href="index.html" class="flex items-center">
           <img
             src="images/logo_red.png"
-            alt="SkyNet Express Logo"
+            alt="SkyNet Express Ltd Logo"
             class="h-10 w-auto"
           />
         </a>
         <nav class="hidden md:flex space-x-8">
           <a
             href="index.html"
-            class="text-gray-700 font-medium hover:text-[#a80202] transition-colors duration-300 nav-link"
+            class="text-gray-700 font-medium hover:text-primary transition-colors duration-300 nav-link"
             >Home</a
           >
           <a
             href="services.html"
-            class="text-gray-700 font-medium hover:text-[#a80202] transition-colors duration-300 nav-link"
+            class="text-gray-700 font-medium hover:text-primary transition-colors duration-300 nav-link"
             >Services</a
           >
           <a
             href="about.html"
-            class="text-gray-700 font-medium hover:text-[#a80202] transition-colors duration-300 nav-link"
+            class="text-gray-700 font-medium hover:text-primary transition-colors duration-300 nav-link"
             >About Us</a
           >
           <a
             href="tracking.html"
-            class="text-gray-700 font-medium hover:text-primary transition-colors nav-link"
+            class="text-gray-700 font-medium hover:text-primary transition-colors duration-300 nav-link"
             >Track Shipment</a
           >
           <a
             href="sectors.html"
-            class="text-gray-700 font-medium hover:text-[#a80202] transition-colors duration-300 nav-link"
+            class="text-gray-700 font-medium hover:text-primary transition-colors duration-300 nav-link"
             >Sectors</a
           >
           <a
-            href="gallery.html"
-            class="text-[#a80202] font-medium hover:text-black transition-colors duration-300 nav-link"
-            >Gallery</a
+            href="careers.html"
+            class="text-primary font-medium hover:text-secondary transition-colors duration-300 nav-link"
+            >Careers</a
           >
           <a
             href="contact.html"
-            class="text-gray-700 font-medium hover:text-[#a80202] transition-colors duration-300 nav-link"
+            class="text-gray-700 font-medium hover:text-primary transition-colors duration-300 nav-link"
             >Contact</a
           >
         </nav>
         <div class="flex items-center space-x-4">
           <a
             href="tracking.html"
-            class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap hover:bg-primary/80 transition-colors"
+            class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap hover:bg-primary/90 transition-colors btn-hover"
             >Track Shipment</a
           >
           <div
-            class="md:hidden w-10 h-10 flex items-center justify-center cursor-pointer hover:text-[#a80202] transition-colors"
+            class="md:hidden w-10 h-10 flex items-center justify-center cursor-pointer hover:text-primary transition-colors"
             id="mobile-menu-button"
           >
             <i class="ri-menu-line ri-lg"></i>
@@ -103,37 +222,37 @@
         <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
           <a
             href="index.html"
-            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300"
+            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300 gradient-border"
             >Home</a
           >
           <a
             href="services.html"
-            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300"
+            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300 gradient-border"
             >Services</a
           >
           <a
             href="about.html"
-            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300"
+            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300 gradient-border"
             >About Us</a
           >
           <a
             href="tracking.html"
-            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300"
+            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300 gradient-border"
             >Track Shipment</a
           >
           <a
             href="sectors.html"
-            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300"
+            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300 gradient-border"
             >Sectors</a
           >
           <a
-            href="gallery.html"
-            class="text-[#a80202] font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300"
-            >Gallery</a
+            href="careers.html"
+            class="text-primary font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300 gradient-border"
+            >Careers</a
           >
           <a
             href="contact.html"
-            class="text-gray-700 font-medium py-2 hover:pl-2 transition-all duration-300"
+            class="text-gray-700 font-medium py-2 border-b border-gray-100 hover:pl-2 transition-all duration-300 gradient-border"
             >Contact</a
           >
         </div>
@@ -144,6 +263,7 @@
     <section
       class="pt-32 pb-20 bg-gradient-to-r from-primary to-secondary/80 relative overflow-hidden"
     >
+      <!-- Animated background elements -->
       <div class="absolute top-0 left-0 w-full h-full overflow-hidden">
         <div
           class="absolute top-20 left-10 w-16 h-16 rounded-full bg-white/10 animate-float"
@@ -166,16 +286,16 @@
           data-aos-duration="800"
         >
           <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">
-            <span class="inline-block animate-pulse-slow">Our Work</span>
-            <span class="inline-block animate-bounce-slow">In Action</span>
+            <span class="inline-block animate-pulse-slow">Join</span>
+            <span class="inline-block animate-bounce-slow">Our Team</span>
           </h1>
           <p
             class="text-xl text-white/90 mb-8"
             data-aos="fade-up"
             data-aos-delay="200"
           >
-            Explore our logistics operations through stunning visuals showcasing
-            our capabilities
+            Build your career with Ghana's leading logistics and courier service
+            provider
           </p>
           <div
             class="flex justify-center space-x-4"
@@ -183,385 +303,954 @@
             data-aos-delay="400"
           >
             <a
-              href="#gallery"
-              class="bg-white text-[#a80202] px-6 py-3 rounded-lg whitespace-nowrap font-medium hover:bg-gray-100 transition-colors"
-              >View Gallery</a
+              href="#current-openings"
+              class="bg-white text-primary px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-gray-100 transition-colors btn-hover"
+              >View Openings</a
             >
             <a
-              href="contact.html"
-              class="bg-black text-white px-6 py-3 rounded-lg whitespace-nowrap font-medium hover:bg-black/90 transition-colors"
-              >Get a Quote</a
+              href="#why-join-us"
+              class="bg-transparent border-2 border-white text-white px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-white/10 transition-colors btn-hover"
+              >Why Join Us</a
             >
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Gallery Filters -->
-    <section class="py-12 bg-white sticky top-16 z-40 shadow-sm">
+    <!-- Current Openings -->
+    <section id="current-openings" class="py-16 bg-white">
       <div class="container mx-auto px-4">
-        <div class="flex flex-wrap justify-center gap-4">
-          <button
-            class="category-filter px-6 py-2 rounded-full border border-gray-200 font-medium hover:bg-gray-50"
-            data-category="all"
-          >
-            All
-          </button>
-          <button
-            class="category-filter px-6 py-2 rounded-full border border-gray-200 font-medium hover:bg-gray-50"
-            data-category="shipping"
-          >
-            Shipping
-          </button>
-          <button
-            class="category-filter px-6 py-2 rounded-full border border-gray-200 font-medium hover:bg-gray-50"
-            data-category="warehousing"
-          >
-            Warehousing
-          </button>
-          <button
-            class="category-filter px-6 py-2 rounded-full border border-gray-200 font-medium hover:bg-gray-50"
-            data-category="transport"
-          >
-            Transport
-          </button>
-          <button
-            class="category-filter px-6 py-2 rounded-full border border-gray-200 font-medium hover:bg-gray-50"
-            data-category="team"
-          >
-            Our Team
-          </button>
-          <button
-            class="category-filter px-6 py-2 rounded-full border border-gray-200 font-medium hover:bg-gray-50"
-            data-category="facilities"
-          >
-            Facilities
-          </button>
+        <div class="max-w-3xl mx-auto text-center mb-12" data-aos="fade-up">
+          <span class="text-sm font-medium text-primary mb-2 inline-block">
+            <span class="inline-block animate-bounce-slow">
+              <i class="ri-briefcase-line mr-1"></i>
+              CURRENT OPENINGS
+              <i class="ri-briefcase-line ml-1"></i>
+            </span>
+          </span>
+          <h2 class="text-3xl font-bold mb-4">
+            Explore <span class="text-gradient">Career Opportunities</span>
+          </h2>
+          <p class="text-gray-600">
+            We're always looking for talented individuals to join our growing
+            team. Browse our current job openings and find your perfect fit.
+          </p>
         </div>
-      </div>
-    </section>
 
-    <!-- Main Gallery -->
-    <section id="gallery" class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4">
+        <!-- Job Search Filters -->
         <div
-          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+          class="mb-12 bg-gray-50 p-6 rounded-xl shadow-sm"
+          data-aos="fade-up"
         >
-          <!-- Image 1 -->
-          <div
-            class="gallery-item rounded-xl overflow-hidden shadow-md bg-white"
-            data-category="shipping"
-            data-aos="fade-up"
-            data-aos-delay="50"
-          >
-            <div class="relative overflow-hidden h-64">
-              <img
-                src="images/automobile_indus.jpg"
-                alt="Cargo ship at sunset"
-                class="w-full h-full object-cover cursor-pointer"
-                data-full="https://readdy.ai/api/search-image?query=cargo+ship+at+sunset+with+containers&width=1600&height=1200&seq=1"
-              />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-4"
+          <div class="flex flex-col md:flex-row gap-4">
+            <div class="flex-grow">
+              <label
+                for="job-search"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Search Jobs</label
               >
-                <h3 class="text-white font-medium">Ocean Freight</h3>
+              <div class="relative">
+                <input
+                  type="text"
+                  id="job-search"
+                  placeholder="Job title, keywords, or location"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                />
+                <button
+                  class="absolute right-3 top-3 text-gray-400 hover:text-primary"
+                >
+                  <i class="ri-search-line"></i>
+                </button>
+              </div>
+            </div>
+            <div>
+              <label
+                for="job-department"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Department</label
+              >
+              <select
+                id="job-department"
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary"
+              >
+                <option value="">All Departments</option>
+                <option value="operations">Operations</option>
+                <option value="customer-service">Customer Service</option>
+                <option value="administration">Administration</option>
+                <option value="it">Information Technology</option>
+                <option value="hr">Human Resources</option>
+                <option value="marketing">Marketing/Sales</option>
+                <option value="finance">Finance</option>
+              </select>
+            </div>
+            <div>
+              <label
+                for="job-location"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Location</label
+              >
+              <select
+                id="job-location"
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary"
+              >
+                <option value="">All Locations</option>
+                <option value="accra">Accra</option>
+                <option value="kumasi">Kumasi</option>
+                <option value="tema">Tema</option>
+                <option value="takoradi">Takoradi</option>
+                <option value="Koforidua">Koforidua</option>
+                <option value="ho">Ho</option>
+                <option value="bolga">Bolgatanga</option>
+                <option value="wa">Wa</option>
+                <option value="sunyani">Sunyani</option>
+                <option value="tamale">Tamale</option>
+                <option value="cape-coast">Cape Coast</option>
+                <option value="tarkwa">Tarkwa</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job Listings -->
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          id="job-listings"
+        >
+          <!-- Job cards will be dynamically loaded here from the database -->
+
+          <!-- Sample Job Card 1 -->
+          <div
+            class="job-card bg-white rounded-xl shadow-md overflow-hidden fade-in"
+            data-aos="fade-up"
+            data-aos-delay="100"
+            data-department="operations"
+            data-location="accra"
+          >
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <span
+                    class="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full mb-2 job-tag"
+                  >
+                    Operations
+                  </span>
+                  <h3 class="text-xl font-bold text-gray-900 mb-1">
+                    Logistics Manager
+                  </h3>
+                  <div class="flex items-center text-gray-600 text-sm">
+                    <i class="ri-map-pin-line mr-1"></i>
+                    <span>Accra</span>
+                    <span class="mx-2">•</span>
+                    <span>Full-time</span>
+                  </div>
+                </div>
+                <div
+                  class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center"
+                >
+                  <i class="ri-truck-line text-primary text-xl"></i>
+                </div>
+              </div>
+              <p class="text-gray-600 mb-4 line-clamp-3">
+                Oversee and manage all logistics operations, ensuring efficient
+                transportation and delivery of goods across our network. Lead a
+                team of logistics coordinators and drivers.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
+                  >Management</span
+                >
+                <span
+                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
+                  >Transportation</span
+                >
+                <span
+                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
+                  >Team Leadership</span
+                >
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500">Posted 3 days ago</span>
+                <button
+                  class="apply-btn px-4 py-2 border border-primary text-primary rounded-lg font-medium hover:bg-primary hover:text-white transition-colors"
+                  onclick="openJobModal('Logistics Manager', 
+                  'operations', 
+                  'Accra', 
+                  'full-time', 
+                  'We are seeking an experienced Logistics Manager to oversee our transportation and delivery operations. You will be responsible for ensuring efficient logistics processes, managing a team of coordinators and drivers, and optimizing our supply chain network.', 
+                  'Oversee daily logistics operations and transportation activities\nManage and lead a team of logistics coordinators and drivers\nDevelop and implement efficient routing and delivery schedules\nMonitor and analyze logistics performance metrics\nEnsure compliance with transportation regulations and safety standards\nCollaborate with other departments to optimize supply chain processes\nHandle logistics-related customer inquiries and resolve issues\nManage relationships with transportation vendors and partners', 
+                  'Bachelor\'s degree in Logistics, Supply Chain Management, or related field\nMinimum 5 years experience in logistics or transportation management\nProven leadership and team management skills\nStrong analytical and problem-solving abilities\nExcellent communication and interpersonal skills\nKnowledge of transportation regulations and compliance\nProficiency in logistics software and Microsoft Office', 'Competitive salary with performance bonuses\nComprehensive health insurance\nProfessional development opportunities\nCompany vehicle for work-related travel\nPaid time off and holidays\nEmployee discount on shipping services\nDynamic and supportive work environment')"
+                >
+                  Apply Now
+                </button>
               </div>
             </div>
           </div>
 
-          <!-- Image 2 -->
+          <!-- Sample Job Card 2 -->
           <div
-            class="gallery-item rounded-xl overflow-hidden shadow-md bg-white"
-            data-category="warehousing"
+            class="job-card bg-white rounded-xl shadow-md overflow-hidden fade-in"
+            data-aos="fade-up"
+            data-aos-delay="200"
+            data-department="customer-service"
+            data-location="kumasi"
+          >
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <span
+                    class="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-xs font-semibold rounded-full mb-2 job-tag"
+                  >
+                    Customer Service
+                  </span>
+                  <h3 class="text-xl font-bold text-gray-900 mb-1">
+                    Customer Support Specialist
+                  </h3>
+                  <div class="flex items-center text-gray-600 text-sm">
+                    <i class="ri-map-pin-line mr-1"></i>
+                    <span>Kumasi</span>
+                    <span class="mx-2">•</span>
+                    <span>Full-time</span>
+                  </div>
+                </div>
+                <div
+                  class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center"
+                >
+                  <i
+                    class="ri-customer-service-2-line text-blue-800 text-xl"
+                  ></i>
+                </div>
+              </div>
+              <p class="text-gray-600 mb-4 line-clamp-3">
+                Provide exceptional customer service to our clients, handling
+                inquiries, resolving issues, and ensuring a positive customer
+                experience with our services.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
+                  >Communication</span
+                >
+                <span
+                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
+                  >Problem Solving</span
+                >
+                <span
+                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
+                  >CRM</span
+                >
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500">Posted 1 week ago</span>
+                <button
+                  class="apply-btn px-4 py-2 border border-blue-500 text-blue-500 rounded-lg font-medium hover:bg-blue-500 hover:text-white transition-colors"
+                  onclick="openJobModal('Customer Support Specialist', 'customer-service', 'Kumasi', 'full-time', 'We are looking for a Customer Support Specialist to join our team in Kumasi. You will be the first point of contact for our customers, providing information, resolving issues, and ensuring a positive experience with our services.', 'Respond to customer inquiries via phone, email, and live chat\nResolve customer complaints and issues efficiently\nProvide information about our services and pricing\nProcess orders, forms, and applications\nMaintain customer records and update account information\nCollaborate with other departments to resolve customer issues\nIdentify and escalate priority issues to management\nCollect and report customer feedback to improve services', 'Diploma or degree in any field\nMinimum 2 years experience in customer service\nExcellent communication and interpersonal skills\nStrong problem-solving abilities\nPatience and ability to handle difficult customers\nBasic computer skills and CRM experience\nAbility to work in a fast-paced environment', 'Competitive salary with monthly bonuses\nHealth and dental insurance\nPaid training and development\nOpportunities for career advancement\nEmployee wellness programs\nTeam building activities\nPositive and supportive work culture')"
+                >
+                  Apply Now
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sample Job Card 3 -->
+          <div
+            class="job-card bg-white rounded-xl shadow-md overflow-hidden fade-in"
+            data-aos="fade-up"
+            data-aos-delay="300"
+            data-department="it"
+            data-location="tarkwa"
+          >
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <span
+                    class="inline-block px-3 py-1 bg-purple-100 text-purple-800 text-xs font-semibold rounded-full mb-2 job-tag"
+                  >
+                    IT
+                  </span>
+                  <h3 class="text-xl font-bold text-gray-900 mb-1">
+                    Full Stack Developer
+                  </h3>
+                  <div class="flex items-center text-gray-600 text-sm">
+                    <i class="ri-map-pin-line mr-1"></i>
+                    <span>Tarkwa</span>
+                    <span class="mx-2">•</span>
+                    <span>Full-time</span>
+                  </div>
+                </div>
+                <div
+                  class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center"
+                >
+                  <i class="ri-code-line text-purple-800 text-xl"></i>
+                </div>
+              </div>
+              <p class="text-gray-600 mb-4 line-clamp-3">
+                Develop and maintain our web applications and internal systems.
+                Work with modern technologies to improve our digital platforms
+                and customer experience.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
+                  >JavaScript</span
+                >
+                <span
+                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
+                  >React</span
+                >
+                <span
+                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
+                  >Node.js</span
+                >
+                <span
+                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
+                  >API</span
+                >
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500">Posted 2 weeks ago</span>
+                <button
+                  class="apply-btn px-4 py-2 border border-purple-500 text-purple-500 rounded-lg font-medium hover:bg-purple-500 hover:text-white transition-colors"
+                  onclick="openJobModal('Full Stack Developer', 'it', 'Tarkwa', 'full-time', 'We are seeking a skilled Full Stack Developer to join our IT team. You will be responsible for developing and maintaining our web applications, internal systems, and APIs to support our logistics operations and improve customer experience.', 'Develop and maintain web applications using modern JavaScript frameworks\nDesign and implement RESTful APIs for internal and external use\nCollaborate with cross-functional teams to define, design, and ship new features\nOptimize applications for maximum speed and scalability\nImplement security and data protection measures\nWrite clean, maintainable, and efficient code\nTroubleshoot and debug applications\nStay updated with emerging technologies and industry trends', 'Bachelor\'s degree in Computer Science or related field\n3+ years experience in full stack development\nProficiency in JavaScript, React, Node.js, and Express\nExperience with databases (SQL and NoSQL)\nFamiliarity with cloud platforms (AWS, Azure, or GCP)\nUnderstanding of CI/CD pipelines\nStrong problem-solving skills\nExcellent collaboration and communication abilities', 'Competitive salary with performance bonuses\nFlexible remote work options\nLatest technology equipment\nProfessional development budget\nHealth and wellness benefits\nGenerous vacation policy\nOpportunity to work on impactful projects')"
+                >
+                  Apply Now
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sample Job Card 4 -->
+          <div
+            class="job-card bg-white rounded-xl shadow-md overflow-hidden fade-in"
+            data-aos="fade-up"
+            data-aos-delay="300"
+            data-department="administration"
+            data-location="accra"
+          >
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <span
+                    class="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-xs font-semibold rounded-full mb-2 job-tag"
+                  >
+                    Administration
+                  </span>
+                  <h3 class="text-xl font-bold text-gray-900 mb-1">
+                    Administrative Officer
+                  </h3>
+                  <div class="flex items-center text-gray-600 text-sm">
+                    <i class="ri-map-pin-line mr-1"></i>
+                    <span>Accra</span>
+                    <span class="mx-2">•</span>
+                    <span>Full-time</span>
+                  </div>
+                </div>
+                <div
+                  class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center"
+                >
+                  <i class="ri-file-copy-2-line text-blue-800 text-xl"></i>
+                </div>
+              </div>
+              <p class="text-gray-600 mb-4 line-clamp-3">
+                Provide comprehensive administrative support to ensure efficient
+                office operations. Manage documentation, coordinate schedules,
+                and serve as the organizational hub for our Accra headquarters.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
+                  >Office Management</span
+                >
+                <span
+                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
+                  >Document Control</span
+                >
+                <span
+                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
+                  >Communication</span
+                >
+                <span
+                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
+                  >MS Office</span
+                >
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500">Posted 3 days ago</span>
+                <button
+                  class="apply-btn px-4 py-2 border border-blue-500 text-blue-500 rounded-lg font-medium hover:bg-blue-500 hover:text-white transition-colors"
+                  onclick="openJobModal('Administrative Officer', 'administration', 'Accra', 'full-time', 'We are seeking an organized and proactive Administrative Officer to join our Accra headquarters. In this role, you will be the backbone of our office operations, ensuring smooth administrative processes and supporting various departments with your excellent organizational skills.', 'Manage day-to-day office operations and administrative systems\nHandle correspondence, filing, and document control\nCoordinate meetings, schedules, and travel arrangements\nMaintain office supplies and equipment inventory\nServe as first point of contact for visitors and calls\nPrepare reports, presentations, and meeting minutes\nAssist with HR and finance documentation as needed\nSupport event planning and company initiatives\nImplement and improve administrative processes', 'Bachelor\'s degree in Business Administration or related field\n2+ years experience in office administration\nProficiency in MS Office (Word, Excel, PowerPoint, Outlook)\nExcellent written and verbal communication skills\nStrong organizational and time-management abilities\nAttention to detail and problem-solving skills\nAbility to multitask and prioritize effectively\nProfessional demeanor and customer service orientation', 'Competitive salary with annual reviews\nComprehensive health insurance package\nProfessional development opportunities\nModern office environment\nPaid time off and holidays\nTeam building activities\nOpportunity to grow within the organization')"
+                >
+                  Apply Now
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sample Job Card 5 -->
+          <div
+            class="job-card bg-white rounded-xl shadow-md overflow-hidden fade-in"
+            data-aos="fade-up"
+            data-aos-delay="400"
+            data-department="finance"
+            data-location="accra"
+          >
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <span
+                    class="inline-block px-3 py-1 bg-green-100 text-green-800 text-xs font-semibold rounded-full mb-2 job-tag"
+                  >
+                    Finance
+                  </span>
+                  <h3 class="text-xl font-bold text-gray-900 mb-1">
+                    Finance Officer
+                  </h3>
+                  <div class="flex items-center text-gray-600 text-sm">
+                    <i class="ri-map-pin-line mr-1"></i>
+                    <span>Accra</span>
+                    <span class="mx-2">•</span>
+                    <span>Full-time</span>
+                  </div>
+                </div>
+                <div
+                  class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center"
+                >
+                  <i class="ri-bank-card-line text-green-800 text-xl"></i>
+                </div>
+              </div>
+              <p class="text-gray-600 mb-4 line-clamp-3">
+                Manage financial operations including accounts, reporting, and
+                budgeting to support our growing logistics business. Ensure
+                compliance with financial regulations and maintain accurate
+                records.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
+                  >Financial Reporting</span
+                >
+                <span
+                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
+                  >Budget Management</span
+                >
+                <span
+                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
+                  >QuickBooks</span
+                >
+                <span
+                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
+                  >Tax Compliance</span
+                >
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500">Posted 5 days ago</span>
+                <button
+                  class="apply-btn px-4 py-2 border border-green-500 text-green-500 rounded-lg font-medium hover:bg-green-500 hover:text-white transition-colors"
+                  onclick="openJobModal('Finance Officer', 'finance', 'Accra', 'full-time', 'We are seeking a detail-oriented Finance Officer to strengthen our finance team in Accra. You will play a key role in maintaining our financial health by managing accounts, preparing reports, and ensuring regulatory compliance in our fast-paced logistics environment.', 'Maintain accurate accounting records and financial statements\nProcess accounts payable/receivable and reconcile transactions\nPrepare monthly, quarterly and annual financial reports\nAssist with budget preparation and expenditure monitoring\nEnsure compliance with tax regulations and filing requirements\nSupport audit processes and maintain proper documentation\nAnalyze financial data to identify cost-saving opportunities\nImplement and improve financial controls and processes\nCollaborate with departments on financial matters', 'Bachelor\'s degree in Accounting, Finance or related field\nProfessional qualification (ICA, ACCA, CIMA) or in progress\n3+ years experience in accounting/finance role\nProficiency in accounting software (QuickBooks, Sage, etc.)\nStrong knowledge of accounting standards and tax laws\nAdvanced Excel skills for financial analysis\nExcellent attention to detail and analytical skills\nAbility to meet tight deadlines and work under pressure', 'Competitive salary with performance bonuses\nComprehensive health and retirement benefits\nSupport for professional certification\nModern financial systems and tools\nOpportunities for career advancement\nCollaborative team environment\nContinuous training and development')"
+                >
+                  Apply Now
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sample Job Card 6 -->
+          <div
+            class="job-card bg-white rounded-xl shadow-md overflow-hidden fade-in"
+            data-aos="fade-up"
+            data-aos-delay="500"
+            data-department="marketing"
+            data-location="accra"
+          >
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <span
+                    class="inline-block px-3 py-1 bg-yellow-100 text-yellow-800 text-xs font-semibold rounded-full mb-2 job-tag"
+                  >
+                    Marketing/Sales
+                  </span>
+                  <h3 class="text-xl font-bold text-gray-900 mb-1">
+                    Digital Marketing Specialist
+                  </h3>
+                  <div class="flex items-center text-gray-600 text-sm">
+                    <i class="ri-map-pin-line mr-1"></i>
+                    <span>Accra</span>
+                    <span class="mx-2">•</span>
+                    <span>Full-time</span>
+                  </div>
+                </div>
+                <div
+                  class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center"
+                >
+                  <i class="ri-megaphone-line text-yellow-800 text-xl"></i>
+                </div>
+              </div>
+              <p class="text-gray-600 mb-4 line-clamp-3">
+                Develop and implement digital marketing strategies to enhance
+                our online presence, engage customers, and drive business growth
+                through various digital channels.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
+                  >SEO</span
+                >
+                <span
+                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
+                  >Social Media</span
+                >
+                <span
+                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
+                  >Content Marketing</span
+                >
+                <span
+                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
+                  >Google Ads</span
+                >
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500">Posted 1 week ago</span>
+                <button
+                  class="apply-btn px-4 py-2 border border-yellow-500 text-yellow-500 rounded-lg font-medium hover:bg-yellow-500 hover:text-white transition-colors"
+                  onclick="openJobModal('Digital Marketing Specialist', 'marketing/Sales', 'Accra', 'full-time', 'We are seeking a creative and analytical Digital Marketing Specialist to join our marketing team. You will be responsible for developing and executing digital marketing campaigns across various channels to grow our brand and customer base.', 'Develop and implement digital marketing strategies\nManage and optimize paid advertising campaigns (Google Ads, social media ads)\nCreate and schedule engaging content for social media platforms\nOptimize website content for SEO and lead generation\nAnalyze campaign performance and adjust strategies accordingly\nManage email marketing campaigns and automation\nCollaborate with designers and content creators\nMonitor industry trends and competitor activities\nReport on key metrics and ROI of digital initiatives', 'Bachelor\'s degree in Marketing, Communications, or related field\n2+ years experience in digital marketing\nProficiency in Google Analytics, Ads, and SEO tools\nExperience with social media management and advertising\nStrong analytical and reporting skills\nExcellent written and verbal communication\nCreative thinking and problem-solving abilities\nAbility to work independently and in a team', 'Competitive salary with performance bonuses\nFlexible work arrangements\nProfessional development opportunities\nCreative and collaborative work environment\nHealth and wellness benefits\nLatest marketing tools and software\nOpportunity to shape brand\'s digital presence')"
+                >
+                  Apply Now
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sample Job Card 7 -->
+          <div
+            class="job-card bg-white rounded-xl shadow-md overflow-hidden fade-in"
+            data-aos="fade-up"
+            data-aos-delay="600"
+            data-department="hr"
+            data-location="accra"
+          >
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <span
+                    class="inline-block px-3 py-1 bg-pink-100 text-pink-800 text-xs font-semibold rounded-full mb-2 job-tag"
+                  >
+                    HR
+                  </span>
+                  <h3 class="text-xl font-bold text-gray-900 mb-1">
+                    HR Coordinator
+                  </h3>
+                  <div class="flex items-center text-gray-600 text-sm">
+                    <i class="ri-map-pin-line mr-1"></i>
+                    <span>Accra</span>
+                    <span class="mx-2">•</span>
+                    <span>Full-time</span>
+                  </div>
+                </div>
+                <div
+                  class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center"
+                >
+                  <i class="ri-team-line text-pink-800 text-xl"></i>
+                </div>
+              </div>
+              <p class="text-gray-600 mb-4 line-clamp-3">
+                Support HR operations including recruitment, employee relations,
+                and HR administration to ensure smooth human resources processes
+                within the company.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
+                  >Recruitment</span
+                >
+                <span
+                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
+                  >Employee Relations</span
+                >
+                <span
+                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
+                  >HR Administration</span
+                >
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500">Posted 2 days ago</span>
+                <button
+                  class="apply-btn px-4 py-2 border border-pink-500 text-pink-500 rounded-lg font-medium hover:bg-pink-500 hover:text-white transition-colors"
+                  onclick="openJobModal('HR Coordinator', 'hr', 'Accra', 'full-time', 'We are looking for an HR Coordinator to join our Human Resources team. You will play a key role in supporting various HR functions including recruitment, employee relations, and HR administration.', 'Assist with full-cycle recruitment processes\nCoordinate interviews and candidate communications\nConduct new employee onboarding and orientation\nMaintain employee records and HR documentation\nAssist with payroll preparation and benefits administration\nSupport employee relations and engagement initiatives\nHelp organize training and development programs\nRespond to employee inquiries about HR policies\nAssist with HR projects and process improvements', 'Bachelor\'s degree in Human Resources or related field\n2+ years experience in HR or administrative role\nKnowledge of HR practices and labor laws\nExcellent organizational and time management skills\nStrong interpersonal and communication abilities\nDiscretion and ability to handle confidential information\nProficiency in MS Office and HR software\nPositive attitude and team player mentality', 'Competitive salary with benefits\nProfessional HR certification support\nOpportunities for career growth in HR\nPositive and inclusive work environment\nHealth and wellness programs\nEmployee recognition initiatives\nRegular team building activities')"
+                >
+                  Apply Now
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Driver Job Card -->
+          <div
+            class="job-card bg-white rounded-xl shadow-md overflow-hidden fade-in"
+            data-aos="fade-up"
+            data-aos-delay="700"
+            data-department="operations"
+            data-location="accra"
+          >
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <span
+                    class="inline-block px-3 py-1 bg-orange-100 text-orange-800 text-xs font-semibold rounded-full mb-2 job-tag"
+                  >
+                    Operations
+                  </span>
+                  <h3 class="text-xl font-bold text-gray-900 mb-1">
+                    Delivery Driver
+                  </h3>
+                  <div class="flex items-center text-gray-600 text-sm">
+                    <i class="ri-map-pin-line mr-1"></i>
+                    <span>Accra & Surrounding Regions</span>
+                    <span class="mx-2">•</span>
+                    <span>Full-time</span>
+                  </div>
+                </div>
+                <div
+                  class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center"
+                >
+                  <i class="ri-truck-line text-orange-800 text-xl"></i>
+                </div>
+              </div>
+              <p class="text-gray-600 mb-4 line-clamp-3">
+                Safely operate company vehicles to deliver packages to customers
+                across Accra and nearby regions. Maintain vehicle condition and
+                ensure timely, professional deliveries.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
+                  >Safe Driving</span
+                >
+                <span
+                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
+                  >Route Planning</span
+                >
+                <span
+                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
+                  >Vehicle Maintenance</span
+                >
+                <span
+                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
+                  >Customer Service</span
+                >
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500">Posted 2 days ago</span>
+                <button
+                  class="apply-btn px-4 py-2 border border-orange-500 text-orange-500 rounded-lg font-medium hover:bg-orange-500 hover:text-white transition-colors"
+                  onclick="openJobModal('Delivery Driver', 'operations', 'Accra & Surrounding Regions', 'full-time', 'We are seeking reliable Delivery Drivers to join our operations team. You will be responsible for transporting packages safely and efficiently while providing excellent customer service.', 'Safely operate company vehicles for package deliveries\nFollow planned delivery routes efficiently\nInspect vehicle before and after each shift\nMaintain accurate delivery records and documentation\nProvide professional customer service during deliveries\nReport any vehicle issues or accidents immediately\nAdhere to all traffic and safety regulations\nHandle packages with care to prevent damage\nCommunicate effectively with dispatch team', 'Valid driver\'s license (Class C minimum)\nClean driving record with no major violations\nMinimum 2 years professional driving experience\nGood knowledge of Accra and surrounding areas\nAbility to lift up to 25kg packages\nExcellent time management skills\nBasic vehicle maintenance knowledge\nProfessional demeanor and customer service skills', 'Competitive hourly wages + performance bonuses\nCompany-provided vehicle and fuel\nComprehensive insurance coverage\nPaid training and safety certifications\nUniforms and protective gear provided\nOpportunities for career advancement\nSupportive team environment')"
+                >
+                  Apply Now
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- No Jobs Found Message (Hidden by default) -->
+        <div
+          id="no-jobs-message"
+          class="text-center py-12 hidden"
+          data-aos="fade-up"
+        >
+          <div
+            class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6"
+          >
+            <i class="ri-search-eye-line text-3xl text-gray-400"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-700 mb-2">
+            No Jobs Found
+          </h3>
+          <p class="text-gray-500 mb-6">
+            We couldn't find any jobs matching your criteria. Try adjusting your
+            filters or check back later.
+          </p>
+          <button
+            onclick="resetJobFilters()"
+            class="px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary/90 transition-colors"
+          >
+            Reset Filters
+          </button>
+        </div>
+
+        <!-- Pagination -->
+        <div class="flex justify-center mt-12" data-aos="fade-up">
+          <nav class="inline-flex rounded-md shadow-sm">
+            <button
+              class="px-3 py-2 rounded-l-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50"
+            >
+              <i class="ri-arrow-left-s-line"></i>
+            </button>
+            <button
+              class="px-4 py-2 border-t border-b border-gray-300 bg-white text-primary font-medium"
+            >
+              1
+            </button>
+            <button
+              class="px-4 py-2 border border-gray-300 bg-white text-gray-500 hover:bg-gray-50"
+            >
+              2
+            </button>
+            <button
+              class="px-4 py-2 border-t border-b border-gray-300 bg-white text-gray-500 hover:bg-gray-50"
+            >
+              3
+            </button>
+            <button
+              class="px-3 py-2 rounded-r-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50"
+            >
+              <i class="ri-arrow-right-s-line"></i>
+            </button>
+          </nav>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Join Us Section -->
+    <!-- <section id="why-join-us" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center mb-12" data-aos="fade-up">
+          <span class="text-sm font-medium text-primary mb-2 inline-block">
+            <span class="inline-block animate-bounce-slow">
+              <i class="ri-heart-line mr-1"></i>
+              WHY JOIN US
+              <i class="ri-heart-line ml-1"></i>
+            </span>
+          </span>
+          <h2 class="text-3xl font-bold mb-4">
+            Grow With <span class="text-gradient">SkyNet Express</span>
+          </h2>
+          <p class="text-gray-600">
+            We're more than just a logistics company - we're a team that values
+            innovation, collaboration, and professional growth. Here's what
+            makes us special.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <div
+            class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow bounce-in"
             data-aos="fade-up"
             data-aos-delay="100"
           >
-            <div class="relative overflow-hidden h-64">
-              <img
-                src="https://readdy.ai/api/search-image?query=modern+warehouse+with+high+shelves&width=800&height=600&seq=2"
-                alt="Modern warehouse interior"
-                class="w-full h-full object-cover cursor-pointer"
-                data-full="https://readdy.ai/api/search-image?query=modern+warehouse+with+high+shelves&width=1600&height=1200&seq=2"
-              />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-4"
-              >
-                <h3 class="text-white font-medium">Warehouse Operations</h3>
-              </div>
+            <div
+              class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 mx-auto"
+            >
+              <i class="ri-line-chart-line text-primary text-2xl"></i>
             </div>
+            <h3 class="text-xl font-semibold text-center mb-3">
+              Career Growth
+            </h3>
+            <p class="text-gray-600 text-center">
+              We invest in our employees' development with training programs,
+              mentorship, and opportunities for advancement within our growing
+              company.
+            </p>
           </div>
 
-          <!-- Image 3 -->
+          
           <div
-            class="gallery-item rounded-xl overflow-hidden shadow-md bg-white"
-            data-category="transport"
-            data-aos="fade-up"
-            data-aos-delay="150"
-          >
-            <div class="relative overflow-hidden h-64">
-              <img
-                src="https://readdy.ai/api/search-image?query=logistics+trucks+on+highway&width=800&height=600&seq=3"
-                alt="Trucks on highway"
-                class="w-full h-full object-cover cursor-pointer"
-                data-full="https://readdy.ai/api/search-image?query=logistics+trucks+on+highway&width=1600&height=1200&seq=3"
-              />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-4"
-              >
-                <h3 class="text-white font-medium">Ground Transport</h3>
-              </div>
-            </div>
-          </div>
-
-          <!-- Image 4 -->
-          <div
-            class="gallery-item rounded-xl overflow-hidden shadow-md bg-white"
-            data-category="team"
+            class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow bounce-in"
             data-aos="fade-up"
             data-aos-delay="200"
           >
-            <div class="relative overflow-hidden h-64">
-              <img
-                src="https://readdy.ai/api/search-image?query=diverse+logistics+team+meeting&width=800&height=600&seq=4"
-                alt="Logistics team meeting"
-                class="w-full h-full object-cover cursor-pointer"
-                data-full="https://readdy.ai/api/search-image?query=diverse+logistics+team+meeting&width=1600&height=1200&seq=4"
-              />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-4"
-              >
-                <h3 class="text-white font-medium">Our Expert Team</h3>
-              </div>
+            <div
+              class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto"
+            >
+              <i class="ri-team-line text-blue-800 text-2xl"></i>
             </div>
+            <h3 class="text-xl font-semibold text-center mb-3">
+              Great Culture
+            </h3>
+            <p class="text-gray-600 text-center">
+              Join a supportive, inclusive team that values collaboration,
+              innovation, and work-life balance. We celebrate diversity and
+              teamwork.
+            </p>
           </div>
 
-          <!-- Image 5 -->
+          
           <div
-            class="gallery-item rounded-xl overflow-hidden shadow-md bg-white"
-            data-category="facilities"
-            data-aos="fade-up"
-            data-aos-delay="250"
-          >
-            <div class="relative overflow-hidden h-64">
-              <img
-                src="https://readdy.ai/api/search-image?query=modern+logistics+facility+aerial+view&width=800&height=600&seq=5"
-                alt="Aerial view of logistics facility"
-                class="w-full h-full object-cover cursor-pointer"
-                data-full="https://readdy.ai/api/search-image?query=modern+logistics+facility+aerial+view&width=1600&height=1200&seq=5"
-              />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-4"
-              >
-                <h3 class="text-white font-medium">Our Facilities</h3>
-              </div>
-            </div>
-          </div>
-
-          <!-- Image 6 -->
-          <div
-            class="gallery-item rounded-xl overflow-hidden shadow-md bg-white"
-            data-category="shipping"
+            class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow bounce-in"
             data-aos="fade-up"
             data-aos-delay="300"
           >
-            <div class="relative overflow-hidden h-64">
-              <img
-                src="https://readdy.ai/api/search-image?query=airplane+cargo+loading&width=800&height=600&seq=6"
-                alt="Airplane cargo loading"
-                class="w-full h-full object-cover cursor-pointer"
-                data-full="https://readdy.ai/api/search-image?query=airplane+cargo+loading&width=1600&height=1200&seq=6"
-              />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-4"
-              >
-                <h3 class="text-white font-medium">Air Freight</h3>
-              </div>
+            <div
+              class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6 mx-auto"
+            >
+              <i class="ri-medal-line text-green-800 text-2xl"></i>
             </div>
-          </div>
-
-          <!-- Image 7 -->
-          <div
-            class="gallery-item rounded-xl overflow-hidden shadow-md bg-white"
-            data-category="warehousing"
-            data-aos="fade-up"
-            data-aos-delay="350"
-          >
-            <div class="relative overflow-hidden h-64">
-              <img
-                src="https://readdy.ai/api/search-image?query=forklift+operator+in+warehouse&width=800&height=600&seq=7"
-                alt="Forklift operator at work"
-                class="w-full h-full object-cover cursor-pointer"
-                data-full="https://readdy.ai/api/search-image?query=forklift+operator+in+warehouse&width=1600&height=1200&seq=7"
-              />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-4"
-              >
-                <h3 class="text-white font-medium">Material Handling</h3>
-              </div>
-            </div>
-          </div>
-
-          <!-- Image 8 -->
-          <div
-            class="gallery-item rounded-xl overflow-hidden shadow-md bg-white"
-            data-category="transport"
-            data-aos="fade-up"
-            data-aos-delay="400"
-          >
-            <div class="relative overflow-hidden h-64">
-              <img
-                src="https://readdy.ai/api/search-image?query=delivery+truck+in+city&width=800&height=600&seq=8"
-                alt="Delivery truck in city"
-                class="w-full h-full object-cover cursor-pointer"
-                data-full="https://readdy.ai/api/search-image?query=delivery+truck+in+city&width=1600&height=1200&seq=8"
-              />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-4"
-              >
-                <h3 class="text-white font-medium">Last Mile Delivery</h3>
-              </div>
-            </div>
-          </div>
-
-          <!-- Image 9 -->
-          <div
-            class="gallery-item rounded-xl overflow-hidden shadow-md bg-white"
-            data-category="team"
-            data-aos="fade-up"
-            data-aos-delay="450"
-          >
-            <div class="relative overflow-hidden h-64">
-              <img
-                src="https://readdy.ai/api/search-image?query=logistics+team+training+session&width=800&height=600&seq=9"
-                alt="Team training session"
-                class="w-full h-full object-cover cursor-pointer"
-                data-full="https://readdy.ai/api/search-image?query=logistics+team+training+session&width=1600&height=1200&seq=9"
-              />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-4"
-              >
-                <h3 class="text-white font-medium">Continuous Training</h3>
-              </div>
-            </div>
-          </div>
-
-          <!-- Image 10 -->
-          <div
-            class="gallery-item rounded-xl overflow-hidden shadow-md bg-white"
-            data-category="facilities"
-            data-aos="fade-up"
-            data-aos-delay="500"
-          >
-            <div class="relative overflow-hidden h-64">
-              <img
-                src="https://readdy.ai/api/search-image?query=logistics+control+room+with+screens&width=800&height=600&seq=10"
-                alt="Control room with screens"
-                class="w-full h-full object-cover cursor-pointer"
-                data-full="https://readdy.ai/api/search-image?query=logistics+control+room+with+screens&width=1600&height=1200&seq=10"
-              />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-4"
-              >
-                <h3 class="text-white font-medium">Operations Center</h3>
-              </div>
-            </div>
-          </div>
-
-          <!-- Image 11 -->
-          <div
-            class="gallery-item rounded-xl overflow-hidden shadow-md bg-white"
-            data-category="shipping"
-            data-aos="fade-up"
-            data-aos-delay="550"
-          >
-            <div class="relative overflow-hidden h-64">
-              <img
-                src="https://readdy.ai/api/search-image?query=port+operations+with+cranes&width=800&height=600&seq=11"
-                alt="Port operations with cranes"
-                class="w-full h-full object-cover cursor-pointer"
-                data-full="https://readdy.ai/api/search-image?query=port+operations+with+cranes&width=1600&height=1200&seq=11"
-              />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-4"
-              >
-                <h3 class="text-white font-medium">Port Operations</h3>
-              </div>
-            </div>
-          </div>
-
-          <!-- Image 12 -->
-          <div
-            class="gallery-item rounded-xl overflow-hidden shadow-md bg-white"
-            data-category="warehousing"
-            data-aos="fade-up"
-            data-aos-delay="600"
-          >
-            <div class="relative overflow-hidden h-64">
-              <img
-                src="https://readdy.ai/api/search-image?query=automated+warehouse+with+robots&width=800&height=600&seq=12"
-                alt="Automated warehouse"
-                class="w-full h-full object-cover cursor-pointer"
-                data-full="https://readdy.ai/api/search-image?query=automated+warehouse+with+robots&width=1600&height=1200&seq=12"
-              />
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-4"
-              >
-                <h3 class="text-white font-medium">Automation</h3>
-              </div>
-            </div>
+            <h3 class="text-xl font-semibold text-center mb-3">
+              Competitive Benefits
+            </h3>
+            <p class="text-gray-600 text-center">
+              Enjoy comprehensive benefits including health insurance,
+              performance bonuses, employee discounts, and wellness programs.
+            </p>
           </div>
         </div>
+      </div>
+    </section> -->
 
-        <div class="text-center mt-16" data-aos="fade-up">
-          <button
-            id="load-more"
-            class="bg-[#a80202] text-white px-8 py-3 rounded-lg font-medium hover:bg-[#a80202]/90 transition-colors"
-          >
-            Load More Images
-          </button>
+    <!-- Hiring Process -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center mb-12" data-aos="fade-up">
+          <span class="text-sm font-medium text-primary mb-2 inline-block">
+            <span class="inline-block animate-bounce">
+              <i class="ri-list-check-2 mr-1"></i>
+              OUR HIRING PROCESS
+              <i class="ri-list-check-2 ml-1"></i>
+            </span>
+          </span>
+          <h2 class="text-3xl font-bold mb-4">
+            How We <span class="text-gradient">Hire</span>
+          </h2>
+          <p class="text-gray-600">
+            We've designed our hiring process to be transparent, efficient, and
+            fair. Here's what you can expect when you apply for a position at
+            SkyNet Express.
+          </p>
+        </div>
+
+        <div class="relative">
+          <div
+            class="hidden md:block absolute left-1/2 h-full w-1 bg-gray-200 transform -translate-x-1/2"
+          ></div>
+
+          <div class="space-y-12 md:space-y-0">
+            <div
+              class="relative flex flex-col md:flex-row items-center"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div
+                class="flex-shrink-0 w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 md:mb-0 mx-auto md:mx-0"
+              >
+                <div
+                  class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold"
+                >
+                  1
+                </div>
+              </div>
+              <div class="md:ml-8 md:mr-8 flex-grow text-center md:text-left">
+                <h3 class="text-xl font-semibold mb-2">Application Review</h3>
+                <p class="text-gray-600">
+                  Our HR team reviews all applications carefully. We look for
+                  candidates whose skills and experience align with the position
+                  requirements.
+                </p>
+              </div>
+              <div class="hidden md:block flex-shrink-0 w-16 h-16"></div>
+            </div>
+
+            <div
+              class="relative flex flex-col md:flex-row items-center"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div class="hidden md:block flex-shrink-0 w-16 h-16"></div>
+              <div class="md:mr-8 md:ml-8 flex-grow text-center md:text-right">
+                <h3 class="text-xl font-semibold mb-2">Initial Screening</h3>
+                <p class="text-gray-600">
+                  Selected candidates will have a phone or video call with HR to
+                  discuss the role, your experience, and answer any questions
+                  you may have.
+                </p>
+              </div>
+              <div
+                class="flex-shrink-0 w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 md:mb-0 mx-auto md:mx-0"
+              >
+                <div
+                  class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold"
+                >
+                  2
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="relative flex flex-col md:flex-row items-center"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <div
+                class="flex-shrink-0 w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4 md:mb-0 mx-auto md:mx-0"
+              >
+                <div
+                  class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-bold"
+                >
+                  3
+                </div>
+              </div>
+              <div class="md:ml-8 md:mr-8 flex-grow text-center md:text-left">
+                <h3 class="text-xl font-semibold mb-2">Skills Assessment</h3>
+                <p class="text-gray-600">
+                  Depending on the role, you may complete a skills test, case
+                  study, or technical assessment to evaluate your abilities.
+                </p>
+              </div>
+              <div class="hidden md:block flex-shrink-0 w-16 h-16"></div>
+            </div>
+
+            <div
+              class="relative flex flex-col md:flex-row items-center"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+              <div class="hidden md:block flex-shrink-0 w-16 h-16"></div>
+              <div class="md:mr-8 md:ml-8 flex-grow text-center md:text-right">
+                <h3 class="text-xl font-semibold mb-2">Interview</h3>
+                <p class="text-gray-600">
+                  You'll meet with the hiring manager and potentially other team
+                  members to discuss the role in detail and assess mutual fit.
+                </p>
+              </div>
+              <div
+                class="flex-shrink-0 w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-4 md:mb-0 mx-auto md:mx-0"
+              >
+                <div
+                  class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold"
+                >
+                  4
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="relative flex flex-col md:flex-row items-center"
+              data-aos="fade-up"
+              data-aos-delay="500"
+            >
+              <div
+                class="flex-shrink-0 w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-4 md:mb-0 mx-auto md:mx-0"
+              >
+                <div
+                  class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold"
+                >
+                  5
+                </div>
+              </div>
+              <div class="md:ml-8 md:mr-8 flex-grow text-center md:text-left">
+                <h3 class="text-xl font-semibold mb-2">Offer & Onboarding</h3>
+                <p class="text-gray-600">
+                  Successful candidates receive an offer and begin our
+                  comprehensive onboarding program to set you up for success in
+                  your new role.
+                </p>
+              </div>
+              <div class="hidden md:block flex-shrink-0 w-16 h-16"></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Image Viewer Modal -->
-    <div
-      id="image-viewer"
-      class="image-viewer fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
-    >
-      <div class="relative max-w-6xl w-full">
-        <button
-          id="close-viewer"
-          class="close-button absolute -top-12 right-0 w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-[#a80202] hover:text-white transition-colors"
-        >
-          <i class="ri-close-line ri-lg"></i>
-        </button>
-
-        <div class="flex items-center justify-center mb-4">
-          <button
-            id="prev-image"
-            class="nav-button w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mr-4 hover:bg-[#a80202]/50"
-          >
-            <i class="ri-arrow-left-line ri-xl text-white"></i>
-          </button>
-
-          <img id="viewer-image" src="" alt="" class="rounded-lg shadow-xl" />
-
-          <button
-            id="next-image"
-            class="nav-button w-12 h-12 bg-white/20 rounded-full flex items-center justify-center ml-4 hover:bg-[#a80202]/50"
-          >
-            <i class="ri-arrow-right-line ri-xl text-white"></i>
-          </button>
-        </div>
-
-        <div class="text-center">
-          <h3 id="image-title" class="text-xl font-medium text-white"></h3>
-          <p id="image-index" class="text-gray-300 mt-2"></p>
-        </div>
-      </div>
-    </div>
-
-    <!-- CTA Section -->
     <!-- CTA Section -->
     <section
       class="py-16 bg-gradient-to-r from-primary to-secondary relative overflow-hidden"
@@ -586,30 +1275,626 @@
         <div class="max-w-4xl mx-auto text-center" data-aos="zoom-in">
           <h2 class="text-3xl font-bold text-white mb-6">
             Ready to
-            <span class="inline-block animate-bounce">Optimize</span> Your
-            Logistics?
+            <span class="inline-block animate-bounce-slow">Launch</span> Your
+            Career With Us?
           </h2>
           <p class="text-white/90 mb-8">
-            Our logistics experts are standing by to analyze your current
-            operations and recommend the most efficient solutions for your
-            business.
+            Even if you don't see the perfect role listed, we'd love to hear
+            from you. Share your resume with us, and we'll contact you if a
+            matching opportunity arises.
           </p>
           <div class="flex flex-wrap justify-center gap-4">
+            <button
+              onclick="openGeneralApplicationModal()"
+              class="bg-white text-primary px-8 py-4 !rounded-button whitespace-nowrap font-medium hover:bg-gray-100 transition-colors btn-hover"
+            >
+              Submit General Application
+            </button>
             <a
               href="contact.html"
-              class="bg-white text-primary px-8 py-4 !rounded-button whitespace-nowrap font-medium hover:bg-gray-100 transition-colors btn-hover"
-              >Get a Free Consultation</a
-            >
-            <a
-              href="tel:+15551234567"
               class="bg-transparent border-2 border-white text-white px-8 py-4 !rounded-button whitespace-nowrap font-medium hover:bg-white/10 transition-colors btn-hover"
             >
-              <i class="ri-phone-line mr-2"></i> Call Us Now
+              <i class="ri-question-line mr-2"></i> Have Questions?
             </a>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Job Application Modal -->
+    <div
+      id="job-modal"
+      class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 hidden"
+    >
+      <div
+        class="bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+      >
+        <!-- Modal Header -->
+        <div
+          class="sticky top-0 bg-white p-6 border-b flex justify-between items-center"
+        >
+          <div>
+            <h3
+              id="modal-job-title"
+              class="text-2xl font-bold text-gray-900"
+            ></h3>
+            <div class="flex items-center text-gray-600 mt-1">
+              <span id="modal-job-department" class="mr-4"></span>
+              <i class="ri-map-pin-line mr-1"></i>
+              <span id="modal-job-location"></span>
+              <span class="mx-2">•</span>
+              <span id="modal-job-type"></span>
+            </div>
+          </div>
+          <button
+            onclick="closeJobModal()"
+            class="text-gray-400 hover:text-gray-600 transition-colors"
+          >
+            <i class="ri-close-line text-2xl"></i>
+          </button>
+        </div>
+
+        <!-- Modal Content -->
+        <div class="p-6">
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2">
+              <!-- Job Description -->
+              <div class="mb-8">
+                <h4 class="text-lg font-semibold mb-3 text-gray-900">
+                  Job Description
+                </h4>
+                <p id="modal-job-description" class="text-gray-600"></p>
+              </div>
+
+              <!-- Responsibilities -->
+              <div class="mb-8">
+                <h4 class="text-lg font-semibold mb-3 text-gray-900">
+                  Key Responsibilities
+                </h4>
+                <ul
+                  id="modal-job-responsibilities"
+                  class="list-disc pl-5 space-y-2 text-gray-600"
+                ></ul>
+              </div>
+
+              <!-- Requirements -->
+              <div class="mb-8">
+                <h4 class="text-lg font-semibold mb-3 text-gray-900">
+                  Requirements
+                </h4>
+                <ul
+                  id="modal-job-requirements"
+                  class="list-disc pl-5 space-y-2 text-gray-600"
+                ></ul>
+              </div>
+
+              <!-- Benefits -->
+              <div>
+                <h4 class="text-lg font-semibold mb-3 text-gray-900">
+                  What We Offer
+                </h4>
+                <ul
+                  id="modal-job-benefits"
+                  class="list-disc pl-5 space-y-2 text-gray-600"
+                ></ul>
+              </div>
+            </div>
+
+            <!-- Application Form -->
+            <div class="lg:col-span-1">
+              <div class="bg-gray-50 p-6 rounded-lg sticky top-6">
+                <h4 class="text-lg font-semibold mb-4 text-gray-900">
+                  Apply for this Position
+                </h4>
+                <form id="job-application-form" class="space-y-4">
+                  <input type="hidden" id="applied-position" name="position" />
+
+                  <div>
+                    <label
+                      for="applicant-name"
+                      class="block text-sm font-medium text-gray-700 mb-1"
+                      >Full Name *</label
+                    >
+                    <input
+                      type="text"
+                      id="applicant-name"
+                      name="name"
+                      required
+                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      for="applicant-email"
+                      class="block text-sm font-medium text-gray-700 mb-1"
+                      >Email *</label
+                    >
+                    <input
+                      type="email"
+                      id="applicant-email"
+                      name="email"
+                      required
+                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      for="applicant-phone"
+                      class="block text-sm font-medium text-gray-700 mb-1"
+                      >Phone Number *</label
+                    >
+                    <input
+                      type="tel"
+                      id="applicant-phone"
+                      name="phone"
+                      required
+                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      for="applicant-location"
+                      class="block text-sm font-medium text-gray-700 mb-1"
+                      >Current Location *</label
+                    >
+                    <input
+                      type="text"
+                      id="applicant-location"
+                      name="location"
+                      required
+                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      for="applicant-salary"
+                      class="block text-sm font-medium text-gray-700 mb-1"
+                      >Salary Expectation *</label
+                    >
+                    <input
+                      type="text"
+                      id="applicant-salary"
+                      name="salary"
+                      required
+                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      for="applicant-notice"
+                      class="block text-sm font-medium text-gray-700 mb-1"
+                      >Notice Period *</label
+                    >
+                    <input
+                      type="text"
+                      id="applicant-notice"
+                      name="notice"
+                      required
+                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      for="applicant-resume"
+                      class="block text-sm font-medium text-gray-700 mb-1"
+                      >Resume/CV *</label
+                    >
+                    <div class="flex items-center justify-center w-full">
+                      <label
+                        for="resume-upload"
+                        class="flex flex-col items-center justify-center w-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100"
+                      >
+                        <div
+                          class="flex flex-col items-center justify-center pt-5 pb-6 px-4"
+                        >
+                          <i
+                            class="ri-upload-cloud-2-line text-2xl text-gray-500 mb-2"
+                          ></i>
+                          <p class="mb-2 text-sm text-gray-500 text-center">
+                            <span class="font-semibold">Click to upload</span>
+                            or drag and drop
+                          </p>
+                          <p class="text-xs text-gray-500">
+                            PDF, DOC, DOCX (Max. 5MB)
+                          </p>
+                        </div>
+                        <input
+                          id="resume-upload"
+                          type="file"
+                          class="hidden"
+                          accept=".pdf,.doc,.docx"
+                          required
+                        />
+                      </label>
+                    </div>
+                    <div
+                      id="resume-name"
+                      class="text-sm text-gray-500 mt-1 hidden"
+                    ></div>
+                  </div>
+
+                  <div>
+                    <label
+                      for="applicant-cover"
+                      class="block text-sm font-medium text-gray-700 mb-1"
+                      >Cover/Application Letter *</label
+                    >
+                    <div class="flex items-center justify-center w-full">
+                      <label
+                        for="cover-upload"
+                        class="flex flex-col items-center justify-center w-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100"
+                      >
+                        <div
+                          class="flex flex-col items-center justify-center pt-5 pb-6 px-4"
+                        >
+                          <i
+                            class="ri-file-text-line text-2xl text-gray-500 mb-2"
+                          ></i>
+                          <p class="mb-2 text-sm text-gray-500 text-center">
+                            <span class="font-semibold">Click to upload</span>
+                            or drag and drop
+                          </p>
+                          <p class="text-xs text-gray-500">
+                            PDF, DOC, DOCX (Max. 5MB)
+                          </p>
+                        </div>
+                        <input
+                          id="cover-upload"
+                          type="file"
+                          class="hidden"
+                          accept=".pdf,.doc,.docx"
+                        />
+                      </label>
+                    </div>
+                    <div
+                      id="cover-name"
+                      class="text-sm text-gray-500 mt-1 hidden"
+                    ></div>
+                  </div>
+
+                  <div>
+                    <label
+                      for="applicant-portfolio"
+                      class="block text-sm font-medium text-gray-700 mb-1"
+                      >Portfolio/Website (Optional)</label
+                    >
+                    <input
+                      type="url"
+                      id="applicant-portfolio"
+                      name="portfolio"
+                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                      placeholder="https://"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      for="applicant-message"
+                      class="block text-sm font-medium text-gray-700 mb-1"
+                      >Message (Optional)</label
+                    >
+                    <textarea
+                      id="applicant-message"
+                      name="message"
+                      rows="3"
+                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                      placeholder="Tell us why you're a great fit for this role..."
+                    ></textarea>
+                  </div>
+
+                  <div class="pt-2">
+                    <button
+                      type="submit"
+                      class="w-full bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors flex items-center justify-center"
+                    >
+                      <span id="submit-text">Submit Application</span>
+                      <span id="submit-spinner" class="ml-2 hidden">
+                        <i class="ri-loader-4-line animate-spin"></i>
+                      </span>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- General Application Modal -->
+    <div
+      id="general-modal"
+      class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 hidden"
+    >
+      <div
+        class="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+      >
+        <!-- Modal Header -->
+        <div
+          class="sticky top-0 bg-white p-6 border-b flex justify-between items-center"
+        >
+          <div>
+            <h3 class="text-2xl font-bold text-gray-900">
+              General Application
+            </h3>
+            <p class="text-gray-600 mt-1">
+              Submit your resume for future opportunities
+            </p>
+          </div>
+          <button
+            onclick="closeGeneralApplicationModal()"
+            class="text-gray-400 hover:text-gray-600 transition-colors"
+          >
+            <i class="ri-close-line text-2xl"></i>
+          </button>
+        </div>
+
+        <!-- Modal Content -->
+        <div class="p-6">
+          <form id="general-application-form" class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label
+                  for="general-name"
+                  class="block text-sm font-medium text-gray-700 mb-1"
+                  >Full Name *</label
+                >
+                <input
+                  type="text"
+                  id="general-name"
+                  name="name"
+                  required
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="general-email"
+                  class="block text-sm font-medium text-gray-700 mb-1"
+                  >Email *</label
+                >
+                <input
+                  type="email"
+                  id="general-email"
+                  name="email"
+                  required
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label
+                  for="general-phone"
+                  class="block text-sm font-medium text-gray-700 mb-1"
+                  >Phone Number *</label
+                >
+                <input
+                  type="tel"
+                  id="general-phone"
+                  name="phone"
+                  required
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="general-location"
+                  class="block text-sm font-medium text-gray-700 mb-1"
+                  >Preferred Location *</label
+                >
+                <select
+                  id="general-location"
+                  name="location"
+                  required
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                >
+                  <option value="">Select location</option>
+                  <option value="accra">Accra</option>
+                  <option value="kumasi">Kumasi</option>
+                  <option value="tema">Tema</option>
+                  <option value="takoradi">Takoradi</option>
+                  <option value="Koforidua">Koforidua</option>
+                  <option value="ho">Ho</option>
+                  <option value="bolga">Bolgatanga</option>
+                  <option value="wa">Wa</option>
+                  <option value="sunyani">Sunyani</option>
+                  <option value="tamale">Tamale</option>
+                  <option value="cape-coast">Cape Coast</option>
+                  <option value="tarkwa">Tarkwa</option>
+                  <option value="any">Any Location</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label
+                for="general-department"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Department of Interest *</label
+              >
+              <select
+                id="general-department"
+                name="department"
+                required
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary"
+              >
+                <option value="">Select department</option>
+                <option value="operations">Operations</option>
+                <option value="customer-service">Customer Service</option>
+                <option value="administration">Administration</option>
+                <option value="it">Information Technology</option>
+                <option value="hr">Human Resources</option>
+                <option value="marketing">Marketing/Sales</option>
+                <option value="finance">Finance</option>
+                <option value="any">Any Department</option>
+              </select>
+            </div>
+
+            <div>
+              <label
+                for="general-resume"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Resume/CV *</label
+              >
+              <div class="flex items-center justify-center w-full">
+                <label
+                  for="general-resume-upload"
+                  class="flex flex-col items-center justify-center w-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100"
+                >
+                  <div
+                    class="flex flex-col items-center justify-center pt-5 pb-6 px-4"
+                  >
+                    <i
+                      class="ri-upload-cloud-2-line text-2xl text-gray-500 mb-2"
+                    ></i>
+                    <p class="mb-2 text-sm text-gray-500 text-center">
+                      <span class="font-semibold">Click to upload</span> or drag
+                      and drop
+                    </p>
+                    <p class="text-xs text-gray-500">
+                      PDF, DOC, DOCX (Max. 5MB)
+                    </p>
+                  </div>
+                  <input
+                    id="general-resume-upload"
+                    type="file"
+                    class="hidden"
+                    accept=".pdf,.doc,.docx"
+                    required
+                  />
+                </label>
+              </div>
+              <div
+                id="general-resume-name"
+                class="text-sm text-gray-500 mt-1 hidden"
+              ></div>
+            </div>
+
+            <div>
+              <label
+                for="general-cover"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Cover Letter (Optional)</label
+              >
+              <div class="flex items-center justify-center w-full">
+                <label
+                  for="general-cover-upload"
+                  class="flex flex-col items-center justify-center w-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100"
+                >
+                  <div
+                    class="flex flex-col items-center justify-center pt-5 pb-6 px-4"
+                  >
+                    <i
+                      class="ri-file-text-line text-2xl text-gray-500 mb-2"
+                    ></i>
+                    <p class="mb-2 text-sm text-gray-500 text-center">
+                      <span class="font-semibold">Click to upload</span> or drag
+                      and drop
+                    </p>
+                    <p class="text-xs text-gray-500">
+                      PDF, DOC, DOCX (Max. 5MB)
+                    </p>
+                  </div>
+                  <input
+                    id="general-cover-upload"
+                    type="file"
+                    class="hidden"
+                    accept=".pdf,.doc,.docx"
+                  />
+                </label>
+              </div>
+              <div
+                id="general-cover-name"
+                class="text-sm text-gray-500 mt-1 hidden"
+              ></div>
+            </div>
+
+            <div>
+              <label
+                for="general-portfolio"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Portfolio/Website (Optional)</label
+              >
+              <input
+                type="url"
+                id="general-portfolio"
+                name="portfolio"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                placeholder="https://"
+              />
+            </div>
+
+            <div>
+              <label
+                for="general-message"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Tell Us About Yourself *</label
+              >
+              <textarea
+                id="general-message"
+                name="message"
+                rows="3"
+                required
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                placeholder="Tell us about your skills, experience, and what kind of roles you're interested in..."
+              ></textarea>
+            </div>
+
+            <div class="pt-2">
+              <button
+                type="submit"
+                class="w-full bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors flex items-center justify-center"
+              >
+                <span id="general-submit-text">Submit Application</span>
+                <span id="general-submit-spinner" class="ml-2 hidden">
+                  <i class="ri-loader-4-line animate-spin"></i>
+                </span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Application Success Modal -->
+    <div
+      id="success-modal"
+      class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 hidden"
+    >
+      <div
+        class="bg-white rounded-xl shadow-2xl max-w-md w-full p-8 text-center"
+      >
+        <div
+          class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6"
+        >
+          <i class="ri-checkbox-circle-line text-green-600 text-3xl"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-3">
+          Application Submitted!
+        </h3>
+        <p class="text-gray-600 mb-6" id="success-message">
+          Thank you for applying. We've received your application and will
+          review it shortly. If your qualifications match our needs, we'll be in
+          touch soon.
+        </p>
+        <button
+          onclick="closeSuccessModal()"
+          class="w-full bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
+        >
+          Close
+        </button>
+      </div>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-white pt-16 pb-8 animate-fade-in">
@@ -619,7 +1904,7 @@
             <a href="index.html" class="inline-block mb-6 hover-grow">
               <img
                 src="images/logo_white.png"
-                alt="skynet express Logo"
+                alt="SkyNet Express Ltd Logo"
                 class="h-10 w-auto"
               />
             </a>
@@ -635,18 +1920,6 @@
               >
                 <i class="ri-facebook-fill"></i>
               </a>
-              <!-- <a
-                href="#"
-                class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-300 hover:-translate-y-1"
-              >
-                <i class="ri-twitter-x-fill"></i>
-              </a> -->
-              <!-- <a
-                href="#"
-                class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-300 hover:-translate-y-1"
-              >
-                <i class="ri-linkedin-fill"></i>
-              </a> -->
               <a
                 href="https://instagram.com/skynetexpressgh?igshid=YTY2NzY3YTc="
                 class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-300 hover:-translate-y-1"
@@ -715,13 +1988,13 @@
               </li>
               <li>
                 <a
-                  href="gallery.html"
+                  href="careers.html"
                   class="text-gray-400 hover:text-white transition-colors duration-300 inline-flex items-center group"
                 >
                   <i
                     class="ri-arrow-right-s-line mr-2 text-primary group-hover:translate-x-1 transition-transform"
                   ></i>
-                  Gallery
+                  Careers
                 </a>
               </li>
               <li>
@@ -863,6 +2136,313 @@
       </div>
     </footer>
 
+    <script>
+      // Initialize AOS animation library
+      AOS.init({
+        duration: 800,
+        easing: "ease-in-out",
+        once: false,
+        mirror: true,
+      });
+
+      // Mobile menu toggle
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+        });
+      }
+
+      // Job search and filter functionality
+      const jobSearch = document.getElementById("job-search");
+      const jobDepartment = document.getElementById("job-department");
+      const jobLocation = document.getElementById("job-location");
+      const jobListings = document.getElementById("job-listings");
+      const noJobsMessage = document.getElementById("no-jobs-message");
+
+      function filterJobs() {
+        const searchTerm = jobSearch.value.toLowerCase();
+        const departmentFilter = jobDepartment.value;
+        const locationFilter = jobLocation.value;
+
+        let visibleJobs = 0;
+        const jobCards = jobListings.querySelectorAll(".job-card");
+
+        jobCards.forEach((card) => {
+          const title = card.querySelector("h3").textContent.toLowerCase();
+          const department = card.dataset.department;
+          const location = card.dataset.location;
+
+          const matchesSearch = title.includes(searchTerm);
+          const matchesDepartment =
+            !departmentFilter || department === departmentFilter;
+          const matchesLocation =
+            !locationFilter || location === locationFilter;
+
+          if (matchesSearch && matchesDepartment && matchesLocation) {
+            card.style.display = "block";
+            visibleJobs++;
+          } else {
+            card.style.display = "none";
+          }
+        });
+
+        if (visibleJobs === 0) {
+          noJobsMessage.classList.remove("hidden");
+          jobListings.classList.add("hidden");
+        } else {
+          noJobsMessage.classList.add("hidden");
+          jobListings.classList.remove("hidden");
+        }
+      }
+
+      function resetJobFilters() {
+        jobSearch.value = "";
+        jobDepartment.value = "";
+        jobLocation.value = "";
+        filterJobs();
+      }
+
+      jobSearch.addEventListener("input", filterJobs);
+      jobDepartment.addEventListener("change", filterJobs);
+      jobLocation.addEventListener("change", filterJobs);
+
+      // Job modal functionality
+      function openJobModal(
+        title,
+        department,
+        location,
+        type,
+        description,
+        responsibilities,
+        requirements,
+        benefits
+      ) {
+        const modal = document.getElementById("job-modal");
+        const jobTitle = document.getElementById("modal-job-title");
+        const jobDept = document.getElementById("modal-job-department");
+        const jobLoc = document.getElementById("modal-job-location");
+        const jobType = document.getElementById("modal-job-type");
+        const jobDesc = document.getElementById("modal-job-description");
+        const jobResp = document.getElementById("modal-job-responsibilities");
+        const jobReq = document.getElementById("modal-job-requirements");
+        const jobBenefits = document.getElementById("modal-job-benefits");
+        const appliedPosition = document.getElementById("applied-position");
+
+        // Set job details
+        jobTitle.textContent = title;
+        jobDept.textContent =
+          department.charAt(0).toUpperCase() + department.slice(1);
+        jobLoc.textContent = location;
+        jobType.textContent =
+          type === "full-time"
+            ? "Full-time"
+            : type === "part-time"
+            ? "Part-time"
+            : "Contract";
+        jobDesc.textContent = description;
+        appliedPosition.value = title;
+
+        // Set responsibilities
+        jobResp.innerHTML = "";
+        responsibilities.split("\n").forEach((item) => {
+          if (item.trim()) {
+            const li = document.createElement("li");
+            li.textContent = item.trim();
+            jobResp.appendChild(li);
+          }
+        });
+
+        // Set requirements
+        jobReq.innerHTML = "";
+        requirements.split("\n").forEach((item) => {
+          if (item.trim()) {
+            const li = document.createElement("li");
+            li.textContent = item.trim();
+            jobReq.appendChild(li);
+          }
+        });
+
+        // Set benefits
+        jobBenefits.innerHTML = "";
+        benefits.split("\n").forEach((item) => {
+          if (item.trim()) {
+            const li = document.createElement("li");
+            li.textContent = item.trim();
+            jobBenefits.appendChild(li);
+          }
+        });
+
+        // Show modal
+        modal.classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeJobModal() {
+        document.getElementById("job-modal").classList.add("hidden");
+        document.body.style.overflow = "auto";
+      }
+
+      // General application modal
+      function openGeneralApplicationModal() {
+        document.getElementById("general-modal").classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeGeneralApplicationModal() {
+        document.getElementById("general-modal").classList.add("hidden");
+        document.body.style.overflow = "auto";
+      }
+
+      // Success modal
+      function showSuccessModal(message) {
+        if (message) {
+          document.getElementById("success-message").textContent = message;
+        }
+        document.getElementById("success-modal").classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeSuccessModal() {
+        document.getElementById("success-modal").classList.add("hidden");
+        document.body.style.overflow = "auto";
+      }
+
+      // File upload handling
+      document
+        .getElementById("resume-upload")
+        .addEventListener("change", function (e) {
+          const fileName = e.target.files[0]?.name || "No file selected";
+          const display = document.getElementById("resume-name");
+          display.textContent = fileName;
+          display.classList.remove("hidden");
+        });
+
+      document
+        .getElementById("cover-upload")
+        .addEventListener("change", function (e) {
+          const fileName = e.target.files[0]?.name || "No file selected";
+          const display = document.getElementById("cover-name");
+          display.textContent = fileName;
+          display.classList.remove("hidden");
+        });
+
+      document
+        .getElementById("general-resume-upload")
+        .addEventListener("change", function (e) {
+          const fileName = e.target.files[0]?.name || "No file selected";
+          const display = document.getElementById("general-resume-name");
+          display.textContent = fileName;
+          display.classList.remove("hidden");
+        });
+
+      document
+        .getElementById("general-cover-upload")
+        .addEventListener("change", function (e) {
+          const fileName = e.target.files[0]?.name || "No file selected";
+          const display = document.getElementById("general-cover-name");
+          display.textContent = fileName;
+          display.classList.remove("hidden");
+        });
+
+      // Form submission handling
+      document
+        .getElementById("job-application-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Show loading state
+          const submitText = document.getElementById("submit-text");
+          const submitSpinner = document.getElementById("submit-spinner");
+          submitText.textContent = "Submitting...";
+          submitSpinner.classList.remove("hidden");
+
+          // Simulate form submission (replace with actual AJAX call)
+          setTimeout(() => {
+            // Reset form
+            this.reset();
+            document.getElementById("resume-name").classList.add("hidden");
+            document.getElementById("cover-name").classList.add("hidden");
+
+            // Hide loading state
+            submitText.textContent = "Submit Application";
+            submitSpinner.classList.add("hidden");
+
+            // Close job modal and show success
+            closeJobModal();
+            showSuccessModal();
+          }, 2000);
+        });
+
+      document
+        .getElementById("general-application-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Show loading state
+          const submitText = document.getElementById("general-submit-text");
+          const submitSpinner = document.getElementById(
+            "general-submit-spinner"
+          );
+          submitText.textContent = "Submitting...";
+          submitSpinner.classList.remove("hidden");
+
+          // Simulate form submission (replace with actual AJAX call)
+          setTimeout(() => {
+            // Reset form
+            this.reset();
+            document
+              .getElementById("general-resume-name")
+              .classList.add("hidden");
+            document
+              .getElementById("general-cover-name")
+              .classList.add("hidden");
+
+            // Hide loading state
+            submitText.textContent = "Submit Application";
+            submitSpinner.classList.add("hidden");
+
+            // Close general modal and show success
+            closeGeneralApplicationModal();
+            showSuccessModal(
+              "Thank you for submitting your resume. We'll keep it on file and contact you if a suitable position becomes available."
+            );
+          }, 2000);
+        });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          if (targetId === "#") return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            const header = document.querySelector("header");
+            const headerHeight = header ? header.offsetHeight : 0;
+            const targetPosition =
+              targetElement.getBoundingClientRect().top +
+              window.pageYOffset -
+              headerHeight;
+
+            window.scrollTo({
+              top: targetPosition,
+              behavior: "smooth",
+            });
+
+            // Close mobile menu if open
+            if (mobileMenu && !mobileMenu.classList.contains("hidden")) {
+              mobileMenu.classList.add("hidden");
+            }
+          }
+        });
+      });
+    </script>
+
     <!-- Chatbot Container -->
     <div
       id="chatbot-container"
@@ -922,6 +2502,7 @@
         <i class="ri-chat-3-line text-xl"></i>
       </button>
     </div>
+
     <script>
       // Listen for Enter key on input field
       document
@@ -933,191 +2514,10 @@
           }
         });
     </script>
+
     <script src="js/chatbot.js"></script>
-
-    <script>
-      // Initialize AOS animation library
-      AOS.init({
-        duration: 800,
-        easing: "ease-in-out",
-        once: false,
-        mirror: true,
-      });
-
-      // Mobile menu toggle
-      document
-        .getElementById("mobile-menu-button")
-        .addEventListener("click", function () {
-          const menu = document.getElementById("mobile-menu");
-          menu.classList.toggle("hidden");
-        });
-
-      // Gallery filtering
-      const filterButtons = document.querySelectorAll(".category-filter");
-      const galleryItems = document.querySelectorAll(".gallery-item");
-
-      filterButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-          // Update active button
-          filterButtons.forEach((btn) => btn.classList.remove("active"));
-          button.classList.add("active");
-
-          const category = button.dataset.category;
-
-          // Filter items
-          galleryItems.forEach((item) => {
-            if (category === "all" || item.dataset.category === category) {
-              item.style.display = "block";
-            } else {
-              item.style.display = "none";
-            }
-          });
-        });
-      });
-
-      // Image viewer functionality
-      const imageViewer = document.getElementById("image-viewer");
-      const viewerImage = document.getElementById("viewer-image");
-      const imageTitle = document.getElementById("image-title");
-      const imageIndex = document.getElementById("image-index");
-      const closeViewer = document.getElementById("close-viewer");
-      const prevButton = document.getElementById("prev-image");
-      const nextButton = document.getElementById("next-image");
-
-      let currentImageIndex = 0;
-      let images = [];
-
-      // Collect all gallery images
-      document.querySelectorAll(".gallery-item img").forEach((img, index) => {
-        images.push({
-          src: img.dataset.full || img.src,
-          title: img.parentElement.querySelector("h3").textContent,
-          index: index + 1,
-        });
-      });
-
-      // Open image viewer when clicking on an image
-      document.querySelectorAll(".gallery-item img").forEach((img, index) => {
-        img.addEventListener("click", () => {
-          currentImageIndex = index;
-          updateViewer();
-          imageViewer.classList.add("active");
-          document.body.style.overflow = "hidden";
-        });
-      });
-
-      // Close viewer
-      closeViewer.addEventListener("click", () => {
-        imageViewer.classList.remove("active");
-        document.body.style.overflow = "";
-      });
-
-      // Navigation
-      prevButton.addEventListener("click", () => {
-        currentImageIndex =
-          (currentImageIndex - 1 + images.length) % images.length;
-        updateViewer();
-      });
-
-      nextButton.addEventListener("click", () => {
-        currentImageIndex = (currentImageIndex + 1) % images.length;
-        updateViewer();
-      });
-
-      // Keyboard navigation
-      document.addEventListener("keydown", (e) => {
-        if (!imageViewer.classList.contains("active")) return;
-
-        if (e.key === "ArrowLeft") {
-          currentImageIndex =
-            (currentImageIndex - 1 + images.length) % images.length;
-          updateViewer();
-        } else if (e.key === "ArrowRight") {
-          currentImageIndex = (currentImageIndex + 1) % images.length;
-          updateViewer();
-        } else if (e.key === "Escape") {
-          imageViewer.classList.remove("active");
-          document.body.style.overflow = "";
-        }
-      });
-
-      // Update viewer content
-      function updateViewer() {
-        const currentImage = images[currentImageIndex];
-        viewerImage.src = currentImage.src;
-        imageTitle.textContent = currentImage.title;
-        imageIndex.textContent = `${currentImage.index} of ${images.length}`;
-      }
-
-      // Load more images
-      document.getElementById("load-more").addEventListener("click", () => {
-        // In a real implementation, you would fetch more images from a server
-        // Here we'll just simulate loading more images
-        const galleryContainer = document.querySelector("#gallery .grid");
-
-        // Create additional image items (similar to existing ones)
-        for (let i = 13; i <= 24; i++) {
-          const categories = [
-            "shipping",
-            "warehousing",
-            "transport",
-            "team",
-            "facilities",
-          ];
-          const randomCategory =
-            categories[Math.floor(Math.random() * categories.length)];
-
-          const item = document.createElement("div");
-          item.className = `gallery-item rounded-xl overflow-hidden shadow-md bg-white`;
-          item.dataset.category = randomCategory;
-          item.dataset.aos = "fade-up";
-          item.dataset.aosDelay = "50";
-
-          item.innerHTML = `
-          <div class="relative overflow-hidden h-64">
-            <img src="https://readdy.ai/api/search-image?query=logistics+${randomCategory}+${i}&width=800&height=600&seq=${i}" 
-                 alt="Logistics ${randomCategory}" 
-                 class="w-full h-full object-cover cursor-pointer"
-                 data-full="https://readdy.ai/api/search-image?query=logistics+${randomCategory}+${i}&width=1600&height=1200&seq=${i}">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-4">
-              <h3 class="text-white font-medium">${
-                randomCategory.charAt(0).toUpperCase() + randomCategory.slice(1)
-              } ${i}</h3>
-            </div>
-          </div>
-        `;
-
-          galleryContainer.appendChild(item);
-
-          // Reinitialize AOS for new elements
-          AOS.refresh();
-
-          // Add click event to new images
-          item.querySelector("img").addEventListener("click", () => {
-            // Update images array with new images
-            images = [];
-            document
-              .querySelectorAll(".gallery-item img")
-              .forEach((img, idx) => {
-                images.push({
-                  src: img.dataset.full || img.src,
-                  title: img.parentElement.querySelector("h3").textContent,
-                  index: idx + 1,
-                });
-              });
-
-            currentImageIndex = Array.from(
-              document.querySelectorAll(".gallery-item img")
-            ).indexOf(item.querySelector("img"));
-            updateViewer();
-            imageViewer.classList.add("active");
-            document.body.style.overflow = "hidden";
-          });
-        }
-
-        // Hide load more button after loading all images
-        document.getElementById("load-more").style.display = "none";
-      });
-    </script>
+    <script src="js/oursectors.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/swipper.js"></script>
   </body>
 </html>
