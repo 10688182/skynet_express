@@ -147,6 +147,101 @@
           transform: translateX(5px);
         }
       }
+      /* Status badge styles */
+      .status-badge {
+        display: inline-block;
+        padding: 0.25rem 0.5rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .status-open {
+        background-color: #dcfce7;
+        color: #166534;
+      }
+      .status-filled {
+        background-color: #fee2e2;
+        color: #991b1b;
+      }
+      .status-closed {
+        background-color: #e5e7eb;
+        color: #4b5563;
+      }
+      /* Email preview styles */
+      .email-preview {
+        background-color: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 0.5rem;
+        padding: 1.5rem;
+        margin-top: 1rem;
+        font-family: "Inter", sans-serif;
+      }
+      .email-header {
+        border-bottom: 1px solid #e2e8f0;
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+      }
+      .email-body {
+        line-height: 1.6;
+        color: #334155;
+      }
+      .email-footer {
+        border-top: 1px solid #e2e8f0;
+        padding-top: 1rem;
+        margin-top: 1rem;
+        font-size: 0.875rem;
+        color: #64748b;
+      }
+      /* Pagination styles */
+      .pagination-btn {
+        min-width: 2.5rem;
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #e2e8f0;
+        background-color: white;
+        color: #4b5563;
+        font-weight: 500;
+        transition: all 0.2s ease;
+      }
+      .pagination-btn:hover {
+        background-color: #f3f4f6;
+      }
+      .pagination-btn.active {
+        background-color: #f4050b;
+        color: white;
+        border-color: #f4050b;
+      }
+      .pagination-btn.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      /* Improved list styles for modal */
+      .modal-list {
+        list-style-type: none;
+        padding-left: 1rem;
+        margin-top: 0.5rem;
+      }
+
+      .modal-list li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 0.5rem;
+        color: #4b5563;
+        line-height: 1.6;
+      }
+
+      .modal-list li:before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: #f4050b;
+        font-weight: bold;
+        font-size: 1.2em;
+      }
     </style>
   </head>
 
@@ -375,9 +470,9 @@
               >
                 <option value="">All Departments</option>
                 <option value="operations">Operations</option>
-                <option value="customer-service">Customer Service</option>
+                <option value="Customer Service">Customer Service</option>
                 <option value="administration">Administration</option>
-                <option value="it">Information Technology</option>
+                <option value="IT">Information Technology</option>
                 <option value="hr">Human Resources</option>
                 <option value="marketing">Marketing/Sales</option>
                 <option value="finance">Finance</option>
@@ -408,6 +503,22 @@
                 <option value="tarkwa">Tarkwa</option>
               </select>
             </div>
+            <div>
+              <label
+                for="job-status"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Status</label
+              >
+              <select
+                id="job-status"
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary"
+              >
+                <option value="">All Statuses</option>
+                <option value="open">Open</option>
+                <option value="filled">Filled</option>
+                <option value="closed">Closed</option>
+              </select>
+            </div>
           </div>
         </div>
 
@@ -417,538 +528,6 @@
           id="job-listings"
         >
           <!-- Job cards will be dynamically loaded here from the database -->
-
-          <!-- Sample Job Card 1 -->
-          <div
-            class="job-card bg-white rounded-xl shadow-md overflow-hidden fade-in"
-            data-aos="fade-up"
-            data-aos-delay="100"
-            data-department="operations"
-            data-location="accra"
-          >
-            <div class="p-6">
-              <div class="flex justify-between items-start mb-4">
-                <div>
-                  <span
-                    class="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full mb-2 job-tag"
-                  >
-                    Operations
-                  </span>
-                  <h3 class="text-xl font-bold text-gray-900 mb-1">
-                    Logistics Manager
-                  </h3>
-                  <div class="flex items-center text-gray-600 text-sm">
-                    <i class="ri-map-pin-line mr-1"></i>
-                    <span>Accra</span>
-                    <span class="mx-2">•</span>
-                    <span>Full-time</span>
-                  </div>
-                </div>
-                <div
-                  class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center"
-                >
-                  <i class="ri-truck-line text-primary text-xl"></i>
-                </div>
-              </div>
-              <p class="text-gray-600 mb-4 line-clamp-3">
-                Oversee and manage all logistics operations, ensuring efficient
-                transportation and delivery of goods across our network. Lead a
-                team of logistics coordinators and drivers.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span
-                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
-                  >Management</span
-                >
-                <span
-                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
-                  >Transportation</span
-                >
-                <span
-                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
-                  >Team Leadership</span
-                >
-              </div>
-              <div class="flex justify-between items-center">
-                <span class="text-sm text-gray-500">Posted 3 days ago</span>
-                <button
-                  class="apply-btn px-4 py-2 border border-primary text-primary rounded-lg font-medium hover:bg-primary hover:text-white transition-colors"
-                  onclick="openJobModal('Logistics Manager', 
-                  'operations', 
-                  'Accra', 
-                  'full-time', 
-                  'We are seeking an experienced Logistics Manager to oversee our transportation and delivery operations. You will be responsible for ensuring efficient logistics processes, managing a team of coordinators and drivers, and optimizing our supply chain network.', 
-                  'Oversee daily logistics operations and transportation activities\nManage and lead a team of logistics coordinators and drivers\nDevelop and implement efficient routing and delivery schedules\nMonitor and analyze logistics performance metrics\nEnsure compliance with transportation regulations and safety standards\nCollaborate with other departments to optimize supply chain processes\nHandle logistics-related customer inquiries and resolve issues\nManage relationships with transportation vendors and partners', 
-                  'Bachelor\'s degree in Logistics, Supply Chain Management, or related field\nMinimum 5 years experience in logistics or transportation management\nProven leadership and team management skills\nStrong analytical and problem-solving abilities\nExcellent communication and interpersonal skills\nKnowledge of transportation regulations and compliance\nProficiency in logistics software and Microsoft Office', 'Competitive salary with performance bonuses\nComprehensive health insurance\nProfessional development opportunities\nCompany vehicle for work-related travel\nPaid time off and holidays\nEmployee discount on shipping services\nDynamic and supportive work environment')"
-                >
-                  Apply Now
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sample Job Card 2 -->
-          <div
-            class="job-card bg-white rounded-xl shadow-md overflow-hidden fade-in"
-            data-aos="fade-up"
-            data-aos-delay="200"
-            data-department="customer-service"
-            data-location="kumasi"
-          >
-            <div class="p-6">
-              <div class="flex justify-between items-start mb-4">
-                <div>
-                  <span
-                    class="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-xs font-semibold rounded-full mb-2 job-tag"
-                  >
-                    Customer Service
-                  </span>
-                  <h3 class="text-xl font-bold text-gray-900 mb-1">
-                    Customer Support Specialist
-                  </h3>
-                  <div class="flex items-center text-gray-600 text-sm">
-                    <i class="ri-map-pin-line mr-1"></i>
-                    <span>Kumasi</span>
-                    <span class="mx-2">•</span>
-                    <span>Full-time</span>
-                  </div>
-                </div>
-                <div
-                  class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center"
-                >
-                  <i
-                    class="ri-customer-service-2-line text-blue-800 text-xl"
-                  ></i>
-                </div>
-              </div>
-              <p class="text-gray-600 mb-4 line-clamp-3">
-                Provide exceptional customer service to our clients, handling
-                inquiries, resolving issues, and ensuring a positive customer
-                experience with our services.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span
-                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
-                  >Communication</span
-                >
-                <span
-                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
-                  >Problem Solving</span
-                >
-                <span
-                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
-                  >CRM</span
-                >
-              </div>
-              <div class="flex justify-between items-center">
-                <span class="text-sm text-gray-500">Posted 1 week ago</span>
-                <button
-                  class="apply-btn px-4 py-2 border border-blue-500 text-blue-500 rounded-lg font-medium hover:bg-blue-500 hover:text-white transition-colors"
-                  onclick="openJobModal('Customer Support Specialist', 'customer-service', 'Kumasi', 'full-time', 'We are looking for a Customer Support Specialist to join our team in Kumasi. You will be the first point of contact for our customers, providing information, resolving issues, and ensuring a positive experience with our services.', 'Respond to customer inquiries via phone, email, and live chat\nResolve customer complaints and issues efficiently\nProvide information about our services and pricing\nProcess orders, forms, and applications\nMaintain customer records and update account information\nCollaborate with other departments to resolve customer issues\nIdentify and escalate priority issues to management\nCollect and report customer feedback to improve services', 'Diploma or degree in any field\nMinimum 2 years experience in customer service\nExcellent communication and interpersonal skills\nStrong problem-solving abilities\nPatience and ability to handle difficult customers\nBasic computer skills and CRM experience\nAbility to work in a fast-paced environment', 'Competitive salary with monthly bonuses\nHealth and dental insurance\nPaid training and development\nOpportunities for career advancement\nEmployee wellness programs\nTeam building activities\nPositive and supportive work culture')"
-                >
-                  Apply Now
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sample Job Card 3 -->
-          <div
-            class="job-card bg-white rounded-xl shadow-md overflow-hidden fade-in"
-            data-aos="fade-up"
-            data-aos-delay="300"
-            data-department="it"
-            data-location="tarkwa"
-          >
-            <div class="p-6">
-              <div class="flex justify-between items-start mb-4">
-                <div>
-                  <span
-                    class="inline-block px-3 py-1 bg-purple-100 text-purple-800 text-xs font-semibold rounded-full mb-2 job-tag"
-                  >
-                    IT
-                  </span>
-                  <h3 class="text-xl font-bold text-gray-900 mb-1">
-                    Full Stack Developer
-                  </h3>
-                  <div class="flex items-center text-gray-600 text-sm">
-                    <i class="ri-map-pin-line mr-1"></i>
-                    <span>Tarkwa</span>
-                    <span class="mx-2">•</span>
-                    <span>Full-time</span>
-                  </div>
-                </div>
-                <div
-                  class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center"
-                >
-                  <i class="ri-code-line text-purple-800 text-xl"></i>
-                </div>
-              </div>
-              <p class="text-gray-600 mb-4 line-clamp-3">
-                Develop and maintain our web applications and internal systems.
-                Work with modern technologies to improve our digital platforms
-                and customer experience.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span
-                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
-                  >JavaScript</span
-                >
-                <span
-                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
-                  >React</span
-                >
-                <span
-                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
-                  >Node.js</span
-                >
-                <span
-                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
-                  >API</span
-                >
-              </div>
-              <div class="flex justify-between items-center">
-                <span class="text-sm text-gray-500">Posted 2 weeks ago</span>
-                <button
-                  class="apply-btn px-4 py-2 border border-purple-500 text-purple-500 rounded-lg font-medium hover:bg-purple-500 hover:text-white transition-colors"
-                  onclick="openJobModal('Full Stack Developer', 'it', 'Tarkwa', 'full-time', 'We are seeking a skilled Full Stack Developer to join our IT team. You will be responsible for developing and maintaining our web applications, internal systems, and APIs to support our logistics operations and improve customer experience.', 'Develop and maintain web applications using modern JavaScript frameworks\nDesign and implement RESTful APIs for internal and external use\nCollaborate with cross-functional teams to define, design, and ship new features\nOptimize applications for maximum speed and scalability\nImplement security and data protection measures\nWrite clean, maintainable, and efficient code\nTroubleshoot and debug applications\nStay updated with emerging technologies and industry trends', 'Bachelor\'s degree in Computer Science or related field\n3+ years experience in full stack development\nProficiency in JavaScript, React, Node.js, and Express\nExperience with databases (SQL and NoSQL)\nFamiliarity with cloud platforms (AWS, Azure, or GCP)\nUnderstanding of CI/CD pipelines\nStrong problem-solving skills\nExcellent collaboration and communication abilities', 'Competitive salary with performance bonuses\nFlexible remote work options\nLatest technology equipment\nProfessional development budget\nHealth and wellness benefits\nGenerous vacation policy\nOpportunity to work on impactful projects')"
-                >
-                  Apply Now
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sample Job Card 4 -->
-          <div
-            class="job-card bg-white rounded-xl shadow-md overflow-hidden fade-in"
-            data-aos="fade-up"
-            data-aos-delay="300"
-            data-department="administration"
-            data-location="accra"
-          >
-            <div class="p-6">
-              <div class="flex justify-between items-start mb-4">
-                <div>
-                  <span
-                    class="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-xs font-semibold rounded-full mb-2 job-tag"
-                  >
-                    Administration
-                  </span>
-                  <h3 class="text-xl font-bold text-gray-900 mb-1">
-                    Administrative Officer
-                  </h3>
-                  <div class="flex items-center text-gray-600 text-sm">
-                    <i class="ri-map-pin-line mr-1"></i>
-                    <span>Accra</span>
-                    <span class="mx-2">•</span>
-                    <span>Full-time</span>
-                  </div>
-                </div>
-                <div
-                  class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center"
-                >
-                  <i class="ri-file-copy-2-line text-blue-800 text-xl"></i>
-                </div>
-              </div>
-              <p class="text-gray-600 mb-4 line-clamp-3">
-                Provide comprehensive administrative support to ensure efficient
-                office operations. Manage documentation, coordinate schedules,
-                and serve as the organizational hub for our Accra headquarters.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span
-                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
-                  >Office Management</span
-                >
-                <span
-                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
-                  >Document Control</span
-                >
-                <span
-                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
-                  >Communication</span
-                >
-                <span
-                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
-                  >MS Office</span
-                >
-              </div>
-              <div class="flex justify-between items-center">
-                <span class="text-sm text-gray-500">Posted 3 days ago</span>
-                <button
-                  class="apply-btn px-4 py-2 border border-blue-500 text-blue-500 rounded-lg font-medium hover:bg-blue-500 hover:text-white transition-colors"
-                  onclick="openJobModal('Administrative Officer', 'administration', 'Accra', 'full-time', 'We are seeking an organized and proactive Administrative Officer to join our Accra headquarters. In this role, you will be the backbone of our office operations, ensuring smooth administrative processes and supporting various departments with your excellent organizational skills.', 'Manage day-to-day office operations and administrative systems\nHandle correspondence, filing, and document control\nCoordinate meetings, schedules, and travel arrangements\nMaintain office supplies and equipment inventory\nServe as first point of contact for visitors and calls\nPrepare reports, presentations, and meeting minutes\nAssist with HR and finance documentation as needed\nSupport event planning and company initiatives\nImplement and improve administrative processes', 'Bachelor\'s degree in Business Administration or related field\n2+ years experience in office administration\nProficiency in MS Office (Word, Excel, PowerPoint, Outlook)\nExcellent written and verbal communication skills\nStrong organizational and time-management abilities\nAttention to detail and problem-solving skills\nAbility to multitask and prioritize effectively\nProfessional demeanor and customer service orientation', 'Competitive salary with annual reviews\nComprehensive health insurance package\nProfessional development opportunities\nModern office environment\nPaid time off and holidays\nTeam building activities\nOpportunity to grow within the organization')"
-                >
-                  Apply Now
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sample Job Card 5 -->
-          <div
-            class="job-card bg-white rounded-xl shadow-md overflow-hidden fade-in"
-            data-aos="fade-up"
-            data-aos-delay="400"
-            data-department="finance"
-            data-location="accra"
-          >
-            <div class="p-6">
-              <div class="flex justify-between items-start mb-4">
-                <div>
-                  <span
-                    class="inline-block px-3 py-1 bg-green-100 text-green-800 text-xs font-semibold rounded-full mb-2 job-tag"
-                  >
-                    Finance
-                  </span>
-                  <h3 class="text-xl font-bold text-gray-900 mb-1">
-                    Finance Officer
-                  </h3>
-                  <div class="flex items-center text-gray-600 text-sm">
-                    <i class="ri-map-pin-line mr-1"></i>
-                    <span>Accra</span>
-                    <span class="mx-2">•</span>
-                    <span>Full-time</span>
-                  </div>
-                </div>
-                <div
-                  class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center"
-                >
-                  <i class="ri-bank-card-line text-green-800 text-xl"></i>
-                </div>
-              </div>
-              <p class="text-gray-600 mb-4 line-clamp-3">
-                Manage financial operations including accounts, reporting, and
-                budgeting to support our growing logistics business. Ensure
-                compliance with financial regulations and maintain accurate
-                records.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span
-                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
-                  >Financial Reporting</span
-                >
-                <span
-                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
-                  >Budget Management</span
-                >
-                <span
-                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
-                  >QuickBooks</span
-                >
-                <span
-                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
-                  >Tax Compliance</span
-                >
-              </div>
-              <div class="flex justify-between items-center">
-                <span class="text-sm text-gray-500">Posted 5 days ago</span>
-                <button
-                  class="apply-btn px-4 py-2 border border-green-500 text-green-500 rounded-lg font-medium hover:bg-green-500 hover:text-white transition-colors"
-                  onclick="openJobModal('Finance Officer', 'finance', 'Accra', 'full-time', 'We are seeking a detail-oriented Finance Officer to strengthen our finance team in Accra. You will play a key role in maintaining our financial health by managing accounts, preparing reports, and ensuring regulatory compliance in our fast-paced logistics environment.', 'Maintain accurate accounting records and financial statements\nProcess accounts payable/receivable and reconcile transactions\nPrepare monthly, quarterly and annual financial reports\nAssist with budget preparation and expenditure monitoring\nEnsure compliance with tax regulations and filing requirements\nSupport audit processes and maintain proper documentation\nAnalyze financial data to identify cost-saving opportunities\nImplement and improve financial controls and processes\nCollaborate with departments on financial matters', 'Bachelor\'s degree in Accounting, Finance or related field\nProfessional qualification (ICA, ACCA, CIMA) or in progress\n3+ years experience in accounting/finance role\nProficiency in accounting software (QuickBooks, Sage, etc.)\nStrong knowledge of accounting standards and tax laws\nAdvanced Excel skills for financial analysis\nExcellent attention to detail and analytical skills\nAbility to meet tight deadlines and work under pressure', 'Competitive salary with performance bonuses\nComprehensive health and retirement benefits\nSupport for professional certification\nModern financial systems and tools\nOpportunities for career advancement\nCollaborative team environment\nContinuous training and development')"
-                >
-                  Apply Now
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sample Job Card 6 -->
-          <div
-            class="job-card bg-white rounded-xl shadow-md overflow-hidden fade-in"
-            data-aos="fade-up"
-            data-aos-delay="500"
-            data-department="marketing"
-            data-location="accra"
-          >
-            <div class="p-6">
-              <div class="flex justify-between items-start mb-4">
-                <div>
-                  <span
-                    class="inline-block px-3 py-1 bg-yellow-100 text-yellow-800 text-xs font-semibold rounded-full mb-2 job-tag"
-                  >
-                    Marketing/Sales
-                  </span>
-                  <h3 class="text-xl font-bold text-gray-900 mb-1">
-                    Digital Marketing Specialist
-                  </h3>
-                  <div class="flex items-center text-gray-600 text-sm">
-                    <i class="ri-map-pin-line mr-1"></i>
-                    <span>Accra</span>
-                    <span class="mx-2">•</span>
-                    <span>Full-time</span>
-                  </div>
-                </div>
-                <div
-                  class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center"
-                >
-                  <i class="ri-megaphone-line text-yellow-800 text-xl"></i>
-                </div>
-              </div>
-              <p class="text-gray-600 mb-4 line-clamp-3">
-                Develop and implement digital marketing strategies to enhance
-                our online presence, engage customers, and drive business growth
-                through various digital channels.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span
-                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
-                  >SEO</span
-                >
-                <span
-                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
-                  >Social Media</span
-                >
-                <span
-                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
-                  >Content Marketing</span
-                >
-                <span
-                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
-                  >Google Ads</span
-                >
-              </div>
-              <div class="flex justify-between items-center">
-                <span class="text-sm text-gray-500">Posted 1 week ago</span>
-                <button
-                  class="apply-btn px-4 py-2 border border-yellow-500 text-yellow-500 rounded-lg font-medium hover:bg-yellow-500 hover:text-white transition-colors"
-                  onclick="openJobModal('Digital Marketing Specialist', 'marketing/Sales', 'Accra', 'full-time', 'We are seeking a creative and analytical Digital Marketing Specialist to join our marketing team. You will be responsible for developing and executing digital marketing campaigns across various channels to grow our brand and customer base.', 'Develop and implement digital marketing strategies\nManage and optimize paid advertising campaigns (Google Ads, social media ads)\nCreate and schedule engaging content for social media platforms\nOptimize website content for SEO and lead generation\nAnalyze campaign performance and adjust strategies accordingly\nManage email marketing campaigns and automation\nCollaborate with designers and content creators\nMonitor industry trends and competitor activities\nReport on key metrics and ROI of digital initiatives', 'Bachelor\'s degree in Marketing, Communications, or related field\n2+ years experience in digital marketing\nProficiency in Google Analytics, Ads, and SEO tools\nExperience with social media management and advertising\nStrong analytical and reporting skills\nExcellent written and verbal communication\nCreative thinking and problem-solving abilities\nAbility to work independently and in a team', 'Competitive salary with performance bonuses\nFlexible work arrangements\nProfessional development opportunities\nCreative and collaborative work environment\nHealth and wellness benefits\nLatest marketing tools and software\nOpportunity to shape brand\'s digital presence')"
-                >
-                  Apply Now
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sample Job Card 7 -->
-          <div
-            class="job-card bg-white rounded-xl shadow-md overflow-hidden fade-in"
-            data-aos="fade-up"
-            data-aos-delay="600"
-            data-department="hr"
-            data-location="accra"
-          >
-            <div class="p-6">
-              <div class="flex justify-between items-start mb-4">
-                <div>
-                  <span
-                    class="inline-block px-3 py-1 bg-pink-100 text-pink-800 text-xs font-semibold rounded-full mb-2 job-tag"
-                  >
-                    HR
-                  </span>
-                  <h3 class="text-xl font-bold text-gray-900 mb-1">
-                    HR Coordinator
-                  </h3>
-                  <div class="flex items-center text-gray-600 text-sm">
-                    <i class="ri-map-pin-line mr-1"></i>
-                    <span>Accra</span>
-                    <span class="mx-2">•</span>
-                    <span>Full-time</span>
-                  </div>
-                </div>
-                <div
-                  class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center"
-                >
-                  <i class="ri-team-line text-pink-800 text-xl"></i>
-                </div>
-              </div>
-              <p class="text-gray-600 mb-4 line-clamp-3">
-                Support HR operations including recruitment, employee relations,
-                and HR administration to ensure smooth human resources processes
-                within the company.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span
-                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
-                  >Recruitment</span
-                >
-                <span
-                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
-                  >Employee Relations</span
-                >
-                <span
-                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
-                  >HR Administration</span
-                >
-              </div>
-              <div class="flex justify-between items-center">
-                <span class="text-sm text-gray-500">Posted 2 days ago</span>
-                <button
-                  class="apply-btn px-4 py-2 border border-pink-500 text-pink-500 rounded-lg font-medium hover:bg-pink-500 hover:text-white transition-colors"
-                  onclick="openJobModal('HR Coordinator', 'hr', 'Accra', 'full-time', 'We are looking for an HR Coordinator to join our Human Resources team. You will play a key role in supporting various HR functions including recruitment, employee relations, and HR administration.', 'Assist with full-cycle recruitment processes\nCoordinate interviews and candidate communications\nConduct new employee onboarding and orientation\nMaintain employee records and HR documentation\nAssist with payroll preparation and benefits administration\nSupport employee relations and engagement initiatives\nHelp organize training and development programs\nRespond to employee inquiries about HR policies\nAssist with HR projects and process improvements', 'Bachelor\'s degree in Human Resources or related field\n2+ years experience in HR or administrative role\nKnowledge of HR practices and labor laws\nExcellent organizational and time management skills\nStrong interpersonal and communication abilities\nDiscretion and ability to handle confidential information\nProficiency in MS Office and HR software\nPositive attitude and team player mentality', 'Competitive salary with benefits\nProfessional HR certification support\nOpportunities for career growth in HR\nPositive and inclusive work environment\nHealth and wellness programs\nEmployee recognition initiatives\nRegular team building activities')"
-                >
-                  Apply Now
-                </button>
-              </div>
-            </div>
-          </div>
-          <!-- Driver Job Card -->
-          <div
-            class="job-card bg-white rounded-xl shadow-md overflow-hidden fade-in"
-            data-aos="fade-up"
-            data-aos-delay="700"
-            data-department="operations"
-            data-location="accra"
-          >
-            <div class="p-6">
-              <div class="flex justify-between items-start mb-4">
-                <div>
-                  <span
-                    class="inline-block px-3 py-1 bg-orange-100 text-orange-800 text-xs font-semibold rounded-full mb-2 job-tag"
-                  >
-                    Operations
-                  </span>
-                  <h3 class="text-xl font-bold text-gray-900 mb-1">
-                    Delivery Driver
-                  </h3>
-                  <div class="flex items-center text-gray-600 text-sm">
-                    <i class="ri-map-pin-line mr-1"></i>
-                    <span>Accra & Surrounding Regions</span>
-                    <span class="mx-2">•</span>
-                    <span>Full-time</span>
-                  </div>
-                </div>
-                <div
-                  class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center"
-                >
-                  <i class="ri-truck-line text-orange-800 text-xl"></i>
-                </div>
-              </div>
-              <p class="text-gray-600 mb-4 line-clamp-3">
-                Safely operate company vehicles to deliver packages to customers
-                across Accra and nearby regions. Maintain vehicle condition and
-                ensure timely, professional deliveries.
-              </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span
-                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
-                  >Safe Driving</span
-                >
-                <span
-                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
-                  >Route Planning</span
-                >
-                <span
-                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
-                  >Vehicle Maintenance</span
-                >
-                <span
-                  class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full"
-                  >Customer Service</span
-                >
-              </div>
-              <div class="flex justify-between items-center">
-                <span class="text-sm text-gray-500">Posted 2 days ago</span>
-                <button
-                  class="apply-btn px-4 py-2 border border-orange-500 text-orange-500 rounded-lg font-medium hover:bg-orange-500 hover:text-white transition-colors"
-                  onclick="openJobModal('Delivery Driver', 'operations', 'Accra & Surrounding Regions', 'full-time', 'We are seeking reliable Delivery Drivers to join our operations team. You will be responsible for transporting packages safely and efficiently while providing excellent customer service.', 'Safely operate company vehicles for package deliveries\nFollow planned delivery routes efficiently\nInspect vehicle before and after each shift\nMaintain accurate delivery records and documentation\nProvide professional customer service during deliveries\nReport any vehicle issues or accidents immediately\nAdhere to all traffic and safety regulations\nHandle packages with care to prevent damage\nCommunicate effectively with dispatch team', 'Valid driver\'s license (Class C minimum)\nClean driving record with no major violations\nMinimum 2 years professional driving experience\nGood knowledge of Accra and surrounding areas\nAbility to lift up to 25kg packages\nExcellent time management skills\nBasic vehicle maintenance knowledge\nProfessional demeanor and customer service skills', 'Competitive hourly wages + performance bonuses\nCompany-provided vehicle and fuel\nComprehensive insurance coverage\nPaid training and safety certifications\nUniforms and protective gear provided\nOpportunities for career advancement\nSupportive team environment')"
-                >
-                  Apply Now
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
 
         <!-- No Jobs Found Message (Hidden by default) -->
@@ -979,39 +558,15 @@
 
         <!-- Pagination -->
         <div class="flex justify-center mt-12" data-aos="fade-up">
-          <nav class="inline-flex rounded-md shadow-sm">
-            <button
-              class="px-3 py-2 rounded-l-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50"
-            >
-              <i class="ri-arrow-left-s-line"></i>
-            </button>
-            <button
-              class="px-4 py-2 border-t border-b border-gray-300 bg-white text-primary font-medium"
-            >
-              1
-            </button>
-            <button
-              class="px-4 py-2 border border-gray-300 bg-white text-gray-500 hover:bg-gray-50"
-            >
-              2
-            </button>
-            <button
-              class="px-4 py-2 border-t border-b border-gray-300 bg-white text-gray-500 hover:bg-gray-50"
-            >
-              3
-            </button>
-            <button
-              class="px-3 py-2 rounded-r-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50"
-            >
-              <i class="ri-arrow-right-s-line"></i>
-            </button>
-          </nav>
+          <div id="pagination-container" class="flex items-center gap-1">
+            <!-- Pagination buttons will be dynamically added here -->
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Why Join Us Section -->
-    <!-- <section id="why-join-us" class="py-16 bg-gray-50">
+    <section id="why-join-us" class="py-16 bg-gray-50">
       <div class="container mx-auto px-4">
         <div class="max-w-3xl mx-auto text-center mb-12" data-aos="fade-up">
           <span class="text-sm font-medium text-primary mb-2 inline-block">
@@ -1032,7 +587,6 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          
           <div
             class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow bounce-in"
             data-aos="fade-up"
@@ -1053,7 +607,6 @@
             </p>
           </div>
 
-          
           <div
             class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow bounce-in"
             data-aos="fade-up"
@@ -1074,7 +627,6 @@
             </p>
           </div>
 
-          
           <div
             class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow bounce-in"
             data-aos="fade-up"
@@ -1095,7 +647,7 @@
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
 
     <!-- Hiring Process -->
     <section class="py-16 bg-white">
@@ -1307,7 +859,7 @@
       class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 hidden"
     >
       <div
-        class="bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+        class="bg-white rounded-xl shadow-2xl max-w-7xl w-full max-h-[90vh] overflow-y-auto"
       >
         <!-- Modal Header -->
         <div
@@ -1351,10 +903,7 @@
                 <h4 class="text-lg font-semibold mb-3 text-gray-900">
                   Key Responsibilities
                 </h4>
-                <ul
-                  id="modal-job-responsibilities"
-                  class="list-disc pl-5 space-y-2 text-gray-600"
-                ></ul>
+                <ul id="modal-job-responsibilities" class="modal-list"></ul>
               </div>
 
               <!-- Requirements -->
@@ -1362,10 +911,7 @@
                 <h4 class="text-lg font-semibold mb-3 text-gray-900">
                   Requirements
                 </h4>
-                <ul
-                  id="modal-job-requirements"
-                  class="list-disc pl-5 space-y-2 text-gray-600"
-                ></ul>
+                <ul id="modal-job-requirements" class="modal-list"></ul>
               </div>
 
               <!-- Benefits -->
@@ -1373,10 +919,7 @@
                 <h4 class="text-lg font-semibold mb-3 text-gray-900">
                   What We Offer
                 </h4>
-                <ul
-                  id="modal-job-benefits"
-                  class="list-disc pl-5 space-y-2 text-gray-600"
-                ></ul>
+                <ul id="modal-job-benefits" class="modal-list"></ul>
               </div>
             </div>
 
@@ -1588,6 +1131,70 @@
                     ></textarea>
                   </div>
 
+                  <!-- Email Preview Section -->
+                  <div id="email-preview-container" class="hidden">
+                    <h4 class="text-sm font-medium text-gray-700 mb-2">
+                      Your application will be sent as:
+                    </h4>
+                    <div class="email-preview">
+                      <div class="email-header">
+                        <p><strong>To:</strong> dekuj73@gmail.com</p>
+                        <p>
+                          <strong>Subject:</strong> Job Application for
+                          <span id="preview-job-title"></span>
+                        </p>
+                      </div>
+                      <div class="email-body">
+                        <p>Dear Hiring Manager,</p>
+                        <p>
+                          I am applying for the position of
+                          <span id="preview-position"></span> at SkyNet Express
+                          Ltd.
+                        </p>
+                        <p>
+                          <strong>Name:</strong> <span id="preview-name"></span>
+                        </p>
+                        <p>
+                          <strong>Email:</strong>
+                          <span id="preview-email"></span>
+                        </p>
+                        <p>
+                          <strong>Phone:</strong>
+                          <span id="preview-phone"></span>
+                        </p>
+                        <p>
+                          <strong>Current Location:</strong>
+                          <span id="preview-location"></span>
+                        </p>
+                        <p>
+                          <strong>Salary Expectation:</strong>
+                          <span id="preview-salary"></span>
+                        </p>
+                        <p>
+                          <strong>Notice Period:</strong>
+                          <span id="preview-notice"></span>
+                        </p>
+                        <p id="preview-portfolio" class="hidden">
+                          <strong>Portfolio:</strong>
+                          <span id="preview-portfolio-value"></span>
+                        </p>
+                        <div id="preview-message-container" class="hidden">
+                          <p><strong>Message:</strong></p>
+                          <p id="preview-message"></p>
+                        </div>
+                        <p>Please find my resume and cover letter attached.</p>
+                        <p>Best regards,</p>
+                        <p id="preview-name-footer"></p>
+                      </div>
+                      <div class="email-footer">
+                        <p>
+                          This email was sent via the SkyNet Express Careers
+                          Portal
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
                   <div class="pt-2">
                     <button
                       type="submit"
@@ -1730,10 +1337,10 @@
               >
                 <option value="">Select department</option>
                 <option value="operations">Operations</option>
-                <option value="customer-service">Customer Service</option>
+                <option value="Customer Service">Customer Service</option>
                 <option value="administration">Administration</option>
-                <option value="it">Information Technology</option>
-                <option value="hr">Human Resources</option>
+                <option value="IT">Information Technology</option>
+                <option value="HR">Human Resources</option>
                 <option value="marketing">Marketing/Sales</option>
                 <option value="finance">Finance</option>
                 <option value="any">Any Department</option>
@@ -1848,6 +1455,65 @@
                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary"
                 placeholder="Tell us about your skills, experience, and what kind of roles you're interested in..."
               ></textarea>
+            </div>
+
+            <!-- Email Preview Section for General Application -->
+            <div id="general-email-preview-container" class="hidden">
+              <h4 class="text-sm font-medium text-gray-700 mb-2">
+                Your application will be sent as:
+              </h4>
+              <div class="email-preview">
+                <div class="email-header">
+                  <p><strong>To:</strong> dekuj73@gmail.com</p>
+                  <p>
+                    <strong>Subject:</strong> General Application - SkyNet
+                    Express Careers
+                  </p>
+                </div>
+                <div class="email-body">
+                  <p>Dear Hiring Manager,</p>
+                  <p>
+                    I am submitting my resume for consideration for future
+                    opportunities at SkyNet Express Ltd.
+                  </p>
+                  <p>
+                    <strong>Name:</strong>
+                    <span id="general-preview-name"></span>
+                  </p>
+                  <p>
+                    <strong>Email:</strong>
+                    <span id="general-preview-email"></span>
+                  </p>
+                  <p>
+                    <strong>Phone:</strong>
+                    <span id="general-preview-phone"></span>
+                  </p>
+                  <p>
+                    <strong>Preferred Location:</strong>
+                    <span id="general-preview-location"></span>
+                  </p>
+                  <p>
+                    <strong>Department of Interest:</strong>
+                    <span id="general-preview-department"></span>
+                  </p>
+                  <p id="general-preview-portfolio" class="hidden">
+                    <strong>Portfolio:</strong>
+                    <span id="general-preview-portfolio-value"></span>
+                  </p>
+                  <div id="general-preview-message-container">
+                    <p><strong>About Me:</strong></p>
+                    <p id="general-preview-message"></p>
+                  </div>
+                  <p>Please find my resume attached.</p>
+                  <p>Best regards,</p>
+                  <p id="general-preview-name-footer"></p>
+                </div>
+                <div class="email-footer">
+                  <p>
+                    This email was sent via the SkyNet Express Careers Portal
+                  </p>
+                </div>
+              </div>
             </div>
 
             <div class="pt-2">
@@ -2137,6 +1803,577 @@
     </footer>
 
     <script>
+      // Job vacancies database with actual posting dates
+      const jobVacancies = [
+        {
+          id: 1,
+          title: "Logistics Manager",
+          department: "operations",
+          location: "accra",
+          type: "full-time",
+          status: "open",
+          postedDate: new Date("2025-07-05T11:49:37"), // Actual posting date
+          description:
+            "Oversee and manage all logistics operations, ensuring efficient transportation and delivery of goods across our network. Lead a team of logistics coordinators and drivers.",
+          responsibilities: [
+            "Oversee daily logistics operations and transportation activities",
+            "Manage and lead a team of logistics coordinators and drivers",
+            "Develop and implement efficient routing and delivery schedules",
+            "Monitor and analyze logistics performance metrics",
+            "Ensure compliance with transportation regulations and safety standards",
+            "Collaborate with other departments to optimize supply chain processes",
+            "Handle logistics-related customer inquiries and resolve issues",
+            "Manage relationships with transportation vendors and partners",
+          ],
+          requirements: [
+            "Bachelor's degree in Logistics, Supply Chain Management, or related field",
+            "Minimum 5 years experience in logistics or transportation management",
+            "Proven leadership and team management skills",
+            "Strong analytical and problem-solving abilities",
+            "Excellent communication and interpersonal skills",
+            "Knowledge of transportation regulations and compliance",
+            "Proficiency in logistics software and Microsoft Office",
+          ],
+          benefits: [
+            "Competitive salary with performance bonuses",
+            "Comprehensive health insurance",
+            "Professional development opportunities",
+            "Company vehicle for work-related travel",
+            "Paid time off and holidays",
+            "Employee discount on shipping services",
+            "Dynamic and supportive work environment",
+          ],
+          skills: ["Management", "Transportation", "Team Leadership"],
+          icon: "ri-truck-line",
+          color: "orange",
+        },
+        {
+          id: 2,
+          title: "Customer Support Specialist",
+          department: "Customer Service",
+          location: "kumasi",
+          type: "full-time",
+          status: "open",
+          postedDate: new Date("2025-07-08T13:03:19"), // Actual posting date
+          description:
+            "Provide exceptional customer service to our clients, handling inquiries, resolving issues, and ensuring a positive customer experience with our services.",
+          responsibilities: [
+            "Respond to customer inquiries via phone, email, and live chat",
+            "Resolve customer complaints and issues efficiently",
+            "Provide information about our services and pricing",
+            "Process orders, forms, and applications",
+            "Maintain customer records and update account information",
+            "Collaborate with other departments to resolve customer issues",
+            "Identify and escalate priority issues to management",
+            "Collect and report customer feedback to improve services",
+          ],
+          requirements: [
+            "Diploma or degree in any field",
+            "Minimum 2 years experience in customer service",
+            "Excellent communication and interpersonal skills",
+            "Strong problem-solving abilities",
+            "Patience and ability to handle difficult customers",
+            "Basic computer skills and CRM experience",
+            "Ability to work in a fast-paced environment",
+          ],
+          benefits: [
+            "Competitive salary with monthly bonuses",
+            "Health and dental insurance",
+            "Paid training and development",
+            "Opportunities for career advancement",
+            "Employee wellness programs",
+            "Team building activities",
+            "Positive and supportive work culture",
+          ],
+          skills: ["Communication", "Problem Solving", "CRM"],
+          icon: "ri-customer-service-2-line",
+          color: "blue",
+        },
+        {
+          id: 3,
+          title: "Full Stack Developer",
+          department: "IT",
+          location: "tarkwa",
+          type: "full-time",
+          status: "open",
+          postedDate: new Date("2025-05-18T11:37:11"), // Actual posting date
+          description:
+            "Develop and maintain our web applications and internal systems. Work with modern technologies to improve our digital platforms and customer experience.",
+          responsibilities: [
+            "Develop and maintain web applications using modern JavaScript frameworks",
+            "Design and implement RESTful APIs for internal and external use",
+            "Collaborate with cross-functional teams to define, design, and ship new features",
+            "Optimize applications for maximum speed and scalability",
+            "Implement security and data protection measures",
+            "Write clean, maintainable, and efficient code",
+            "Troubleshoot and debug applications",
+            "Stay updated with emerging technologies and industry trends",
+          ],
+          requirements: [
+            "Bachelor's degree in Computer Science or related field",
+            "3+ years experience in full stack development",
+            "Proficiency in JavaScript, React, Node.js, and Express",
+            "Experience with databases (SQL and NoSQL)",
+            "Familiarity with cloud platforms (AWS, Azure, or GCP)",
+            "Understanding of CI/CD pipelines",
+            "Strong problem-solving skills",
+            "Excellent collaboration and communication abilities",
+          ],
+          benefits: [
+            "Competitive salary with performance bonuses",
+            "Flexible remote work options",
+            "Latest technology equipment",
+            "Professional development budget",
+            "Health and wellness benefits",
+            "Generous vacation policy",
+            "Opportunity to work on impactful projects",
+          ],
+          skills: ["JavaScript", "React", "Node.js", "API"],
+          icon: "ri-code-line",
+          color: "purple",
+        },
+        {
+          id: 4,
+          title: "Administrative Officer",
+          department: "administration",
+          location: "accra",
+          type: "full-time",
+          status: "filled",
+          postedDate: new Date("2025-02-08T10:43:47"), // Actual posting date
+          description:
+            "Provide comprehensive administrative support to ensure efficient office operations. Manage documentation, coordinate schedules, and serve as the organizational hub for our Accra headquarters.",
+          responsibilities: [
+            "Manage day-to-day office operations and administrative systems",
+            "Handle correspondence, filing, and document control",
+            "Coordinate meetings, schedules, and travel arrangements",
+            "Maintain office supplies and equipment inventory",
+            "Serve as first point of contact for visitors and calls",
+            "Prepare reports, presentations, and meeting minutes",
+            "Assist with HR and finance documentation as needed",
+            "Support event planning and company initiatives",
+            "Implement and improve administrative processes",
+          ],
+          requirements: [
+            "Bachelor's degree in Business Administration or related field",
+            "2+ years experience in office administration",
+            "Proficiency in MS Office (Word, Excel, PowerPoint, Outlook)",
+            "Excellent written and verbal communication skills",
+            "Strong organizational and time-management abilities",
+            "Attention to detail and problem-solving skills",
+            "Ability to multitask and prioritize effectively",
+            "Professional demeanor and customer service orientation",
+          ],
+          benefits: [
+            "Competitive salary with annual reviews",
+            "Comprehensive health insurance package",
+            "Professional development opportunities",
+            "Modern office environment",
+            "Paid time off and holidays",
+            "Team building activities",
+            "Opportunity to grow within the organization",
+          ],
+          skills: [
+            "Office Management",
+            "Document Control",
+            "Communication",
+            "MS Office",
+          ],
+          icon: "ri-file-copy-2-line",
+          color: "blue",
+        },
+        {
+          id: 5,
+          title: "Finance Officer",
+          department: "finance",
+          location: "accra",
+          type: "full-time",
+          status: "open",
+          postedDate: new Date("2025-06-28T08:10:19"), // Actual posting date
+          description:
+            "Manage financial operations including accounts, reporting, and budgeting to support our growing logistics business. Ensure compliance with financial regulations and maintain accurate records.",
+          responsibilities: [
+            "Maintain accurate accounting records and financial statements",
+            "Process accounts payable/receivable and reconcile transactions",
+            "Prepare monthly, quarterly and annual financial reports",
+            "Assist with budget preparation and expenditure monitoring",
+            "Ensure compliance with tax regulations and filing requirements",
+            "Support audit processes and maintain proper documentation",
+            "Analyze financial data to identify cost-saving opportunities",
+            "Implement and improve financial controls and processes",
+            "Collaborate with departments on financial matters",
+          ],
+          requirements: [
+            "Bachelor's degree in Accounting, Finance or related field",
+            "Professional qualification (ICA, ACCA, CIMA) or in progress",
+            "3+ years experience in accounting/finance role",
+            "Proficiency in accounting software (QuickBooks, Sage, etc.)",
+            "Strong knowledge of accounting standards and tax laws",
+            "Advanced Excel skills for financial analysis",
+            "Excellent attention to detail and analytical skills",
+            "Ability to meet tight deadlines and work under pressure",
+          ],
+          benefits: [
+            "Competitive salary with performance bonuses",
+            "Comprehensive health and retirement benefits",
+            "Support for professional certification",
+            "Modern financial systems and tools",
+            "Opportunities for career advancement",
+            "Collaborative team environment",
+            "Continuous training and development",
+          ],
+          skills: [
+            "Financial Reporting",
+            "Budget Management",
+            "QuickBooks",
+            "Tax Compliance",
+          ],
+          icon: "ri-bank-card-line",
+          color: "green",
+        },
+        {
+          id: 6,
+          title: "Digital Marketing Specialist",
+          department: "marketing",
+          location: "accra",
+          type: "full-time",
+          status: "open",
+          postedDate: new Date("2025-01-08T16:13:07"), // Actual posting date
+          description:
+            "Develop and implement digital marketing strategies to enhance our online presence, engage customers, and drive business growth through various digital channels.",
+          responsibilities: [
+            "Develop and implement digital marketing strategies",
+            "Manage and optimize paid advertising campaigns (Google Ads, social media ads)",
+            "Create and schedule engaging content for social media platforms",
+            "Optimize website content for SEO and lead generation",
+            "Analyze campaign performance and adjust strategies accordingly",
+            "Manage email marketing campaigns and automation",
+            "Collaborate with designers and content creators",
+            "Monitor industry trends and competitor activities",
+            "Report on key metrics and ROI of digital initiatives",
+          ],
+          requirements: [
+            "Bachelor's degree in Marketing, Communications, or related field",
+            "2+ years experience in digital marketing",
+            "Proficiency in Google Analytics, Ads, and SEO tools",
+            "Experience with social media management and advertising",
+            "Strong analytical and reporting skills",
+            "Excellent written and verbal communication",
+            "Creative thinking and problem-solving abilities",
+            "Ability to work independently and in a team",
+          ],
+          benefits: [
+            "Competitive salary with performance bonuses",
+            "Flexible work arrangements",
+            "Professional development opportunities",
+            "Creative and collaborative work environment",
+            "Health and wellness benefits",
+            "Latest marketing tools and software",
+            "Opportunity to shape brand's digital presence",
+          ],
+          skills: ["SEO", "Social Media", "Content Marketing", "Google Ads"],
+          icon: "ri-megaphone-line",
+          color: "yellow",
+        },
+        {
+          id: 7,
+          title: "HR Coordinator",
+          department: "HR",
+          location: "accra",
+          type: "full-time",
+          status: "closed",
+          postedDate: new Date("2025-07-02T09:03:17"), // Actual posting date
+          description:
+            "Support HR operations including recruitment, employee relations, and HR administration to ensure smooth human resources processes within the company.",
+          responsibilities: [
+            "Assist with full-cycle recruitment processes",
+            "Coordinate interviews and candidate communications",
+            "Conduct new employee onboarding and orientation",
+            "Maintain employee records and HR documentation",
+            "Assist with payroll preparation and benefits administration",
+            "Support employee relations and engagement initiatives",
+            "Help organize training and development programs",
+            "Respond to employee inquiries about HR policies",
+            "Assist with HR projects and process improvements",
+          ],
+          requirements: [
+            "Bachelor's degree in Human Resources or related field",
+            "2+ years experience in HR or administrative role",
+            "Knowledge of HR practices and labor laws",
+            "Excellent organizational and time management skills",
+            "Strong interpersonal and communication abilities",
+            "Discretion and ability to handle confidential information",
+            "Proficiency in MS Office and HR software",
+            "Positive attitude and team player mentality",
+          ],
+          benefits: [
+            "Competitive salary with benefits",
+            "Professional HR certification support",
+            "Opportunities for career growth in HR",
+            "Positive and inclusive work environment",
+            "Health and wellness programs",
+            "Employee recognition initiatives",
+            "Regular team building activities",
+          ],
+          skills: ["Recruitment", "Employee Relations", "HR Administration"],
+          icon: "ri-team-line",
+          color: "pink",
+        },
+        {
+          id: 8,
+          title: "Delivery Driver",
+          department: "operations",
+          location: "accra",
+          type: "full-time",
+          status: "open",
+          postedDate: new Date("2025-05-12T13:23:26"), // Actual posting date
+          description:
+            "Safely operate company vehicles to deliver packages to customers across Accra and nearby regions. Maintain vehicle condition and ensure timely, professional deliveries.",
+          responsibilities: [
+            "Safely operate company vehicles for package deliveries",
+            "Follow planned delivery routes efficiently",
+            "Inspect vehicle before and after each shift",
+            "Maintain accurate delivery records and documentation",
+            "Provide professional customer service during deliveries",
+            "Report any vehicle issues or accidents immediately",
+            "Adhere to all traffic and safety regulations",
+            "Handle packages with care to prevent damage",
+            "Communicate effectively with dispatch team",
+          ],
+          requirements: [
+            "Valid driver's license (Class C minimum)",
+            "Clean driving record with no major violations",
+            "Minimum 2 years professional driving experience",
+            "Good knowledge of Accra and surrounding areas",
+            "Ability to lift up to 25kg packages",
+            "Excellent time management skills",
+            "Basic vehicle maintenance knowledge",
+            "Professional demeanor and customer service skills",
+          ],
+          benefits: [
+            "Competitive hourly wages + performance bonuses",
+            "Company-provided vehicle and fuel",
+            "Comprehensive insurance coverage",
+            "Paid training and safety certifications",
+            "Uniforms and protective gear provided",
+            "Opportunities for career advancement",
+            "Supportive team environment",
+          ],
+          skills: [
+            "Safe Driving",
+            "Route Planning",
+            "Vehicle Maintenance",
+            "Customer Service",
+          ],
+          icon: "ri-truck-line",
+          color: "orange",
+        },
+        {
+          id: 9,
+          title: "Operations Supervisor",
+          department: "operations",
+          location: "kumasi",
+          type: "full-time",
+          status: "open",
+          postedDate: new Date("2025-04-08T11:24:07"), // Actual posting date
+          description:
+            "Supervise daily operations at our Kumasi facility, ensuring efficient workflow, quality service, and adherence to company policies and procedures.",
+          responsibilities: [
+            "Supervise and coordinate daily operations activities",
+            "Monitor workflow and adjust schedules as needed",
+            "Train and mentor operations staff",
+            "Ensure compliance with safety and operational procedures",
+            "Resolve operational issues and customer complaints",
+            "Maintain accurate records and reports",
+            "Collaborate with other departments to improve processes",
+            "Implement efficiency improvements and cost-saving measures",
+          ],
+          requirements: [
+            "Bachelor's degree in Business Administration or related field",
+            "3+ years experience in operations or logistics supervision",
+            "Strong leadership and team management skills",
+            "Excellent problem-solving and decision-making abilities",
+            "Knowledge of logistics and supply chain processes",
+            "Ability to work in a fast-paced environment",
+            "Proficiency in Microsoft Office and operations software",
+          ],
+          benefits: [
+            "Competitive salary with performance bonuses",
+            "Health and dental insurance",
+            "Retirement savings plan",
+            "Paid time off and holidays",
+            "Professional development opportunities",
+            "Employee assistance program",
+            "Positive work environment",
+          ],
+          skills: ["Supervision", "Operations", "Team Leadership", "Logistics"],
+          icon: "ri-settings-3-line",
+          color: "blue",
+        },
+        {
+          id: 10,
+          title: "IT Support Specialist",
+          department: "IT",
+          location: "accra",
+          type: "full-time",
+          status: "open",
+          postedDate: new Date("2025-02-08T16:33:17"), // Actual posting date
+          description:
+            "Provide technical support to our staff, troubleshoot hardware and software issues, and maintain our IT infrastructure to ensure smooth business operations.",
+          responsibilities: [
+            "Provide technical support to end-users",
+            "Troubleshoot hardware, software, and network issues",
+            "Install and configure computer systems and applications",
+            "Maintain IT equipment and inventory",
+            "Assist with IT projects and system upgrades",
+            "Train staff on software and hardware usage",
+            "Document technical procedures and solutions",
+            "Ensure security and privacy of networks and computer systems",
+          ],
+          requirements: [
+            "Bachelor's degree in Computer Science or related field",
+            "2+ years experience in IT support role",
+            "Knowledge of computer systems, networks, and troubleshooting",
+            "Experience with Windows and macOS environments",
+            "Familiarity with help desk software and remote support tools",
+            "Excellent problem-solving and communication skills",
+            "Customer service orientation and patience",
+          ],
+          benefits: [
+            "Competitive salary with benefits",
+            "Health and wellness programs",
+            "Professional certification support",
+            "Flexible work arrangements",
+            "Latest technology tools",
+            "Collaborative team environment",
+            "Opportunities for career growth",
+          ],
+          skills: [
+            "Technical Support",
+            "Troubleshooting",
+            "Hardware",
+            "Software",
+            "Networking",
+          ],
+          icon: "ri-computer-line",
+          color: "purple",
+        },
+        {
+          id: 11,
+          title: "Marketing Coordinator",
+          department: "marketing",
+          location: "accra",
+          type: "full-time",
+          status: "open",
+          postedDate: new Date("2025-05-08T06:40:20"), // Actual posting date
+          description:
+            "Support marketing initiatives, coordinate campaigns, and assist with content creation to promote our services and enhance brand awareness.",
+          responsibilities: [
+            "Assist in developing and implementing marketing strategies",
+            "Coordinate marketing campaigns and promotional activities",
+            "Create content for social media, website, and email marketing",
+            "Monitor and report on campaign performance metrics",
+            "Assist with event planning and execution",
+            "Maintain marketing materials and collateral",
+            "Conduct market research and competitor analysis",
+            "Support sales team with marketing materials and tools",
+          ],
+          requirements: [
+            "Bachelor's degree in Marketing, Communications, or related field",
+            "1-2 years experience in marketing or related role",
+            "Strong written and verbal communication skills",
+            "Familiarity with social media platforms and digital marketing",
+            "Basic graphic design skills (Canva, Adobe Creative Suite)",
+            "Organizational and project management skills",
+            "Creative thinking and problem-solving abilities",
+          ],
+          benefits: [
+            "Competitive salary with performance bonuses",
+            "Health and wellness benefits",
+            "Professional development opportunities",
+            "Creative and dynamic work environment",
+            "Opportunity to work on diverse projects",
+            "Team building activities",
+            "Flexible work arrangements",
+          ],
+          skills: [
+            "Marketing",
+            "Content Creation",
+            "Social Media",
+            "Campaign Management",
+          ],
+          icon: "ri-megaphone-line",
+          color: "yellow",
+        },
+        {
+          id: 12,
+          title: "Warehouse Associate",
+          department: "operations",
+          location: "tema",
+          type: "full-time",
+          status: "open",
+          postedDate: new Date("2025-07-01T12:00:17"), // Actual posting date
+          description:
+            "Perform warehouse operations including receiving, storing, picking, packing, and shipping goods while maintaining accurate inventory records.",
+          responsibilities: [
+            "Receive, inspect, and store incoming goods",
+            "Pick, pack, and prepare orders for shipment",
+            "Operate warehouse equipment (forklifts, pallet jacks, etc.)",
+            "Maintain accurate inventory records",
+            "Perform regular inventory counts and audits",
+            "Ensure warehouse cleanliness and organization",
+            "Follow safety procedures and guidelines",
+            "Assist with loading and unloading trucks",
+          ],
+          requirements: [
+            "High school diploma or equivalent",
+            "1+ years warehouse experience preferred",
+            "Ability to lift up to 50 pounds",
+            "Basic computer skills for inventory tracking",
+            "Attention to detail and accuracy",
+            "Ability to work in a fast-paced environment",
+            "Forklift certification is a plus",
+          ],
+          benefits: [
+            "Competitive hourly wages",
+            "Overtime opportunities",
+            "Health insurance options",
+            "Paid time off",
+            "Safety training and certifications",
+            "Opportunities for advancement",
+            "Team-oriented work environment",
+          ],
+          skills: [
+            "Warehouse Operations",
+            "Inventory Management",
+            "Forklift Operation",
+            "Shipping/Receiving",
+          ],
+          icon: "ri-store-2-line",
+          color: "orange",
+        },
+      ];
+
+      // Function to calculate days since posting with improved "Today" handling
+      function getDaysSincePosted(postedDate) {
+        const today = new Date();
+        const posted = new Date(postedDate);
+
+        // Reset both dates to midnight for accurate day comparison
+        today.setHours(0, 0, 0, 0);
+        posted.setHours(0, 0, 0, 0);
+
+        const diffTime = Math.abs(today - posted);
+        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+        if (diffDays === 0) return "Today";
+        if (diffDays === 1) return "1 day ago";
+        if (diffDays < 7) return `${diffDays} days ago`;
+
+        const diffWeeks = Math.floor(diffDays / 7);
+        if (diffWeeks === 1) return "1 week ago";
+        return `${diffWeeks} weeks ago`;
+      }
+
       // Initialize AOS animation library
       AOS.init({
         duration: 800,
@@ -2155,59 +2392,368 @@
         });
       }
 
+      // Helper function to escape HTML attributes
+      function escapeHtmlAttribute(str) {
+        return str.replace(/"/g, "&quot;").replace(/\n/g, "\\n");
+      }
+
+      // Pagination variables
+      let currentPage = 1;
+      const jobsPerPage = 6;
+      let filteredJobs = [...jobVacancies];
+
+      // Render job listings from database with pagination
+      function renderJobListings(jobs, page = 1) {
+        const jobListings = document.getElementById("job-listings");
+        jobListings.innerHTML = "";
+
+        if (jobs.length === 0) {
+          document.getElementById("no-jobs-message").classList.remove("hidden");
+          document.getElementById("pagination-container").innerHTML = "";
+          return;
+        } else {
+          document.getElementById("no-jobs-message").classList.add("hidden");
+        }
+
+        // Calculate pagination
+        const totalPages = Math.ceil(jobs.length / jobsPerPage);
+        const startIndex = (page - 1) * jobsPerPage;
+        const endIndex = Math.min(startIndex + jobsPerPage, jobs.length);
+        const paginatedJobs = jobs.slice(startIndex, endIndex);
+
+        // Render jobs for current page
+        paginatedJobs.forEach((job, index) => {
+          const jobCard = document.createElement("div");
+          jobCard.className = `job-card bg-white rounded-xl shadow-md overflow-hidden fade-in`;
+          jobCard.setAttribute("data-aos", "fade-up");
+          jobCard.setAttribute("data-aos-delay", `${100 + index * 100}`);
+          jobCard.setAttribute("data-department", job.department);
+          jobCard.setAttribute("data-location", job.location);
+          jobCard.setAttribute("data-status", job.status);
+
+          // Determine status badge
+          let statusBadge = "";
+          if (job.status === "open") {
+            statusBadge = '<span class="status-badge status-open">Open</span>';
+          } else if (job.status === "filled") {
+            statusBadge =
+              '<span class="status-badge status-filled">Filled</span>';
+          } else {
+            statusBadge =
+              '<span class="status-badge status-closed">Closed</span>';
+          }
+
+          // Calculate days since posting
+          const daysSincePosted = getDaysSincePosted(job.postedDate);
+
+          // Create job card HTML with proper escaping
+          jobCard.innerHTML = `
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <span class="inline-block px-3 py-1 bg-${
+                    job.color
+                  }-100 text-${
+            job.color
+          }-800 text-xs font-semibold rounded-full mb-2 job-tag">
+                    ${
+                      job.department.charAt(0).toUpperCase() +
+                      job.department.slice(1)
+                    }
+                  </span>
+                  <h3 class="text-xl font-bold text-gray-900 mb-1">${
+                    job.title
+                  }</h3>
+                  <div class="flex items-center text-gray-600 text-sm">
+                    <i class="ri-map-pin-line mr-1"></i>
+                    <span>${
+                      job.location.charAt(0).toUpperCase() +
+                      job.location.slice(1)
+                    }</span>
+                    <span class="mx-2">•</span>
+                    <span>${
+                      job.type === "full-time"
+                        ? "Full-time"
+                        : job.type === "part-time"
+                        ? "Part-time"
+                        : "Contract"
+                    }</span>
+                    <span class="mx-2">•</span>
+                    ${statusBadge}
+                  </div>
+                </div>
+                <div class="w-12 h-12 bg-${
+                  job.color
+                }-100 rounded-full flex items-center justify-center">
+                  <i class="${job.icon} text-${job.color}-800 text-xl"></i>
+                </div>
+              </div>
+              <p class="text-gray-600 mb-4 line-clamp-3">${job.description}</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                ${job.skills
+                  .map(
+                    (skill) =>
+                      `<span class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full">${skill}</span>`
+                  )
+                  .join("")}
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500">Posted ${daysSincePosted}</span>
+                <button
+                  class="apply-btn px-4 py-2 border border-${
+                    job.color
+                  }-500 text-${job.color}-500 rounded-lg font-medium hover:bg-${
+            job.color
+          }-500 hover:text-white transition-colors ${
+            job.status !== "open" ? "opacity-50 cursor-not-allowed" : ""
+          }"
+                  ${job.status !== "open" ? "disabled" : ""}
+                  data-job-title="${escapeHtmlAttribute(job.title)}"
+                  data-job-department="${escapeHtmlAttribute(job.department)}"
+                  data-job-location="${escapeHtmlAttribute(
+                    job.location.charAt(0).toUpperCase() + job.location.slice(1)
+                  )}"
+                  data-job-type="${escapeHtmlAttribute(job.type)}"
+                  data-job-description="${escapeHtmlAttribute(job.description)}"
+                  data-job-responsibilities="${escapeHtmlAttribute(
+                    JSON.stringify(job.responsibilities)
+                  )}"
+                  data-job-requirements="${escapeHtmlAttribute(
+                    JSON.stringify(job.requirements)
+                  )}"
+                  data-job-benefits="${escapeHtmlAttribute(
+                    JSON.stringify(job.benefits)
+                  )}"
+                >
+                  ${
+                    job.status === "open"
+                      ? "Apply Now"
+                      : job.status === "filled"
+                      ? "Position Filled"
+                      : "Closed"
+                  }
+                </button>
+              </div>
+            </div>
+          `;
+
+          jobListings.appendChild(jobCard);
+        });
+
+        // Render pagination buttons
+        renderPagination(jobs.length, page);
+
+        // Add event listener for apply buttons
+        document.querySelectorAll(".apply-btn").forEach((button) => {
+          button.addEventListener("click", function () {
+            if (this.disabled) return;
+
+            openJobModal(
+              this.dataset.jobTitle,
+              this.dataset.jobDepartment,
+              this.dataset.jobLocation,
+              this.dataset.jobType,
+              this.dataset.jobDescription,
+              this.dataset.jobResponsibilities,
+              this.dataset.jobRequirements,
+              this.dataset.jobBenefits
+            );
+          });
+        });
+      }
+
+      // Render pagination buttons
+      function renderPagination(totalJobs, currentPage) {
+        const totalPages = Math.ceil(totalJobs / jobsPerPage);
+        const paginationContainer = document.getElementById(
+          "pagination-container"
+        );
+        paginationContainer.innerHTML = "";
+
+        if (totalPages <= 1) return;
+
+        // Previous button
+        const prevButton = document.createElement("button");
+        prevButton.className = `pagination-btn rounded-l-md ${
+          currentPage === 1 ? "disabled" : ""
+        }`;
+        prevButton.innerHTML = '<i class="ri-arrow-left-s-line"></i>';
+        prevButton.addEventListener("click", () => {
+          if (currentPage > 1) {
+            currentPage--;
+            renderJobListings(filteredJobs, currentPage);
+            window.scrollTo({
+              top: document.getElementById("current-openings").offsetTop - 100,
+              behavior: "smooth",
+            });
+          }
+        });
+        paginationContainer.appendChild(prevButton);
+
+        // Page buttons
+        const maxVisiblePages = 5;
+        let startPage, endPage;
+
+        if (totalPages <= maxVisiblePages) {
+          startPage = 1;
+          endPage = totalPages;
+        } else {
+          const maxPagesBeforeCurrent = Math.floor(maxVisiblePages / 2);
+          const maxPagesAfterCurrent = Math.ceil(maxVisiblePages / 2) - 1;
+
+          if (currentPage <= maxPagesBeforeCurrent) {
+            startPage = 1;
+            endPage = maxVisiblePages;
+          } else if (currentPage + maxPagesAfterCurrent >= totalPages) {
+            startPage = totalPages - maxVisiblePages + 1;
+            endPage = totalPages;
+          } else {
+            startPage = currentPage - maxPagesBeforeCurrent;
+            endPage = currentPage + maxPagesAfterCurrent;
+          }
+        }
+
+        // Add first page button if needed
+        if (startPage > 1) {
+          const firstButton = document.createElement("button");
+          firstButton.className = `pagination-btn ${
+            currentPage === 1 ? "active" : ""
+          }`;
+          firstButton.textContent = "1";
+          firstButton.addEventListener("click", () => {
+            currentPage = 1;
+            renderJobListings(filteredJobs, currentPage);
+            window.scrollTo({
+              top: document.getElementById("current-openings").offsetTop - 100,
+              behavior: "smooth",
+            });
+          });
+          paginationContainer.appendChild(firstButton);
+
+          if (startPage > 2) {
+            const ellipsis = document.createElement("span");
+            ellipsis.className = "px-3 py-2";
+            ellipsis.textContent = "...";
+            paginationContainer.appendChild(ellipsis);
+          }
+        }
+
+        // Add page buttons
+        for (let i = startPage; i <= endPage; i++) {
+          const pageButton = document.createElement("button");
+          pageButton.className = `pagination-btn ${
+            currentPage === i ? "active" : ""
+          }`;
+          pageButton.textContent = i;
+          pageButton.addEventListener("click", () => {
+            currentPage = i;
+            renderJobListings(filteredJobs, currentPage);
+            window.scrollTo({
+              top: document.getElementById("current-openings").offsetTop - 100,
+              behavior: "smooth",
+            });
+          });
+          paginationContainer.appendChild(pageButton);
+        }
+
+        // Add last page button if needed
+        if (endPage < totalPages) {
+          if (endPage < totalPages - 1) {
+            const ellipsis = document.createElement("span");
+            ellipsis.className = "px-3 py-2";
+            ellipsis.textContent = "...";
+            paginationContainer.appendChild(ellipsis);
+          }
+
+          const lastButton = document.createElement("button");
+          lastButton.className = `pagination-btn ${
+            currentPage === totalPages ? "active" : ""
+          }`;
+          lastButton.textContent = totalPages;
+          lastButton.addEventListener("click", () => {
+            currentPage = totalPages;
+            renderJobListings(filteredJobs, currentPage);
+            window.scrollTo({
+              top: document.getElementById("current-openings").offsetTop - 100,
+              behavior: "smooth",
+            });
+          });
+          paginationContainer.appendChild(lastButton);
+        }
+
+        // Next button
+        const nextButton = document.createElement("button");
+        nextButton.className = `pagination-btn rounded-r-md ${
+          currentPage === totalPages ? "disabled" : ""
+        }`;
+        nextButton.innerHTML = '<i class="ri-arrow-right-s-line"></i>';
+        nextButton.addEventListener("click", () => {
+          if (currentPage < totalPages) {
+            currentPage++;
+            renderJobListings(filteredJobs, currentPage);
+            window.scrollTo({
+              top: document.getElementById("current-openings").offsetTop - 100,
+              behavior: "smooth",
+            });
+          }
+        });
+        paginationContainer.appendChild(nextButton);
+      }
+
+      // Initial render of all jobs
+      renderJobListings(jobVacancies);
+
       // Job search and filter functionality
       const jobSearch = document.getElementById("job-search");
       const jobDepartment = document.getElementById("job-department");
       const jobLocation = document.getElementById("job-location");
-      const jobListings = document.getElementById("job-listings");
-      const noJobsMessage = document.getElementById("no-jobs-message");
+      const jobStatus = document.getElementById("job-status");
 
       function filterJobs() {
         const searchTerm = jobSearch.value.toLowerCase();
         const departmentFilter = jobDepartment.value;
         const locationFilter = jobLocation.value;
+        const statusFilter = jobStatus.value;
 
-        let visibleJobs = 0;
-        const jobCards = jobListings.querySelectorAll(".job-card");
-
-        jobCards.forEach((card) => {
-          const title = card.querySelector("h3").textContent.toLowerCase();
-          const department = card.dataset.department;
-          const location = card.dataset.location;
-
-          const matchesSearch = title.includes(searchTerm);
+        filteredJobs = jobVacancies.filter((job) => {
+          const matchesSearch =
+            job.title.toLowerCase().includes(searchTerm) ||
+            job.description.toLowerCase().includes(searchTerm) ||
+            job.skills.some((skill) =>
+              skill.toLowerCase().includes(searchTerm)
+            );
           const matchesDepartment =
-            !departmentFilter || department === departmentFilter;
+            !departmentFilter || job.department === departmentFilter;
           const matchesLocation =
-            !locationFilter || location === locationFilter;
+            !locationFilter || job.location === locationFilter;
+          const matchesStatus = !statusFilter || job.status === statusFilter;
 
-          if (matchesSearch && matchesDepartment && matchesLocation) {
-            card.style.display = "block";
-            visibleJobs++;
-          } else {
-            card.style.display = "none";
-          }
+          return (
+            matchesSearch &&
+            matchesDepartment &&
+            matchesLocation &&
+            matchesStatus
+          );
         });
 
-        if (visibleJobs === 0) {
-          noJobsMessage.classList.remove("hidden");
-          jobListings.classList.add("hidden");
-        } else {
-          noJobsMessage.classList.add("hidden");
-          jobListings.classList.remove("hidden");
-        }
+        currentPage = 1; // Reset to first page when filters change
+        renderJobListings(filteredJobs);
       }
 
       function resetJobFilters() {
         jobSearch.value = "";
         jobDepartment.value = "";
         jobLocation.value = "";
-        filterJobs();
+        jobStatus.value = "";
+        filteredJobs = [...jobVacancies];
+        currentPage = 1;
+        renderJobListings(filteredJobs);
       }
 
       jobSearch.addEventListener("input", filterJobs);
       jobDepartment.addEventListener("change", filterJobs);
       jobLocation.addEventListener("change", filterJobs);
+      jobStatus.addEventListener("change", filterJobs);
 
       // Job modal functionality
       function openJobModal(
@@ -2245,35 +2791,32 @@
         jobDesc.textContent = description;
         appliedPosition.value = title;
 
-        // Set responsibilities
+        // Clear existing content
         jobResp.innerHTML = "";
-        responsibilities.split("\n").forEach((item) => {
-          if (item.trim()) {
-            const li = document.createElement("li");
-            li.textContent = item.trim();
-            jobResp.appendChild(li);
-          }
-        });
-
-        // Set requirements
         jobReq.innerHTML = "";
-        requirements.split("\n").forEach((item) => {
-          if (item.trim()) {
-            const li = document.createElement("li");
-            li.textContent = item.trim();
-            jobReq.appendChild(li);
-          }
-        });
-
-        // Set benefits
         jobBenefits.innerHTML = "";
-        benefits.split("\n").forEach((item) => {
-          if (item.trim()) {
-            const li = document.createElement("li");
-            li.textContent = item.trim();
-            jobBenefits.appendChild(li);
+
+        // Function to create list items
+        function populateList(container, items) {
+          try {
+            // Parse the JSON string if it's a string
+            const itemsArray =
+              typeof items === "string" ? JSON.parse(items) : items;
+
+            itemsArray.forEach((item) => {
+              const li = document.createElement("li");
+              li.textContent = item;
+              container.appendChild(li);
+            });
+          } catch (e) {
+            console.error("Error parsing items:", e);
           }
-        });
+        }
+
+        // Populate all sections
+        populateList(jobResp, responsibilities);
+        populateList(jobReq, requirements);
+        populateList(jobBenefits, benefits);
 
         // Show modal
         modal.classList.remove("hidden");
@@ -2284,6 +2827,255 @@
         document.getElementById("job-modal").classList.add("hidden");
         document.body.style.overflow = "auto";
       }
+
+      // File upload handling
+      document
+        .getElementById("resume-upload")
+        .addEventListener("change", function (e) {
+          const file = e.target.files[0];
+          if (file) {
+            const fileName = file.name;
+            const fileSize = (file.size / (1024 * 1024)).toFixed(2); // MB
+            const display = document.getElementById("resume-name");
+            display.textContent = `${fileName} (${fileSize}MB)`;
+            display.classList.remove("hidden");
+          }
+        });
+
+      document
+        .getElementById("cover-upload")
+        .addEventListener("change", function (e) {
+          const file = e.target.files[0];
+          if (file) {
+            const fileName = file.name;
+            const fileSize = (file.size / (1024 * 1024)).toFixed(2); // MB
+            const display = document.getElementById("cover-name");
+            display.textContent = `${fileName} (${fileSize}MB)`;
+            display.classList.remove("hidden");
+          }
+        });
+
+      // Update email preview when form fields change
+      document
+        .getElementById("job-application-form")
+        .addEventListener("input", function () {
+          updateEmailPreview();
+        });
+
+      function updateEmailPreview() {
+        const form = document.getElementById("job-application-form");
+        const previewContainer = document.getElementById(
+          "email-preview-container"
+        );
+        const previewJobTitle = document.getElementById("preview-job-title");
+        const previewPosition = document.getElementById("preview-position");
+        const previewName = document.getElementById("preview-name");
+        const previewEmail = document.getElementById("preview-email");
+        const previewPhone = document.getElementById("preview-phone");
+        const previewLocation = document.getElementById("preview-location");
+        const previewSalary = document.getElementById("preview-salary");
+        const previewNotice = document.getElementById("preview-notice");
+        const previewPortfolio = document.getElementById("preview-portfolio");
+        const previewPortfolioValue = document.getElementById(
+          "preview-portfolio-value"
+        );
+        const previewMessageContainer = document.getElementById(
+          "preview-message-container"
+        );
+        const previewMessage = document.getElementById("preview-message");
+        const previewNameFooter = document.getElementById(
+          "preview-name-footer"
+        );
+
+        // Get form values
+        const position = document.getElementById("applied-position").value;
+        const name = form.elements["name"].value;
+        const email = form.elements["email"].value;
+        const phone = form.elements["phone"].value;
+        const location = form.elements["location"].value;
+        const salary = form.elements["salary"].value;
+        const notice = form.elements["notice"].value;
+        const portfolio = form.elements["portfolio"].value;
+        const message = form.elements["message"].value;
+
+        // Update preview
+        previewJobTitle.textContent = position;
+        previewPosition.textContent = position;
+        previewName.textContent = name;
+        previewEmail.textContent = email;
+        previewPhone.textContent = phone;
+        previewLocation.textContent = location;
+        previewSalary.textContent = salary;
+        previewNotice.textContent = notice;
+        previewNameFooter.textContent = name;
+
+        // Show/hide portfolio section
+        if (portfolio) {
+          previewPortfolioValue.textContent = portfolio;
+          previewPortfolio.classList.remove("hidden");
+        } else {
+          previewPortfolio.classList.add("hidden");
+        }
+
+        // Show/hide message section
+        if (message) {
+          previewMessage.textContent = message;
+          previewMessageContainer.classList.remove("hidden");
+        } else {
+          previewMessageContainer.classList.add("hidden");
+        }
+
+        // Show preview container if at least one field is filled
+        if (
+          name ||
+          email ||
+          phone ||
+          location ||
+          salary ||
+          notice ||
+          portfolio ||
+          message
+        ) {
+          previewContainer.classList.remove("hidden");
+        } else {
+          previewContainer.classList.add("hidden");
+        }
+      }
+
+      // Update email preview for general application
+      document
+        .getElementById("general-application-form")
+        .addEventListener("input", function () {
+          updateGeneralEmailPreview();
+        });
+
+      function updateGeneralEmailPreview() {
+        const form = document.getElementById("general-application-form");
+        const previewContainer = document.getElementById(
+          "general-email-preview-container"
+        );
+        const previewName = document.getElementById("general-preview-name");
+        const previewEmail = document.getElementById("general-preview-email");
+        const previewPhone = document.getElementById("general-preview-phone");
+        const previewLocation = document.getElementById(
+          "general-preview-location"
+        );
+        const previewDepartment = document.getElementById(
+          "general-preview-department"
+        );
+        const previewPortfolio = document.getElementById(
+          "general-preview-portfolio"
+        );
+        const previewPortfolioValue = document.getElementById(
+          "general-preview-portfolio-value"
+        );
+        const previewMessage = document.getElementById(
+          "general-preview-message"
+        );
+        const previewNameFooter = document.getElementById(
+          "general-preview-name-footer"
+        );
+
+        // Get form values
+        const name = form.elements["name"].value;
+        const email = form.elements["email"].value;
+        const phone = form.elements["phone"].value;
+        const location = form.elements["location"].value;
+        const department = form.elements["department"].value;
+        const portfolio = form.elements["portfolio"].value;
+        const message = form.elements["message"].value;
+
+        // Update preview
+        previewName.textContent = name;
+        previewEmail.textContent = email;
+        previewPhone.textContent = phone;
+        previewLocation.textContent =
+          location.charAt(0).toUpperCase() + location.slice(1);
+        previewDepartment.textContent =
+          department.charAt(0).toUpperCase() + department.slice(1);
+        previewMessage.textContent = message;
+        previewNameFooter.textContent = name;
+
+        // Show/hide portfolio section
+        if (portfolio) {
+          previewPortfolioValue.textContent = portfolio;
+          previewPortfolio.classList.remove("hidden");
+        } else {
+          previewPortfolio.classList.add("hidden");
+        }
+
+        // Show preview container if at least one field is filled
+        if (
+          name ||
+          email ||
+          phone ||
+          location ||
+          department ||
+          portfolio ||
+          message
+        ) {
+          previewContainer.classList.remove("hidden");
+        } else {
+          previewContainer.classList.add("hidden");
+        }
+      }
+
+      // Form submission handling with email sending
+      document
+        .getElementById("job-application-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Show loading state
+          const submitText = document.getElementById("submit-text");
+          const submitSpinner = document.getElementById("submit-spinner");
+          submitText.textContent = "Submitting...";
+          submitSpinner.classList.remove("hidden");
+
+          // Collect form data
+          const formData = new FormData(this);
+          const resumeFile = document.getElementById("resume-upload").files[0];
+          const coverFile = document.getElementById("cover-upload").files[0];
+
+          if (resumeFile) {
+            formData.append("resume", resumeFile);
+          }
+          if (coverFile) {
+            formData.append("cover_letter", coverFile);
+          }
+
+          // Send data to server (using Fetch API)
+          fetch("https://formsubmit.co/ajax/dekuj73@gmail.com", {
+            method: "POST",
+            body: formData,
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              // Hide loading state
+              submitText.textContent = "Submit Application";
+              submitSpinner.classList.add("hidden");
+
+              // Reset form
+              this.reset();
+              document.getElementById("resume-name").classList.add("hidden");
+              document.getElementById("cover-name").classList.add("hidden");
+              document
+                .getElementById("email-preview-container")
+                .classList.add("hidden");
+
+              // Close job modal and show success
+              closeJobModal();
+              showSuccessModal();
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              submitText.textContent = "Submit Application";
+              submitSpinner.classList.add("hidden");
+              showSuccessModal(
+                "There was an error submitting your application. Please try again later."
+              );
+            });
+        });
 
       // General application modal
       function openGeneralApplicationModal() {
@@ -2347,35 +3139,7 @@
           display.classList.remove("hidden");
         });
 
-      // Form submission handling
-      document
-        .getElementById("job-application-form")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-
-          // Show loading state
-          const submitText = document.getElementById("submit-text");
-          const submitSpinner = document.getElementById("submit-spinner");
-          submitText.textContent = "Submitting...";
-          submitSpinner.classList.remove("hidden");
-
-          // Simulate form submission (replace with actual AJAX call)
-          setTimeout(() => {
-            // Reset form
-            this.reset();
-            document.getElementById("resume-name").classList.add("hidden");
-            document.getElementById("cover-name").classList.add("hidden");
-
-            // Hide loading state
-            submitText.textContent = "Submit Application";
-            submitSpinner.classList.add("hidden");
-
-            // Close job modal and show success
-            closeJobModal();
-            showSuccessModal();
-          }, 2000);
-        });
-
+      // Form submission handling for general application
       document
         .getElementById("general-application-form")
         .addEventListener("submit", function (e) {
@@ -2389,27 +3153,57 @@
           submitText.textContent = "Submitting...";
           submitSpinner.classList.remove("hidden");
 
-          // Simulate form submission (replace with actual AJAX call)
-          setTimeout(() => {
-            // Reset form
-            this.reset();
-            document
-              .getElementById("general-resume-name")
-              .classList.add("hidden");
-            document
-              .getElementById("general-cover-name")
-              .classList.add("hidden");
+          // Collect form data
+          const formData = new FormData(this);
+          const resumeFile = document.getElementById("general-resume-upload")
+            .files[0];
+          const coverFile = document.getElementById("general-cover-upload")
+            .files[0];
 
-            // Hide loading state
-            submitText.textContent = "Submit Application";
-            submitSpinner.classList.add("hidden");
+          if (resumeFile) {
+            formData.append("resume", resumeFile);
+          }
+          if (coverFile) {
+            formData.append("cover_letter", coverFile);
+          }
 
-            // Close general modal and show success
-            closeGeneralApplicationModal();
-            showSuccessModal(
-              "Thank you for submitting your resume. We'll keep it on file and contact you if a suitable position becomes available."
-            );
-          }, 2000);
+          // Send data to server (using Fetch API)
+          fetch("https://formsubmit.co/ajax/dekuj73@gmail.com", {
+            method: "POST",
+            body: formData,
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              // Hide loading state
+              submitText.textContent = "Submit Application";
+              submitSpinner.classList.add("hidden");
+
+              // Reset form
+              this.reset();
+              document
+                .getElementById("general-resume-name")
+                .classList.add("hidden");
+              document
+                .getElementById("general-cover-name")
+                .classList.add("hidden");
+              document
+                .getElementById("general-email-preview-container")
+                .classList.add("hidden");
+
+              // Close general modal and show success
+              closeGeneralApplicationModal();
+              showSuccessModal(
+                "Thank you for submitting your resume. We'll keep it on file and contact you if a suitable position becomes available."
+              );
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              submitText.textContent = "Submit Application";
+              submitSpinner.classList.add("hidden");
+              showSuccessModal(
+                "There was an error submitting your application. Please try again later."
+              );
+            });
         });
 
       // Smooth scrolling for anchor links
