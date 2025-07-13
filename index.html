@@ -1150,17 +1150,6 @@
               </li>
               <li>
                 <a
-                  href="about.html"
-                  class="text-gray-400 hover:text-white transition-colors duration-300 inline-flex items-center group"
-                >
-                  <i
-                    class="ri-arrow-right-s-line mr-2 text-primary group-hover:translate-x-1 transition-transform"
-                  ></i>
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a
                   href="services.html"
                   class="text-gray-400 hover:text-white transition-colors duration-300 inline-flex items-center group"
                 >
@@ -1170,6 +1159,18 @@
                   Services
                 </a>
               </li>
+              <li>
+                <a
+                  href="about.html"
+                  class="text-gray-400 hover:text-white transition-colors duration-300 inline-flex items-center group"
+                >
+                  <i
+                    class="ri-arrow-right-s-line mr-2 text-primary group-hover:translate-x-1 transition-transform"
+                  ></i>
+                  About Us
+                </a>
+              </li>
+
               <li>
                 <a
                   href="tracking.html"
@@ -1194,7 +1195,7 @@
               </li>
               <li>
                 <a
-                  href="gallery.html"
+                  href="careers.html"
                   class="text-gray-400 hover:text-white transition-colors duration-300 inline-flex items-center group"
                 >
                   <i
@@ -1412,23 +1413,23 @@
       });
 
       // Counter animation for stats
-      function animateCounters() {
-        const counters = document.querySelectorAll('[id^="counter-"]');
-        const speed = 200;
+      // function animateCounters() {
+      //   const counters = document.querySelectorAll('[id^="counter-"]');
+      //   const speed = 200;
 
-        counters.forEach((counter) => {
-          const target = +counter.getAttribute("data-target");
-          const count = +counter.innerText;
-          const increment = target / speed;
+      //   counters.forEach((counter) => {
+      //     const target = +counter.getAttribute("data-target");
+      //     const count = +counter.innerText;
+      //     const increment = target / speed;
 
-          if (count < target) {
-            counter.innerText = Math.ceil(count + increment);
-            setTimeout(animateCounters, 1);
-          } else {
-            counter.innerText = target;
-          }
-        });
-      }
+      //     if (count < target) {
+      //       counter.innerText = Math.ceil(count + increment);
+      //       setTimeout(animateCounters, 1);
+      //     } else {
+      //       counter.innerText = target;
+      //     }
+      //   });
+      // }
 
       const words = [
         "Reliable",
