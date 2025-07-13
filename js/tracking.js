@@ -330,7 +330,7 @@ document.addEventListener("DOMContentLoaded", () => {
   <div class="border-b border-gray-200 pb-4 mb-6">
     <div class="flex justify-between items-center mb-2">
       <h3 class="text-lg font-semibold">${
-        index === 0 ? "SHIPMENT STATUS" : ""
+        index === 0 ? "CURRENT STATUS" : ""
       }</h3>
       <div class="flex flex-col items-center w-80 gap-2">
         <span class="px-3 py-1 rounded-full text-xs text-center w-36 font-bold bg-blue-600 text-white">
