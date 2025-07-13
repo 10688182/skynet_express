@@ -894,10 +894,12 @@
               </div>
             </div>
             <p class="text-gray-600 mb-6">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
-              maxime reprehenderit labore magnam nisi velit, deserunt ut!
-              Explicabo necessitatibus atque laborum quis, minima magni
-              laudantium quaerat tempora vero commodi incidunt!
+              "Switching to SkyNet Express Ltd was a game-changer for our
+              medical supply chain. Their real-time tracking and
+              temperature-controlled deliveries ensured our sensitive biologics
+              arrived intact, every time. What used to take weeks now takes
+              days, and their team’s responsiveness is unmatched. Highly
+              recommended!"
             </p>
             <div class="flex items-center">
               <div
@@ -908,7 +910,7 @@
               <div>
                 <h4 class="font-semibold">Archibold Danso</h4>
                 <p class="text-sm text-gray-500">
-                  Operations Director, Inqaba Biotec West Africa Ltd.
+                  Inqaba Biotec West Africa Ltd.
                 </p>
               </div>
             </div>
@@ -929,10 +931,11 @@
               </div>
             </div>
             <p class="text-gray-600 mb-6">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
-              maxime reprehenderit labore magnam nisi velit, deserunt ut!
-              Explicabo necessitatibus atque laborum quis, minima magni
-              laudantium quaerat tempora vero commodi incidunt!
+              "As a restaurant chain, timely deliveries are non-negotiable.
+              SkyNet Express Ltd streamlined our ingredient logistics with
+              precision—no more delays or spoiled produce. Their customized
+              scheduling cut our costs by 30%, and their drivers treat our goods
+              like their own. Five stars!"
             </p>
             <div class="flex items-center">
               <div
@@ -942,7 +945,7 @@
               </div>
               <div>
                 <h4 class="font-semibold">Nene Kitcher</h4>
-                <p class="text-sm text-gray-500">Founder, Artisan Exports</p>
+                <p class="text-sm text-gray-500">BFU Kitchens</p>
               </div>
             </div>
           </div>
@@ -962,10 +965,13 @@
               </div>
             </div>
             <p class="text-gray-600 mb-6">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
-              maxime reprehenderit labore magnam nisi velit, deserunt ut!
-              Explicabo necessitatibus atque laborum quis, minima magni
-              laudantium quaerat tempora vero commodi incidunt!
+              "We rely on SkyNet Express Ltd for urban freight distribution, and
+              they’ve never missed a deadline. Last-mile delivery used to be
+              chaotic for us—delayed notifications, missed time slots, you name
+              it. But their tech-driven tracking and proactive customer support
+              turned it into a stress-free process. Occasional traffic delays
+              happen, but their team communicates instantly and finds solutions.
+              A partner we can count on!"
             </p>
             <div class="flex items-center">
               <div
@@ -974,25 +980,12 @@
                 <i class="ri-user-line text-gray-500"></i>
               </div>
               <div>
-                <h4 class="font-semibold">Dr. James Wilson</h4>
-                <p class="text-sm text-gray-500">
-                  Logistics Manager, MediTech Solutions
-                </p>
+                <h4 class="font-semibold">Frank Addy</h4>
+                <p class="text-sm text-gray-500">TBIC</p>
               </div>
             </div>
           </div>
         </div>
-        <!-- <div class="text-center mt-10 animate-fade-in">
-          <a
-            href="testimonials.html"
-            class="text-primary font-medium hover:text-secondary transition-colors inline-flex items-center group"
-          >
-            View All Testimonials
-            <i
-              class="ri-arrow-right-line ml-1 group-hover:translate-x-1 transition-transform"
-            ></i>
-          </a>
-        </div> -->
       </div>
     </section>
 
@@ -1096,7 +1089,7 @@
                   <div>
                     <h4 class="text-white font-medium mb-1">Call Us</h4>
                     <p class="text-white/80">
-                      +233 (0) 30 223 0516 <br />+233 (0) 24 205 0501
+                      +233 30 223 0516 <br />+233 24 205 0501
                     </p>
                   </div>
                 </div>
@@ -1662,36 +1655,9 @@
         const res = await data.json();
         console.log(res.data);
 
-        document.querySelector("#tracking-results").insertAdjacentHTML(
-          "afterbegin",
-
-          res.data.map(() => {
-            return `<div class="border-b border-gray-200 pb-4 mb-6">
-              <div class="flex justify-between items-center mb-2">
-                <h3 class="text-lg font-semibold">Shipment Status</h3>
-                <span
-                  id="tracking-status"
-                  class="px-3 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800"
-                  >In Transit</span
-                >
-              </div>
-              <p class="text-sm text-gray-500">
-                Tracking Number:
-                <span
-                  id="display-tracking-number"
-                  class="font-medium text-gray-700"
-                  >FTL1234567890</span
-                >
-              </p>
-              <p class="text-sm text-gray-500">
-                Last Updated:
-                <span id="last-update" class="font-medium text-gray-700"
-                  >May 17, 2025 at 10:24 AM</span
-                >
-              </p>
-            </div>`;
-          })
-        );
+        document
+          .querySelector("#tracking-results")
+          .insertAdjacentHTML("afterbegin");
       };
       document.querySelector(".track").addEventListener("click", function () {
         const tracking_number = document
