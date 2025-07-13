@@ -64,40 +64,18 @@ backToTopButton.addEventListener("click", () => {
   });
 });
 
-// Count up animation for stats
-const countUpElements = document.querySelectorAll(".count-up");
-
-const animateCountUp = () => {
-  countUpElements.forEach((element) => {
-    const target = parseInt(element.getAttribute("data-count"));
-    const duration = 2000; // 2 seconds
-    const start = 0;
-    const increment = target / (duration / 16); // 60fps
-
-    let current = start;
-    const timer = setInterval(() => {
-      current += increment;
-      if (current >= target) {
-        clearInterval(timer);
-        current = target;
-      }
-      element.textContent = Math.floor(current);
-    }, 16);
-  });
-};
-
 // Intersection Observer to trigger count up when stats are visible
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        animateCountUp();
-        observer.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.5 }
-);
+// const observer = new IntersectionObserver(
+//   (entries) => {
+//     entries.forEach((entry) => {
+//       if (entry.isIntersecting) {
+//         animateCountUp();
+//         observer.unobserve(entry.target);
+//       }
+//     });
+//   },
+//   { threshold: 0.5 }
+// );
 
 countUpElements.forEach((element) => {
   observer.observe(element);
