@@ -2766,6 +2766,16 @@
         const jobBenefits = document.getElementById("modal-job-benefits");
         const appliedPosition = document.getElementById("applied-position");
 
+        // Reset form fields when opening a new job modal
+        document.getElementById("job-application-form").reset();
+        document.getElementById("resume-name").classList.add("hidden");
+        document.getElementById("cover-name").classList.add("hidden");
+        document.getElementById("email-preview-container").classList.add("hidden");
+        
+        // Clear file inputs
+        document.getElementById("resume-upload").value = "";
+        document.getElementById("cover-upload").value = "";
+
         // Set job details
         jobTitle.textContent = title;
         jobDept.textContent =
