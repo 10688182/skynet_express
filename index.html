@@ -726,11 +726,42 @@
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div class="animate-slide-left">
-            <img
-              src="https://readdy.ai/api/search-image?query=diverse%20team%20of%20logistics%20professionals%20in%20modern%20office%2C%20collaborative%20meeting%20environment%2C%20business%20planning%20session%2C%20supply%20chain%20experts%2C%20professional%20corporate%20setting&width=800&height=600&seq=10&orientation=landscape"
-              alt="About Our Company"
-              class="rounded-lg shadow-lg w-full h-auto hover-grow"
-            />
+            <div class="flex flex-col gap-6">
+              <img
+                src="https://readdy.ai/api/search-image?query=diverse%20team%20of%20logistics%20professionals%20in%20modern%20office%2C%20collaborative%20meeting%20environment%2C%20business%20planning%20session%2C%20supply%20chain%20experts%2C%20professional%20corporate%20setting&width=800&height=600&seq=10&orientation=landscape"
+                alt="About Our Company"
+                class="rounded-lg shadow-lg w-full h-auto hover-grow"
+              />
+              <div class="w-full max-w-md">
+                <div class="flex flex-col items-start gap-2">
+                  <div
+                    class="rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105"
+                  >
+                    <video
+                      class="w-full h-auto"
+                      controls
+                      muted
+                      autoplay
+                      loop
+                      playsinline
+                      poster="images/video-poster.jpg"
+                    >
+                      <source src="images/company-video.mp4" type="video/mp4" />
+                      <source
+                        src="videos/company-overview.webm"
+                        type="video/webm"
+                      />
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <!-- Caption Text -->
+                  <p class="text-sm text-gray-900 mt-2">
+                    Watch this short video to learn more about SkyNet Express
+                    Ltd and how we operate to serve our clients efficiently.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="animate-slide-right">
             <h2 class="text-3xl font-bold mb-6">
@@ -810,7 +841,7 @@
         <div class="max-w-3xl mx-auto text-center mb-8" data-aos="fade-up">
           <h3 class="text-3xl font-bold mb-4">
             <span class="inline-block">Our</span>
-            <span class="inline-block text-gradient">Fleet</span>
+            <span class="inline-block text-gradient">Fleets</span>
           </h3>
         </div>
 
@@ -1309,7 +1340,7 @@
                 </button>
               </div>
             </form>
-<!--             <div class="flex flex-wrap gap-2">
+            <div class="flex flex-wrap gap-2">
               <div
                 class="w-10 h-6 flex items-center justify-center bg-gray-800 rounded hover:bg-primary transition-colors duration-300 hover-rotate"
               >
@@ -1330,7 +1361,7 @@
               >
                 <i class="ri-amazon-pay-fill text-white"></i>
               </div>
-            </div> -->
+            </div>
           </div>
         </div>
         <div class="border-t border-gray-800 pt-8">
@@ -1434,10 +1465,10 @@
       const words = [
         "Reliable",
         "Secure",
+        "Convenient",
         "Efficient",
         "Timely",
         "Trusted",
-        "Convenient",
       ];
       const element = document.getElementById("rewriting-text");
       let wordIndex = 0;
@@ -1540,8 +1571,8 @@
           .querySelector(".tracking_number")
           .value.trim();
 
-        console.log(tracking_number);
-        const res = trackshipment("1287843318");
+        // console.log(tracking_number);
+        // const res = trackshipment("1287843318");
       });
     </script>
 
