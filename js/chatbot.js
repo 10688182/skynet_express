@@ -71,7 +71,7 @@ const officeContacts = {
   },
   wa: {
     address: "2nd Floor, Opp. SG-SSB Stanbic Bank building, Wa",
-    phone: "+233 30 396 6467 <b/r> +233 59 222 9089",
+    phone: "+233 30 396 6467 <br/> +233 59 222 9089",
     displayName: "Wa",
   },
   tamale: {
@@ -629,3 +629,4 @@ document
       sendMessage();
     }
   });
+
