@@ -1,13 +1,13 @@
 const faqAnswers = {
   quote:
     "We usually respond to quote requests within 24 hours. Call us for urgent needs.",
-  documents:
-    "Typically required: commercial invoice, packing list, waybill, and any applicable licenses.",
-  insurance:
-    "Yes, we offer cargo insurance covering loss, damage, theft, and more.",
+  // documents:
+  //   "Typically required: commercial invoice, packing list, waybill, and any applicable licenses.",
+  // insurance:
+  //   "Yes, we offer cargo insurance covering loss, damage, theft, and more.",
   track: "Use our online tracking portal. You'll need your tracking number.",
-  payment:
-    "We accept credit cards, bank transfers, and offer net 30 terms for approved accounts.",
+  // payment:
+  //   "We accept credit cards, bank transfers, and offer net 30 terms for approved accounts.",
   thank: "You are most welcome, thank you for choosing SkyNet Express Ltd.",
   hello: "Welcome to SkyNet Express Ltd, my name is SkyBot. What is your name?",
   hi: "Welcome to SkyNet Express Ltd, my name is SkyBot. What is your name?",
@@ -629,4 +629,5 @@ document
       sendMessage();
     }
   });
+
 
