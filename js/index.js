@@ -14,6 +14,75 @@ document
     menu.classList.toggle("hidden");
   });
 
+document.addEventListener("DOMContentLoaded", function () {
+  // Carousel elements
+  const carousel = document.getElementById("carousel");
+  const slides = document.querySelectorAll(".carousel-item");
+  const dots = document.querySelectorAll(".carousel-dot");
+  const prevBtn = document.getElementById("prev-slide");
+  const nextBtn = document.getElementById("next-slide");
+
+  let currentIndex = 0;
+  let slideInterval;
+
+  // Timing controls (modified values)
+  const TRANSITION_DURATION = 500; // 500ms for slide animation
+  const SLIDE_DELAY = 7000; // 7000ms (7 seconds) between slides
+
+  // Set transition duration in JavaScript to match CSS
+  carousel.style.transition = `transform ${TRANSITION_DURATION}ms ease-in-out`;
+
+  // Start auto-advancing
+  function startCarousel() {
+    slideInterval = setInterval(nextSlide, SLIDE_DELAY);
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % slides.length;
+    updateCarousel();
+  }
+
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    updateCarousel();
+  }
+
+  function updateCarousel() {
+    carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+    // Update dots
+    dots.forEach((dot, index) => {
+      dot.classList.toggle("active", index === currentIndex);
+    });
+  }
+
+  // Event listeners
+  nextBtn.addEventListener("click", () => {
+    clearInterval(slideInterval);
+    nextSlide();
+    startCarousel();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    clearInterval(slideInterval);
+    prevSlide();
+    startCarousel();
+  });
+
+  // Dot navigation
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      clearInterval(slideInterval);
+      currentIndex = index;
+      updateCarousel();
+      startCarousel();
+    });
+  });
+
+  // Start the carousel
+  startCarousel();
+});
+
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
