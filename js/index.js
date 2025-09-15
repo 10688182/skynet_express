@@ -26,8 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
   let slideInterval;
 
   // Timing controls (modified values)
-  const TRANSITION_DURATION = 500; // 500ms for slide animation
-  const SLIDE_DELAY = 7000; // 7000ms (7 seconds) between slides
+  const TRANSITION_DURATION = 700; // 700ms for slide animation
+  const SLIDE_DELAY = 9000; // 9000ms (9 seconds) between slides
 
   // Set transition duration in JavaScript to match CSS
   carousel.style.transition = `transform ${TRANSITION_DURATION}ms ease-in-out`;
@@ -149,3 +149,4 @@ backToTopButton.addEventListener("click", () => {
 countUpElements.forEach((element) => {
   observer.observe(element);
 });
+
