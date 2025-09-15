@@ -9,9 +9,9 @@ const faqAnswers = {
   payment:
     "We accept credit cards, bank transfers, and offer net 30 terms for approved accounts.",
   thank: "You are most welcome, thank you for choosing SkyNet Express Ltd.",
-  hello: "Welcome to SkyNet Express Ltd, my name is Aseye. What is your name?",
-  hi: "Welcome to SkyNet Express Ltd, my name is Aseye. What is your name?",
-  hey: "Welcome to SkyNet Express Ltd, my name is Aseye. What is your name?",
+  hello: "Welcome to SkyNet Express Ltd, my name is SkyBot. What is your name?",
+  hi: "Welcome to SkyNet Express Ltd, my name is SkyBot. What is your name?",
+  hey: "Welcome to SkyNet Express Ltd, my name is SkyBot. What is your name?",
   howareyou: "I'm doing great, thank you! How can I assist you today?",
   whereismypackage:
     "Use our online tracking portal. You'll need your tracking number.",
@@ -373,7 +373,7 @@ function sendMessage() {
   chatWindow.innerHTML += `<div class="text-right text-gray-800"><strong>You:</strong> ${userMsg}</div>`;
 
   // Show typing loader
-  chatWindow.innerHTML += `<div id="typing-loader" class="text-left text-gray-500 italic">Aseye is typing<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></div>`;
+  chatWindow.innerHTML += `<div id="typing-loader" class="text-left text-gray-500 italic">SkyBot is typing<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></div>`;
   chatWindow.scrollTop = chatWindow.scrollHeight;
 
   // Simple keyword-based reply
@@ -494,7 +494,7 @@ function sendMessage() {
     document.getElementById("typing-loader").remove();
 
     // Show bot reply
-    chatWindow.innerHTML += `<div class="text-left text-primary"><strong>Aseye:</strong> ${botReply}</div>`;
+    chatWindow.innerHTML += `<div class="text-left text-primary"><strong>SkyBot:</strong> ${botReply}</div>`;
     chatWindow.scrollTop = chatWindow.scrollHeight;
   }, 1000);
 
