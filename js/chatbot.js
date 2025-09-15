@@ -16,6 +16,7 @@ const faqAnswers = {
   whereismypackage:
     "Use our online tracking portal. You'll need your tracking number.",
   cost: "",
+  temu: "Please note: SkyNet Express Ltd is not affiliated with Temu, the online shopping platform. We only handle shipments booked directly with us.",
 };
 
 // Office locations and contacts data
@@ -155,6 +156,204 @@ const locationVariations = {
   ],
 };
 
+// List of countries (excluding Ghana)
+const countries = [
+  "afghanistan",
+  "albania",
+  "algeria",
+  "andorra",
+  "angola",
+  "antigua and barbuda",
+  "argentina",
+  "armenia",
+  "australia",
+  "austria",
+  "azerbaijan",
+  "bahamas",
+  "bahrain",
+  "bangladesh",
+  "barbados",
+  "belarus",
+  "belgium",
+  "belize",
+  "benin",
+  "bhutan",
+  "bolivia",
+  "bosnia and herzegovina",
+  "botswana",
+  "brazil",
+  "brunei",
+  "bulgaria",
+  "burkina faso",
+  "burundi",
+  "cabo verde",
+  "cambodia",
+  "cameroon",
+  "canada",
+  "central african republic",
+  "chad",
+  "chile",
+  "china",
+  "colombia",
+  "comoros",
+  "congo",
+  "costa rica",
+  "côte d'ivoire",
+  "croatia",
+  "cuba",
+  "cyprus",
+  "czech republic",
+  "denmark",
+  "djibouti",
+  "dominica",
+  "dominican republic",
+  "ecuador",
+  "egypt",
+  "el salvador",
+  "equatorial guinea",
+  "eritrea",
+  "estonia",
+  "eswatini",
+  "ethiopia",
+  "fiji",
+  "finland",
+  "france",
+  "gabon",
+  "gambia",
+  "georgia",
+  "germany",
+  "ghana",
+  "greece",
+  "grenada",
+  "guatemala",
+  "guinea",
+  "guinea-bissau",
+  "guyana",
+  "haiti",
+  "honduras",
+  "hungary",
+  "iceland",
+  "india",
+  "indonesia",
+  "iran",
+  "iraq",
+  "ireland",
+  "israel",
+  "italy",
+  "jamaica",
+  "japan",
+  "jordan",
+  "kazakhstan",
+  "kenya",
+  "kiribati",
+  "korea north",
+  "korea south",
+  "kosovo",
+  "kuwait",
+  "kyrgyzstan",
+  "laos",
+  "latvia",
+  "lebanon",
+  "lesotho",
+  "liberia",
+  "libya",
+  "liechtenstein",
+  "lithuania",
+  "luxembourg",
+  "madagascar",
+  "malawi",
+  "malaysia",
+  "maldives",
+  "mali",
+  "malta",
+  "marshall islands",
+  "mauritania",
+  "mauritius",
+  "mexico",
+  "micronesia",
+  "moldova",
+  "monaco",
+  "mongolia",
+  "montenegro",
+  "morocco",
+  "mozambique",
+  "myanmar",
+  "namibia",
+  "nauru",
+  "nepal",
+  "netherlands",
+  "new zealand",
+  "nicaragua",
+  "nigeria",
+  "north macedonia",
+  "norway",
+  "oman",
+  "pakistan",
+  "palau",
+  "panama",
+  "papua new guinea",
+  "paraguay",
+  "peru",
+  "philippines",
+  "poland",
+  "portugal",
+  "qatar",
+  "romania",
+  "russia",
+  "rwanda",
+  "saint kitts and nevis",
+  "saint lucia",
+  "saint vincent and the grenadines",
+  "samoa",
+  "san marino",
+  "sao tome and principe",
+  "saudi arabia",
+  "senegal",
+  "serbia",
+  "seychelles",
+  "sierra leone",
+  "singapore",
+  "slovakia",
+  "slovenia",
+  "solomon islands",
+  "somalia",
+  "south africa",
+  "south sudan",
+  "spain",
+  "sri lanka",
+  "sudan",
+  "suriname",
+  "sweden",
+  "switzerland",
+  "syria",
+  "taiwan",
+  "tajikistan",
+  "tanzania",
+  "thailand",
+  "timor-leste",
+  "togo",
+  "tonga",
+  "trinidad and tobago",
+  "tunisia",
+  "turkey",
+  "turkmenistan",
+  "tuvalu",
+  "uganda",
+  "ukraine",
+  "united arab emirates",
+  "united kingdom",
+  "united states",
+  "uruguay",
+  "uzbekistan",
+  "vanuatu",
+  "vatican city",
+  "venezuela",
+  "vietnam",
+  "yemen",
+  "zambia",
+  "zimbabwe",
+];
+
 function toggleChatbot() {
   const chat = document.getElementById("chatbot-container");
   chat.classList.toggle("hidden");
@@ -173,13 +372,27 @@ function sendMessage() {
   // Show user's message
   chatWindow.innerHTML += `<div class="text-right text-gray-800"><strong>You:</strong> ${userMsg}</div>`;
 
+  // Show typing loader
+  chatWindow.innerHTML += `<div id="typing-loader" class="text-left text-gray-500 italic">Aseye is typing<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></div>`;
+  chatWindow.scrollTop = chatWindow.scrollHeight;
+
   // Simple keyword-based reply
   const lowerMsg = userMsg.toLowerCase();
   let botReply =
     "I'm sorry, I didn't understand that. Could you please rephrase?";
 
-  // Check for specific keywords or phrases and assign corresponding reply
-  if (lowerMsg.includes("quote")) {
+  // Check for international delivery queries
+  const internationalDeliveryMatch = checkForInternationalDelivery(lowerMsg);
+  if (internationalDeliveryMatch) {
+    botReply = `I'm sorry, but SkyNet Express Ltd does not deliver to ${internationalDeliveryMatch}. We are a domestic courier service only operating within Ghana. We do not engage in international shipments.`;
+  }
+  // Check for domestic pricing queries
+  else if (checkForDomesticPricingQuery(lowerMsg)) {
+    botReply =
+      "For pricing information on domestic deliveries within Ghana, please contact our Head Office directly: <br/><br/>" +
+      "<strong>Phone:</strong> +233 24 205 0501 or +233 30 223 0516<br/>" +
+      "<strong>Address:</strong> Adabla Plaza No.5 Asafoatse Oman Street, Kokomlemle, Accra";
+  } else if (lowerMsg.includes("quote")) {
     botReply = faqAnswers.quote;
   } else if (lowerMsg.includes("document")) {
     botReply = faqAnswers.documents;
@@ -197,6 +410,8 @@ function sendMessage() {
     botReply = faqAnswers.hi;
   } else if (lowerMsg.includes("hey")) {
     botReply = faqAnswers.hey;
+  } else if (lowerMsg.includes("temu")) {
+    botReply = faqAnswers.temu;
   } else if (lowerMsg.startsWith("my name is ")) {
     const name = userMsg.substring(11).trim();
     const formattedName = name.charAt(0).toUpperCase() + name.slice(1);
@@ -217,27 +432,29 @@ function sendMessage() {
     lowerMsg.includes("email") ||
     lowerMsg.includes("address")
   ) {
-    // Handle contact information requests
     const location = findLocationInMessage(lowerMsg);
     if (location) {
       const office = officeContacts[location];
       botReply = `
-        <div>Here are the contact details for our ${office.displayName} office:</div>
-        <ul class="list-disc pl-5 mt-2 space-y-1">
-          <li><strong>Address:</strong> ${office.address}</li>
-          <li><strong>Phone:</strong> ${office.phone}</li>
-        </ul>
-      `;
+                        <div>Here are the contact details for our ${office.displayName} office:</div>
+                        <ul class="list-disc pl-5 mt-2 space-y-1">
+                            <li><strong>Address:</strong> ${office.address}</li>
+                            <li><strong>Phone:</strong> ${office.phone}</li>
+                        </ul>
+                    `;
     } else {
       botReply = `
-        <div>Which branch office contact would you like? We have locations in:</div>
-        <ul class="list-disc pl-5 mt-2">
-          ${Object.values(officeContacts)
-            .filter((office) => office.displayName !== "Head Office (Accra)")
-            .map((office) => `<li>${office.displayName}</li>`)
-            .join("")}
-        </ul>
-      `;
+                        <div>Which branch office contact would you like? We have locations in:</div>
+                        <ul class="list-disc pl-5 mt-2">
+                            ${Object.values(officeContacts)
+                              .filter(
+                                (office) =>
+                                  office.displayName !== "Head Office (Accra)"
+                              )
+                              .map((office) => `<li>${office.displayName}</li>`)
+                              .join("")}
+                        </ul>
+                    `;
     }
   } else if (
     lowerMsg.includes("location") ||
@@ -246,48 +463,134 @@ function sendMessage() {
     lowerMsg.includes("address") ||
     lowerMsg.includes("offices")
   ) {
-    // Handle location requests
     const location = findLocationInMessage(lowerMsg);
     if (location) {
       const office = officeContacts[location];
       botReply = `
-        <div>Our ${office.displayName} office is located at:</div>
-        <ul class="list-disc pl-5 mt-2">
-          <li>${office.address}</li>
-        </ul>
-      `;
+                        <div>Our ${office.displayName} office is located at:</div>
+                        <ul class="list-disc pl-5 mt-2">
+                            <li>${office.address}</li>
+                        </ul>
+                    `;
     } else {
       botReply = `
-        <div>We have offices in the following locations:</div>
-        <ul class="list-disc pl-5 mt-2">
-          ${Object.values(officeContacts)
-            .filter((office) => office.displayName !== "Head Office (Accra)")
-            .map((office) => `<li>${office.displayName}</li>`)
-            .join("")}
-        </ul>
-        <div class="mt-2">Which location would you like information about?</div>
-      `;
+                        <div>We have offices in the following locations:</div>
+                        <ul class="list-disc pl-5 mt-2">
+                            ${Object.values(officeContacts)
+                              .filter(
+                                (office) =>
+                                  office.displayName !== "Head Office (Accra)"
+                              )
+                              .map((office) => `<li>${office.displayName}</li>`)
+                              .join("")}
+                        </ul>
+                        <div class="mt-2">Which location would you like information about?</div>
+                    `;
     }
   }
 
   setTimeout(() => {
+    // Remove typing loader
+    document.getElementById("typing-loader").remove();
+
+    // Show bot reply
     chatWindow.innerHTML += `<div class="text-left text-primary"><strong>Aseye:</strong> ${botReply}</div>`;
     chatWindow.scrollTop = chatWindow.scrollHeight;
-  }, 600);
+  }, 1000);
 
   input.value = "";
 }
 
-// Improved location matching function
+function checkForInternationalDelivery(message) {
+  // Check for delivery-related keywords combined with country names
+  const deliveryKeywords = [
+    "deliver",
+    "ship",
+    "send",
+    "shipment",
+    "delivery",
+    "service",
+  ];
+  const hasDeliveryKeyword = deliveryKeywords.some((keyword) =>
+    message.includes(keyword)
+  );
+
+  if (hasDeliveryKeyword) {
+    // Look for any country mentioned (excluding Ghana)
+    for (const country of countries) {
+      if (message.includes(country) && country !== "ghana") {
+        return country;
+      }
+    }
+
+    // Check for "international" or "abroad" keywords
+    if (
+      message.includes("international") ||
+      message.includes("abroad") ||
+      message.includes("outside ghana") ||
+      message.includes("outside of ghana") ||
+      message.includes("another country") ||
+      message.includes("other countries")
+    ) {
+      return "other countries";
+    }
+  }
+
+  return null;
+}
+
+function checkForDomesticPricingQuery(message) {
+  // Check for cost-related keywords combined with Ghana locations
+  const costKeywords = ["cost", "price", "how much", "charge", "fee", "rate"];
+  const hasCostKeyword = costKeywords.some((keyword) =>
+    message.includes(keyword)
+  );
+
+  if (hasCostKeyword) {
+    // Check if the query mentions two Ghanaian locations (from-to)
+    const ghanaLocations = Object.keys(officeContacts);
+    let locationCount = 0;
+
+    for (const location of ghanaLocations) {
+      if (message.includes(location)) {
+        locationCount++;
+      }
+
+      // Also check variations
+      if (locationVariations[location]) {
+        for (const variation of locationVariations[location]) {
+          if (message.includes(variation)) {
+            locationCount++;
+            break;
+          }
+        }
+      }
+
+      if (locationCount >= 2) {
+        return true;
+      }
+    }
+
+    // Check for general domestic delivery cost queries
+    if (
+      message.includes("deliver") &&
+      (message.includes("ghana") ||
+        message.includes("within ghana") ||
+        message.includes("domestic"))
+    ) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 function findLocationInMessage(message) {
-  // First check for exact matches in office names
   for (const [location, data] of Object.entries(officeContacts)) {
     if (message.includes(location.toLowerCase())) {
       return location;
     }
   }
-
-  // Then check for variations and alternative spellings
   for (const [location, variations] of Object.entries(locationVariations)) {
     for (const variation of variations) {
       if (message.includes(variation)) {
@@ -295,14 +598,11 @@ function findLocationInMessage(message) {
       }
     }
   }
-
-  // Finally, check for partial matches in display names
   for (const [location, data] of Object.entries(officeContacts)) {
     if (message.includes(data.displayName.toLowerCase())) {
       return location;
     }
   }
-
   return null;
 }
 
@@ -314,19 +614,18 @@ function toggleChatbot() {
 
   if (!chat.classList.contains("hidden")) {
     toggleBtn.classList.remove("bottom-4");
-    toggleBtn.classList.add("bottom-28"); // Moves it up
+    toggleBtn.classList.add("bottom-28");
   } else {
     toggleBtn.classList.remove("bottom-28");
-    toggleBtn.classList.add("bottom-4"); // Moves it back down
+    toggleBtn.classList.add("bottom-4");
   }
 }
 
-// Listen for Enter key on input field
 document
   .getElementById("chat-input")
   .addEventListener("keypress", function (e) {
     if (e.key === "Enter") {
       e.preventDefault();
-      sendMessage(); // Call the same function as the send button
+      sendMessage();
     }
   });
