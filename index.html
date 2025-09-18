@@ -90,6 +90,7 @@
         transform: translateY(20px);
         transition: opacity 0.3s, transform 0.3s;
         pointer-events: none;
+        border-left: 4px solid #F4050B;
       }
       
       .chatbot-notification.show {
@@ -402,7 +403,7 @@
         <button
           class="absolute top-1/2 right-4 transform -translate-y-1/2 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors hover-grow"
           id="next-slide"
-        >
+          >
           <i class="ri-arrow-right-s-line ri-lg"></i>
         </button>
       </div>
@@ -1527,24 +1528,77 @@
         setTimeout(showNotification, 2000);
       });
 
+      // Chatbot toggle functionality
+      function toggleChatbot() {
+        const chatbotContainer = document.getElementById('chatbot-container');
+        const isHidden = chatbotContainer.classList.contains('hidden');
+        
+        if (isHidden) {
+          chatbotContainer.classList.remove('hidden');
+        } else {
+          chatbotContainer.classList.add('hidden');
+        }
+      }
+      
+      // Chatbot send message functionality
+      function sendMessage() {
+        const chatInput = document.getElementById('chat-input');
+        const chatWindow = document.getElementById('chat-window');
+        
+        if (chatInput.value.trim() !== '') {
+          // Add user message
+          const userMessage = document.createElement('div');
+          userMessage.className = 'text-right';
+          userMessage.innerHTML = `<span class="inline-block bg-primary text-white px-3 py-2 rounded-lg">${chatInput.value}</span>`;
+          chatWindow.appendChild(userMessage);
+          
+          // Clear input
+          chatInput.value = '';
+          
+          // Scroll to bottom
+          chatWindow.scrollTop = chatWindow.scrollHeight;
+          
+          // Simulate bot response after a short delay
+          setTimeout(() => {
+            const botMessage = document.createElement('div');
+            botMessage.className = 'text-gray-600';
+            botMessage.innerHTML = 'I\'m a simple chatbot. For real assistance, please contact our support team at info@skynetexpressgh.com';
+            chatWindow.appendChild(botMessage);
+            
+            // Scroll to bottom again
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+          }, 1000);
+        }
+      }
+
       // Counter animation for stats
-      // function animateCounters() {
-      //   const counters = document.querySelectorAll('[id^="counter-"]');
-      //   const speed = 200;
-
-      //   counters.forEach((counter) => {
-      //     const target = +counter.getAttribute("data-target");
-      //     const count = +counter.innerText;
-      //     const increment = target / speed;
-
-      //     if (count < target) {
-      //       counter.innerText = Math.ceil(count + increment);
-      //       setTimeout(animateCounters, 1);
-      //     } else {
-      //       counter.innerText = target;
-      //     }
-      //   });
-      // }
+      function animateCounters() {
+        const counters = document.querySelectorAll('[id^="counter-"]');
+        const targets = {
+          "counter-countries": 16,
+          "counter-shipments": 180000,
+          "counter-clients": 573,
+          "counter-employees": 120
+        };
+        
+        counters.forEach(counter => {
+          const target = targets[counter.id];
+          const increment = target / 200;
+          let current = 0;
+          
+          const updateCounter = () => {
+            if (current < target) {
+              current += increment;
+              counter.innerText = Math.ceil(current);
+              setTimeout(updateCounter, 10);
+            } else {
+              counter.innerText = target;
+            }
+          };
+          
+          updateCounter();
+        });
+      }
 
       const words = [
         "Reliable",
@@ -1593,19 +1647,6 @@
 
       // Set target values for counters
       document.addEventListener("DOMContentLoaded", function () {
-        document
-          .getElementById("counter-countries")
-          .setAttribute("data-target", "16");
-        document
-          .getElementById("counter-shipments")
-          .setAttribute("data-target", "180000");
-        document
-          .getElementById("counter-clients")
-          .setAttribute("data-target", "573");
-        document
-          .getElementById("counter-employees")
-          .setAttribute("data-target", "120");
-
         // Start counter animation when stats come into view
         const observer = new IntersectionObserver(
           (entries) => {
