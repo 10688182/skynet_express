@@ -74,56 +74,6 @@
         },
       };
     </script>
-    <style>
-      /* Chatbot notification styles */
-      .chatbot-notification {
-        position: fixed;
-        bottom: 80px;
-        right: 20px;
-        background: white;
-        border-radius: 12px;
-        padding: 15px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        max-width: 250px;
-        z-index: 100;
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.3s, transform 0.3s;
-        pointer-events: none;
-        border-left: 4px solid #f4050b;
-      }
-
-      .chatbot-notification.show {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-      }
-
-      .chatbot-notification:after {
-        content: "";
-        position: absolute;
-        bottom: -10px;
-        right: 20px;
-        border-width: 10px 10px 0;
-        border-style: solid;
-        border-color: white transparent transparent;
-      }
-
-      .chatbot-notification-close {
-        position: absolute;
-        top: 5px;
-        right: 5px;
-        background: none;
-        border: none;
-        font-size: 16px;
-        cursor: pointer;
-        color: #999;
-      }
-
-      .chatbot-notification-close:hover {
-        color: #333;
-      }
-    </style>
   </head>
   <body class="bg-gray-50">
     <!-- Header -->
@@ -1471,19 +1421,6 @@
       </div>
     </div>
 
-    <!-- Chatbot Notification -->
-    <div id="chatbot-notification" class="chatbot-notification">
-      <button class="chatbot-notification-close" onclick="closeNotification()">
-        ×
-      </button>
-      <h4 class="font-semibold mb-2 text-primary">
-        Welcome to SkyNet Express Ltd!
-      </h4>
-      <p class="text-sm text-gray-600">
-        Need quick assistance? Chat with us anytime!
-      </p>
-    </div>
-
     <!-- Floating Toggle Button -->
     <div
       id="chatbot-toggle"
@@ -1506,106 +1443,24 @@
         mirror: false,
       });
 
-      // Chatbot notification functionality
-      function showNotification() {
-        // Check if notification has been shown before
-        if (!localStorage.getItem("chatbotNotificationShown")) {
-          const notification = document.getElementById("chatbot-notification");
-          notification.classList.add("show");
-
-          // Set flag in localStorage to prevent showing again
-          localStorage.setItem("chatbotNotificationShown", "true");
-
-          // Auto-hide after 8 seconds
-          setTimeout(() => {
-            closeNotification();
-          }, 8000);
-        }
-      }
-
-      function closeNotification() {
-        const notification = document.getElementById("chatbot-notification");
-        notification.classList.remove("show");
-      }
-
-      // Show notification when page loads
-      document.addEventListener("DOMContentLoaded", function () {
-        // Wait a moment before showing the notification
-        setTimeout(showNotification, 2000);
-      });
-
-      // Chatbot toggle functionality
-      function toggleChatbot() {
-        const chatbotContainer = document.getElementById("chatbot-container");
-        const isHidden = chatbotContainer.classList.contains("hidden");
-
-        if (isHidden) {
-          chatbotContainer.classList.remove("hidden");
-        } else {
-          chatbotContainer.classList.add("hidden");
-        }
-      }
-
-      // Chatbot send message functionality
-      function sendMessage() {
-        const chatInput = document.getElementById("chat-input");
-        const chatWindow = document.getElementById("chat-window");
-
-        if (chatInput.value.trim() !== "") {
-          // Add user message
-          const userMessage = document.createElement("div");
-          userMessage.className = "text-right";
-          userMessage.innerHTML = `<span class="inline-block bg-primary text-white px-3 py-2 rounded-lg">${chatInput.value}</span>`;
-          chatWindow.appendChild(userMessage);
-
-          // Clear input
-          chatInput.value = "";
-
-          // Scroll to bottom
-          chatWindow.scrollTop = chatWindow.scrollHeight;
-
-          // Simulate bot response after a short delay
-          setTimeout(() => {
-            const botMessage = document.createElement("div");
-            botMessage.className = "text-gray-600";
-            botMessage.innerHTML =
-              "I'm a simple chatbot. For real assistance, please contact our support team at info@skynetexpressgh.com";
-            chatWindow.appendChild(botMessage);
-
-            // Scroll to bottom again
-            chatWindow.scrollTop = chatWindow.scrollHeight;
-          }, 1000);
-        }
-      }
-
       // Counter animation for stats
-      function animateCounters() {
-        const counters = document.querySelectorAll('[id^="counter-"]');
-        const targets = {
-          "counter-countries": 16,
-          "counter-shipments": 180000,
-          "counter-clients": 573,
-          "counter-employees": 120,
-        };
+      // function animateCounters() {
+      //   const counters = document.querySelectorAll('[id^="counter-"]');
+      //   const speed = 200;
 
-        counters.forEach((counter) => {
-          const target = targets[counter.id];
-          const increment = target / 200;
-          let current = 0;
+      //   counters.forEach((counter) => {
+      //     const target = +counter.getAttribute("data-target");
+      //     const count = +counter.innerText;
+      //     const increment = target / speed;
 
-          const updateCounter = () => {
-            if (current < target) {
-              current += increment;
-              counter.innerText = Math.ceil(current);
-              setTimeout(updateCounter, 10);
-            } else {
-              counter.innerText = target;
-            }
-          };
-
-          updateCounter();
-        });
-      }
+      //     if (count < target) {
+      //       counter.innerText = Math.ceil(count + increment);
+      //       setTimeout(animateCounters, 1);
+      //     } else {
+      //       counter.innerText = target;
+      //     }
+      //   });
+      // }
 
       const words = [
         "Reliable",
@@ -1654,6 +1509,19 @@
 
       // Set target values for counters
       document.addEventListener("DOMContentLoaded", function () {
+        document
+          .getElementById("counter-countries")
+          .setAttribute("data-target", "16");
+        document
+          .getElementById("counter-shipments")
+          .setAttribute("data-target", "180000");
+        document
+          .getElementById("counter-clients")
+          .setAttribute("data-target", "573");
+        document
+          .getElementById("counter-employees")
+          .setAttribute("data-target", "120");
+
         // Start counter animation when stats come into view
         const observer = new IntersectionObserver(
           (entries) => {
@@ -1716,4 +1584,3 @@
     <script src="js/swipper.js"></script>
   </body>
 </html>
-
