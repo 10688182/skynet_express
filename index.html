@@ -1510,10 +1510,10 @@
           // Set flag in localStorage to prevent showing again
           localStorage.setItem('chatbotNotificationShown', 'true');
           
-          // Auto-hide after 8 seconds
+          // Auto-hide after 30 seconds
           setTimeout(() => {
             closeNotification();
-          }, 8000);
+          }, 30000);
         }
       }
       
@@ -1709,5 +1709,6 @@
     <script src="js/swipper.js"></script>
   </body>
 </html>
+
 
 
