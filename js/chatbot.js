@@ -1,13 +1,14 @@
 const faqAnswers = {
   quote:
     "We usually respond to quote requests within 24 hours. Call us for urgent needs.",
-  // documents:
-  //   "Typically required: commercial invoice, packing list, waybill, and any applicable licenses.",
-  // insurance:
-  //   "Yes, we offer cargo insurance covering loss, damage, theft, and more.",
+  documents:
+    "Typically required: commercial invoice, packing list, waybill, and any applicable licenses.",
+  okay: "Is there anything else you need help with?",
+  ok: "Is there anything else you need help with?",
+  alright: "Is there anything else you need help with?",
   track: "Use our online tracking portal. You'll need your tracking number.",
-  // payment:
-  //   "We accept credit cards, bank transfers, and offer net 30 terms for approved accounts.",
+  yes: "What else can I help you with?",
+  no: "Alright then, thank you for choosing SkyNet Express Ltd.",
   thank: "You are most welcome, thank you for choosing SkyNet Express Ltd.",
   hello: "Welcome to SkyNet Express Ltd, my name is SkyBot. What is your name?",
   hi: "Welcome to SkyNet Express Ltd, my name is SkyBot. What is your name?",
@@ -15,7 +16,7 @@ const faqAnswers = {
   howareyou: "I'm doing great, thank you! How can I assist you today?",
   whereismypackage:
     "Use our online tracking portal. You'll need your tracking number.",
-  cost: "",
+  cost: "For pricing information, please contact our Head Office directly: +233 24 205 0501",
   temu: "Please note: SkyNet Express Ltd is not affiliated with Temu, the online shopping platform. We only handle shipments booked directly with us.",
 };
 
@@ -71,7 +72,7 @@ const officeContacts = {
   },
   wa: {
     address: "2nd Floor, Opp. SG-SSB Stanbic Bank building, Wa",
-    phone: "+233 30 396 6467 <br/> +233 59 222 9089",
+    phone: "+233 30 396 6467 <b/r> +233 59 222 9089",
     displayName: "Wa",
   },
   tamale: {
@@ -156,6 +157,388 @@ const locationVariations = {
   ],
 };
 
+// Comprehensive list of Ghanaian locations by region
+const ghanaLocations = {
+  "greater accra": [
+    "accra",
+    "tema",
+    "madina",
+    "kissieman",
+    "frafraha",
+    "pantang",
+    "oyarifa",
+    "haatso",
+    "pokuase",
+    "asylum down",
+    "new ningo",
+    "old ningo",
+    "ogbodjo",
+    "amrahia",
+    "lakeside",
+    "abosseyokai",
+    "amasaman",
+    "jamestown",
+    "dansoman",
+    "osu",
+    "labone",
+    "cantonment",
+    "kwashieman",
+    "awoshie",
+    "airport residential area",
+    "south industrial area",
+    "north industrial area",
+    "alajo",
+    "burma camp",
+    "adjiringanor",
+    "east legon",
+    "west legon",
+    "north legon",
+    "madina",
+    "adenta",
+    "legon",
+    "adenta",
+    "akwetemang",
+    "ashongman",
+    "ablekuma",
+    "alhaji",
+    "nyamekye",
+    "lapaz",
+    "mile 7",
+    "taifa",
+    "achimota",
+    "circle",
+    "kaneshie",
+    "darkuman",
+    "odorkor",
+    "mataheko",
+    "kweiman",
+    "kasoa",
+    "amonom",
+    "weija",
+    "gbawe",
+    "mccarthy hill",
+    "tantra hill",
+    "tabora",
+    "fadama",
+    "abeka",
+    "nima",
+    "mamobi",
+    "newtown",
+    "korle bu",
+    "jamestown",
+    "chorkor",
+    "kokomlemle",
+    "adanchi",
+    "laterbiokorshie",
+    "dzorwulu",
+    "roman ridge",
+    "cantonments",
+    "labadi",
+    "parakuo estate",
+    "teshie",
+    "nungua",
+    "spintex",
+    "sakumono",
+    "batsonaa",
+    "community 18",
+    "community 25",
+    "ashiaman",
+    "afienya",
+    "dawhenya",
+    "prampram",
+  ],
+  "ashanti region": [
+    "kumasi",
+    "asanteman",
+    "suame",
+    "asokwa",
+    "bantama",
+    "manhyia",
+    "tafo",
+    "atem",
+    "kwadaso",
+    "ahodwo",
+    "nhyiaeso",
+    "abuakwa",
+    "effiduase",
+    "konongo",
+    "agyakoo",
+    "mampong",
+    "bekwai",
+    "obuasj",
+    "ejisu",
+    "oforikrom",
+    "atonsu",
+    "chirapatre",
+    "ayigya",
+    "bohyen",
+    "patasi",
+    "tanoso",
+    "abrepo",
+    "buokrom",
+    "sepe",
+    "tikrom",
+    "deduako",
+    "fomena",
+    "jacobu",
+    "nyinahin",
+    "ahinsan",
+    "esreso",
+    "atimatim",
+    "akropong",
+    "beposo",
+    "adankwame",
+    "abira",
+    "dompoase",
+    "adum",
+  ],
+  "central region": [
+    "cape coast",
+    "elmina",
+    "saltpond",
+    "winneba",
+    "kasoa",
+    "agona swedru",
+    "dunkwa",
+    "assenfosman",
+    "breman",
+    "mankessim",
+    "abura",
+    "domeabra",
+    "apam",
+    "gomoa",
+    "ekumfi",
+    "ajumako",
+    "enyan",
+    "asikuma",
+    "obon",
+    "biriwa",
+    "anomabo",
+    "moree",
+    "kormantse",
+    "nyakrom",
+    "agona",
+    "awutu",
+    "senya",
+    "berekum",
+    "bawjiase",
+    "nsawam",
+    "nsutam",
+    "awoshie",
+    "awutu",
+    "effutu",
+  ],
+  "eastern region": [
+    "koforidua",
+    "nsawam",
+    "suhum",
+    "akim",
+    "osen",
+    "akwatia",
+    "asamankese",
+    "akropong",
+    "mamfe",
+    "akim oda",
+  ],
+  "western region": [
+    "takoradi",
+    "sekondi",
+    "tarkwa",
+    "axim",
+    "prestea",
+    "huni valley",
+    "bogoso",
+    "daboase",
+    "shama",
+    "elubo",
+    "half assini",
+    "asankragwa",
+    "wassa",
+    "akontombra",
+    "nsuaem",
+    "adjoa",
+    "benso",
+    "awudua",
+    "abura",
+    "dixcove",
+    "princes town",
+    "esiama",
+    "nkroful",
+    "atem",
+    "bogoso",
+    "prestea",
+    "huni valley",
+    "tarkwa",
+    "axim",
+    "sekondi",
+  ],
+  "volta region": [
+    "ho",
+    "hohoe",
+    "keta",
+    "akatsi",
+    "kpetoe",
+    "ave",
+    "kpeve",
+    "peki",
+    "ada",
+    "sogakope",
+    "akuse",
+    "adaklu",
+    "aflao",
+    "kpoeta",
+    "tsito",
+    "aveme",
+    "anyirawase",
+    "abutia",
+    "klefe",
+    "zongo",
+    "adidome",
+  ],
+  "brong ahafo": [
+    "sunyani",
+    "techiman",
+    "berekum",
+    "wenchi",
+    "dua",
+    "nkrankwanta",
+    "nkranza",
+    "nsawkaw",
+    "japekrom",
+    "drobo",
+    "seikwa",
+    "chiraa",
+    "odumase",
+    "kintampo",
+    "prang",
+    "yeji",
+    "aworowa",
+    "tanoso",
+    "fiapre",
+    "ntotroso",
+    "baa",
+    "dormaa",
+  ],
+  "northern region": [
+    "tamale",
+    "yendi",
+    "savelugu",
+    "walewale",
+    "bimbilla",
+    "damongo",
+    "salaga",
+    "karaga",
+    "gushegu",
+    "nanton",
+    "kumbungu",
+    "saboba",
+    "zabzugu",
+    "tatale",
+    "cheriponi",
+    "wulensi",
+    "nakpanduri",
+    "bunkpurugu",
+    "yunyoo",
+    "gambaga",
+    "nanumba",
+    "kpalbe",
+    "wungu",
+  ],
+  "upper east": [
+    "bolgatanga",
+    "bawku",
+    "navrongo",
+    "zebilla",
+    "paga",
+    "bongo",
+    "tongo",
+    "nangodi",
+    "sandema",
+    "fumbisi",
+    "kongo",
+    "wiesi",
+    "tempane",
+    "garu",
+    "pusiga",
+    "binaba",
+    "zanlerigu",
+    "dazongo",
+    "winkogo",
+    "sirigu",
+    "vea",
+    "tilli",
+    "soe",
+    "nyangua",
+  ],
+  "upper west": [
+    "wa",
+    "tumu",
+    "lawra",
+    "jirapa",
+    "nandom",
+    "hamile",
+    "lambussie",
+    "funsi",
+    "wechiau",
+    "babile",
+    "daffiama",
+    "sabuli",
+    "napogbakole",
+    "charia",
+    "tizza",
+    "buffiama",
+    "han",
+    "nyoli",
+    "dapuori",
+    "dori",
+    "goli",
+  ],
+  "oti region": [
+    "dambai",
+    "kete",
+    "krachi",
+    "nkwanta",
+    "juale",
+    "pai",
+    "borae",
+    "chinderi",
+    "kpassa",
+    "keri",
+    "brekum",
+    "banda",
+    "kajaji",
+    "santrokofi",
+    "likpe",
+    "buem",
+    "kyindobo",
+    "worawora",
+    "awate",
+    "bodada",
+  ],
+  "savannah region": [
+    "damongo",
+    "buipe",
+    "salaga",
+    "daboya",
+    "sawla",
+    "fulfulso",
+    "larabanga",
+    "mankarigu",
+    "tuluwe",
+    "kpalbe",
+    "mognori",
+    "busunu",
+    "mura",
+    "debre",
+    "kafaba",
+    "mpaha",
+    "jentilpe",
+    "kigbape",
+    "chama",
+    "kajese",
+  ],
+};
+
 // List of countries (excluding Ghana)
 const countries = [
   "afghanistan",
@@ -221,8 +604,8 @@ const countries = [
   "gabon",
   "gambia",
   "georgia",
+  "germania",
   "germany",
-  "ghana",
   "greece",
   "grenada",
   "guatemala",
@@ -379,11 +762,15 @@ function sendMessage() {
   // Simple keyword-based reply
   const lowerMsg = userMsg.toLowerCase();
   let botReply =
-    "I'm sorry, I didn't understand that. Could you please rephrase?";
+    "I'm sorry, I didn't understand that. Could you please rephrase and use keywords I could understand?";
 
+  // Check for delivery location queries within Ghana (highest priority)
+  const deliveryQuery = checkForDeliveryLocationQuery(lowerMsg);
+  if (deliveryQuery) {
+    botReply = deliveryQuery;
+  }
   // Check for international delivery queries
-  const internationalDeliveryMatch = checkForInternationalDelivery(lowerMsg);
-  if (internationalDeliveryMatch) {
+  else if (checkForInternationalDelivery(lowerMsg)) {
     botReply = `I'm sorry, but SkyNet Express Ltd does not deliver to ${internationalDeliveryMatch}. We are a domestic courier service only operating within Ghana. We do not engage in international shipments.`;
   }
   // Check for domestic pricing queries
@@ -392,106 +779,106 @@ function sendMessage() {
       "For pricing information on domestic deliveries within Ghana, please contact our Head Office directly: <br/><br/>" +
       "<strong>Phone:</strong> +233 24 205 0501 or +233 30 223 0516<br/>" +
       "<strong>Address:</strong> Adabla Plaza No.5 Asafoatse Oman Street, Kokomlemle, Accra";
-  } else if (lowerMsg.includes("quote")) {
+  }
+  // Check for exact word matches to avoid partial matching
+  else if (hasExactWord(lowerMsg, "quote")) {
     botReply = faqAnswers.quote;
-  } else if (lowerMsg.includes("document")) {
+  } else if (hasExactWord(lowerMsg, "document")) {
     botReply = faqAnswers.documents;
-  } else if (lowerMsg.includes("insurance")) {
-    botReply = faqAnswers.insurance;
-  } else if (lowerMsg.includes("track")) {
+  } else if (
+    hasExactWord(lowerMsg, "okay") ||
+    hasExactWord(lowerMsg, "ok") ||
+    hasExactWord(lowerMsg, "alright")
+  ) {
+    botReply = faqAnswers.okay;
+  } else if (hasExactWord(lowerMsg, "track")) {
     botReply = faqAnswers.track;
-  } else if (lowerMsg.includes("payment")) {
-    botReply = faqAnswers.payment;
-  } else if (lowerMsg.includes("thank")) {
+  } else if (hasExactWord(lowerMsg, "yes")) {
+    botReply = faqAnswers.yes;
+  } else if (hasExactWord(lowerMsg, "no")) {
+    botReply = faqAnswers.no;
+  } else if (hasExactWord(lowerMsg, "thank")) {
     botReply = faqAnswers.thank;
-  } else if (lowerMsg.includes("hello")) {
+  } else if (hasExactWord(lowerMsg, "hello")) {
     botReply = faqAnswers.hello;
-  } else if (lowerMsg.includes("hi")) {
+  } else if (hasExactWord(lowerMsg, "hi")) {
     botReply = faqAnswers.hi;
-  } else if (lowerMsg.includes("hey")) {
+  } else if (hasExactWord(lowerMsg, "hey")) {
     botReply = faqAnswers.hey;
-  } else if (lowerMsg.includes("temu")) {
+  } else if (hasExactWord(lowerMsg, "temu")) {
     botReply = faqAnswers.temu;
   } else if (lowerMsg.startsWith("my name is ")) {
     const name = userMsg.substring(11).trim();
     const formattedName = name.charAt(0).toUpperCase() + name.slice(1);
     botReply = `Nice to meet you ${formattedName}. How may I help you today?`;
-  } else if (
-    lowerMsg.includes("how are you") ||
-    lowerMsg.includes("how are you doing")
-  ) {
+  } else if (hasExactWord(lowerMsg, "how are you")) {
     botReply = faqAnswers.howareyou;
   } else if (
-    lowerMsg.includes("where is my parcel") ||
-    lowerMsg.includes("where is my package")
+    hasExactWord(lowerMsg, "where is my parcel") ||
+    hasExactWord(lowerMsg, "where is my package")
   ) {
     botReply = faqAnswers.track;
   } else if (
-    lowerMsg.includes("contact") ||
-    lowerMsg.includes("phone") ||
-    lowerMsg.includes("email") ||
-    lowerMsg.includes("address")
+    hasExactWord(lowerMsg, "contact") ||
+    hasExactWord(lowerMsg, "phone") ||
+    hasExactWord(lowerMsg, "email") ||
+    hasExactWord(lowerMsg, "address")
   ) {
     const location = findLocationInMessage(lowerMsg);
     if (location) {
       const office = officeContacts[location];
       botReply = `
-                        <div>Here are the contact details for our ${office.displayName} office:</div>
-                        <ul class="list-disc pl-5 mt-2 space-y-1">
-                            <li><strong>Address:</strong> ${office.address}</li>
-                            <li><strong>Phone:</strong> ${office.phone}</li>
-                        </ul>
-                    `;
+        <div>Here are the contact details for our ${office.displayName} office:</div>
+        <ul class="list-disc pl-5 mt-2 space-y-1">
+          <li><strong>Address:</strong> ${office.address}</li>
+          <li><strong>Phone:</strong> ${office.phone}</li>
+        </ul>
+      `;
     } else {
       botReply = `
-                        <div>Which branch office contact would you like? We have locations in:</div>
-                        <ul class="list-disc pl-5 mt-2">
-                            ${Object.values(officeContacts)
-                              .filter(
-                                (office) =>
-                                  office.displayName !== "Head Office (Accra)"
-                              )
-                              .map((office) => `<li>${office.displayName}</li>`)
-                              .join("")}
-                        </ul>
-                    `;
+        <div>Which branch office contact would you like? We have locations in:</div>
+        <ul class="list-disc pl-5 mt-2">
+          ${Object.values(officeContacts)
+            .filter((office) => office.displayName !== "Head Office (Accra)")
+            .map((office) => `<li>${office.displayName}</li>`)
+            .join("")}
+        </ul>
+      `;
     }
   } else if (
-    lowerMsg.includes("location") ||
-    lowerMsg.includes("locate") ||
-    lowerMsg.includes("where is") ||
-    lowerMsg.includes("address") ||
-    lowerMsg.includes("offices")
+    hasExactWord(lowerMsg, "location") ||
+    hasExactWord(lowerMsg, "locate") ||
+    hasExactWord(lowerMsg, "where is") ||
+    hasExactWord(lowerMsg, "address") ||
+    hasExactWord(lowerMsg, "offices")
   ) {
     const location = findLocationInMessage(lowerMsg);
     if (location) {
       const office = officeContacts[location];
       botReply = `
-                        <div>Our ${office.displayName} office is located at:</div>
-                        <ul class="list-disc pl-5 mt-2">
-                            <li>${office.address}</li>
-                        </ul>
-                    `;
+        <div>Our ${office.displayName} office is located at:</div>
+        <ul class="list-disc pl-5 mt-2">
+          <li>${office.address}</li>
+        </ul>
+      `;
     } else {
       botReply = `
-                        <div>We have offices in the following locations:</div>
-                        <ul class="list-disc pl-5 mt-2">
-                            ${Object.values(officeContacts)
-                              .filter(
-                                (office) =>
-                                  office.displayName !== "Head Office (Accra)"
-                              )
-                              .map((office) => `<li>${office.displayName}</li>`)
-                              .join("")}
-                        </ul>
-                        <div class="mt-2">Which location would you like information about?</div>
-                    `;
+        <div>We have offices in the following locations:</div>
+        <ul class="list-disc pl-5 mt-2">
+          ${Object.values(officeContacts)
+            .filter((office) => office.displayName !== "Head Office (Accra)")
+            .map((office) => `<li>${office.displayName}</li>`)
+            .join("")}
+        </ul>
+        <div class="mt-2">Which location would you like information about?</div>
+      `;
     }
   }
 
   setTimeout(() => {
     // Remove typing loader
-    document.getElementById("typing-loader").remove();
+    const typingLoader = document.getElementById("typing-loader");
+    if (typingLoader) typingLoader.remove();
 
     // Show bot reply
     chatWindow.innerHTML += `<div class="text-left text-primary"><strong>SkyBot:</strong> ${botReply}</div>`;
@@ -499,6 +886,80 @@ function sendMessage() {
   }, 1000);
 
   input.value = "";
+}
+
+// Helper function to check for exact word matches
+function hasExactWord(message, word) {
+  const words = message.split(/\s+/);
+  return words.includes(word);
+}
+
+function checkForDeliveryLocationQuery(message) {
+  const deliveryKeywords = [
+    "deliver",
+    "delivery",
+    "ship",
+    "send",
+    "service",
+    "cover",
+    "operate",
+    "go to",
+    "reach",
+    "serve",
+    "available",
+    "do you deliver",
+    "can you deliver",
+  ];
+
+  // Check if message contains any delivery keywords
+  const hasDeliveryKeyword = deliveryKeywords.some((keyword) =>
+    message.includes(keyword)
+  );
+
+  if (!hasDeliveryKeyword) return null;
+
+  // Check if it's a Ghana location query
+  let foundLocations = [];
+
+  // Check for specific location mentions using exact matching
+  for (const [region, locations] of Object.entries(ghanaLocations)) {
+    for (const location of locations) {
+      // Use exact word matching for locations
+      if (hasExactWord(message, location)) {
+        foundLocations.push(location);
+      }
+    }
+  }
+
+  // Check for region mentions
+  const regions = Object.keys(ghanaLocations);
+  for (const region of regions) {
+    if (hasExactWord(message, region)) {
+      foundLocations.push(region);
+    }
+  }
+
+  if (foundLocations.length > 0) {
+    if (foundLocations.length === 1) {
+      return `Yes! SkyNet Express Ltd delivers to ${foundLocations[0]} and throughout Ghana. We have nationwide coverage across all 16 regions.`;
+    } else {
+      return `Yes! SkyNet Express Ltd delivers between ${foundLocations.join(
+        " and "
+      )} and throughout Ghana. We have comprehensive nationwide coverage across all regions.`;
+    }
+  }
+
+  // Check for general Ghana delivery questions
+  if (
+    hasExactWord(message, "ghana") ||
+    hasExactWord(message, "nationwide") ||
+    hasExactWord(message, "everywhere") ||
+    hasExactWord(message, "all areas")
+  ) {
+    return "Yes! SkyNet Express provides nationwide delivery services across all 16 regions of Ghana. We deliver to both urban and rural areas throughout the country.";
+  }
+
+  return null;
 }
 
 function checkForInternationalDelivery(message) {
@@ -511,6 +972,7 @@ function checkForInternationalDelivery(message) {
     "delivery",
     "service",
   ];
+
   const hasDeliveryKeyword = deliveryKeywords.some((keyword) =>
     message.includes(keyword)
   );
@@ -518,15 +980,15 @@ function checkForInternationalDelivery(message) {
   if (hasDeliveryKeyword) {
     // Look for any country mentioned (excluding Ghana)
     for (const country of countries) {
-      if (message.includes(country) && country !== "ghana") {
+      if (hasExactWord(message, country) && country !== "ghana") {
         return country;
       }
     }
 
     // Check for "international" or "abroad" keywords
     if (
-      message.includes("international") ||
-      message.includes("abroad") ||
+      hasExactWord(message, "international") ||
+      hasExactWord(message, "abroad") ||
       message.includes("outside ghana") ||
       message.includes("outside of ghana") ||
       message.includes("another country") ||
@@ -543,7 +1005,7 @@ function checkForDomesticPricingQuery(message) {
   // Check for cost-related keywords combined with Ghana locations
   const costKeywords = ["cost", "price", "how much", "charge", "fee", "rate"];
   const hasCostKeyword = costKeywords.some((keyword) =>
-    message.includes(keyword)
+    hasExactWord(message, keyword)
   );
 
   if (hasCostKeyword) {
@@ -552,14 +1014,14 @@ function checkForDomesticPricingQuery(message) {
     let locationCount = 0;
 
     for (const location of ghanaLocations) {
-      if (message.includes(location)) {
+      if (hasExactWord(message, location)) {
         locationCount++;
       }
 
       // Also check variations
       if (locationVariations[location]) {
         for (const variation of locationVariations[location]) {
-          if (message.includes(variation)) {
+          if (hasExactWord(message, variation)) {
             locationCount++;
             break;
           }
@@ -573,10 +1035,10 @@ function checkForDomesticPricingQuery(message) {
 
     // Check for general domestic delivery cost queries
     if (
-      message.includes("deliver") &&
-      (message.includes("ghana") ||
+      hasExactWord(message, "deliver") &&
+      (hasExactWord(message, "ghana") ||
         message.includes("within ghana") ||
-        message.includes("domestic"))
+        hasExactWord(message, "domestic"))
     ) {
       return true;
     }
@@ -587,19 +1049,19 @@ function checkForDomesticPricingQuery(message) {
 
 function findLocationInMessage(message) {
   for (const [location, data] of Object.entries(officeContacts)) {
-    if (message.includes(location.toLowerCase())) {
+    if (hasExactWord(message, location.toLowerCase())) {
       return location;
     }
   }
   for (const [location, variations] of Object.entries(locationVariations)) {
     for (const variation of variations) {
-      if (message.includes(variation)) {
+      if (hasExactWord(message, variation)) {
         return location;
       }
     }
   }
   for (const [location, data] of Object.entries(officeContacts)) {
-    if (message.includes(data.displayName.toLowerCase())) {
+    if (hasExactWord(message, data.displayName.toLowerCase())) {
       return location;
     }
   }
@@ -629,5 +1091,3 @@ document
       sendMessage();
     }
   });
-
-
