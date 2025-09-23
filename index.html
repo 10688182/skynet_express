@@ -63,11 +63,21 @@
               "float-slow": "float 8s ease-in-out infinite",
               "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
               "bounce-slow": "bounce 3s infinite",
+              "slide-behind": "slideBehind 0.3s ease-in-out forwards",
+              "slide-back": "slideBack 0.3s ease-in-out forwards",
             },
             keyframes: {
               float: {
                 "0%, 100%": { transform: "translateY(0)" },
                 "50%": { transform: "translateY(-20px)" },
+              },
+              slideBehind: {
+                "0%": { transform: "translateY(0)" },
+                "100%": { transform: "translateY(-100px) scale(0.8)" },
+              },
+              slideBack: {
+                "0%": { transform: "translateY(-100px) scale(0.8)" },
+                "100%": { transform: "translateY(0)" },
               },
             },
           },
@@ -90,7 +100,7 @@
         transform: translateY(20px);
         transition: opacity 0.3s, transform 0.3s;
         pointer-events: none;
-        border-left: 4px solid #f4050b;
+        border-left: 6px solid #f4050b;
       }
 
       .chatbot-notification.show {
@@ -122,6 +132,26 @@
 
       .chatbot-notification-close:hover {
         color: #333;
+      }
+
+      /* Chatbot container styles */
+      #chatbot-container {
+        transform-origin: bottom right;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      #chatbot-toggle {
+        transition: all 0.3s ease-in-out;
+      }
+
+      /* Hide toggle when chat is open */
+      .chat-open #chatbot-toggle {
+        animation: slide-behind 0.3s ease-in-out forwards;
+      }
+
+      /* Show toggle when chat is closed */
+      .chat-closed #chatbot-toggle {
+        animation: slide-back 0.3s ease-in-out forwards;
       }
     </style>
   </head>
@@ -1390,28 +1420,6 @@
                 </button>
               </div>
             </form>
-            <!-- <div class="flex flex-wrap gap-2">
-              <div
-                class="w-10 h-6 flex items-center justify-center bg-gray-800 rounded hover:bg-primary transition-colors duration-300 hover-rotate"
-              >
-                <i class="ri-visa-fill text-white"></i>
-              </div>
-              <div
-                class="w-10 h-6 flex items-center justify-center bg-gray-800 rounded hover:bg-primary transition-colors duration-300 hover-rotate"
-              >
-                <i class="ri-mastercard-fill text-white"></i>
-              </div>
-              <div
-                class="w-10 h-6 flex items-center justify-center bg-gray-800 rounded hover:bg-primary transition-colors duration-300 hover-rotate"
-              >
-                <i class="ri-paypal-fill text-white"></i>
-              </div>
-              <div
-                class="w-10 h-6 flex items-center justify-center bg-gray-800 rounded hover:bg-primary transition-colors duration-300 hover-rotate"
-              >
-                <i class="ri-amazon-pay-fill text-white"></i>
-              </div>
-            </div> -->
           </div>
         </div>
         <div class="border-t border-gray-800 pt-8">
@@ -1487,7 +1495,7 @@
     <!-- Floating Toggle Button -->
     <div
       id="chatbot-toggle"
-      class="fixed bottom-4 right-4 z-50 transition-all duration-300"
+      class="fixed bottom-4 right-4 z-70 transition-all duration-300"
     >
       <button
         onclick="toggleChatbot()"
@@ -1497,12 +1505,9 @@
       </button>
     </div>
 
-    <!-- Audio element for notification sound (hidden) -->
+    <!-- Audio element with WAV -->
     <audio id="notification-sound" preload="auto">
-      <source
-        src="https://assets.mixkit.co/sfx/preview/mixkit-correct-answer-tone-2870.mp3"
-        type="audio/mpeg"
-      />
+      <source src="images/audio.wav" type="audio/wav" />
     </audio>
 
     <script>
@@ -1529,10 +1534,10 @@
         // Play notification sound
         playNotificationSound();
 
-        // Auto-hide after 5 seconds
+        // Auto-hide after 4 seconds
         setTimeout(() => {
           closeNotification();
-        }, 5000);
+        }, 4000);
       }
 
       function closeNotification() {
@@ -1549,12 +1554,19 @@
       // Chatbot toggle functionality
       function toggleChatbot() {
         const chatbotContainer = document.getElementById("chatbot-container");
+        const chatbotToggle = document.getElementById("chatbot-toggle");
         const isHidden = chatbotContainer.classList.contains("hidden");
 
         if (isHidden) {
+          // Open chatbot
           chatbotContainer.classList.remove("hidden");
+          chatbotToggle.classList.remove("chat-closed");
+          chatbotToggle.classList.add("chat-open");
         } else {
+          // Close chatbot
           chatbotContainer.classList.add("hidden");
+          chatbotToggle.classList.remove("chat-open");
+          chatbotToggle.classList.add("chat-closed");
         }
       }
 
@@ -1728,5 +1740,3 @@
     <script src="js/swipper.js"></script>
   </body>
 </html>
-
-
