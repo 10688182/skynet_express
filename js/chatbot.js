@@ -10,9 +10,9 @@ const faqAnswers = {
   yes: "What else can I help you with?",
   no: "Alright then, thank you for choosing SkyNet Express Ltd.",
   thank: "You are most welcome, thank you for choosing SkyNet Express Ltd.",
-  hello: "Welcome to SkyNet Express Ltd, my name is SkyBot. What is your name?",
-  hi: "Welcome to SkyNet Express Ltd, my name is SkyBot. What is your name?",
-  hey: "Welcome to SkyNet Express Ltd, my name is SkyBot. What is your name?",
+  hello: "Hello to you too!, Welcome to SkyNet Express Ltd, my name is SkyBot. What is your name?",
+  hi: "Hello there, you are welcome to SkyNet Express Ltd, my name is SkyBot. What is your name?",
+  hey: "Hey!, Welcome to SkyNet Express Ltd, my name is SkyBot. What is your name?",
   howareyou: "I'm doing great, thank you! How can I assist you today?",
   whereismypackage:
     "Use our online tracking portal. You'll need your tracking number.",
@@ -1091,3 +1091,4 @@ document
       sendMessage();
     }
   });
+
