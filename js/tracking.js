@@ -479,6 +479,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const printContent = `
     <!DOCTYPE html>
     <html>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <head>
       <title>SkyNet Express Ltd - Tracking Details</title>
       <style>
@@ -487,7 +488,7 @@ document.addEventListener("DOMContentLoaded", () => {
           margin: 0.5cm;
         }
         body {
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
           font-size: 12px;
           line-height: 1.4;
           color: #333;
