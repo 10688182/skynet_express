@@ -127,34 +127,70 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
       
       <div class="modal-body p-6 overflow-y-auto max-h-[60vh]">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
-  <div class="bg-gray-50 p-4 rounded-lg">
-    <h3 class="text-sm font-medium text-gray-500 mb-1">Consignee Name</h3>
-    <p id="modal-consignee" class="font-semibold">-</p>
-  </div>
-  <div class="bg-gray-50 p-4 rounded-lg">
-    <h3 class="text-sm font-medium text-gray-500 mb-1">Company Name</h3>
-    <p id="modal-company" class="font-semibold">-</p>
-  </div>
-  <div class="bg-gray-50 p-4 rounded-lg">
-    <h3 class="text-sm font-medium text-gray-500 mb-1">Contact</h3>
-    <p id="modal-contact" class="font-semibold">-</p>
-  </div>
-  <div class="bg-gray-50 p-4 rounded-lg">
-    <h3 class="text-sm font-medium text-gray-500 mb-1">Location</h3>
-    <p id="modal-location" class="font-semibold">-</p>
-  </div>
-</div>
-        <div id="modal-delivery-info" class="bg-gray-50 border border-gray-200 rounded-lg p-2 hidden">
-          <h3 class="text-lg font-semibold text-red-800 mb-2">Delivery Information</h3>
+        <!-- Redesigned Shipment Details Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+          <!-- Left Side: Shipment Details -->
+          <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+            <h3 class="text-lg font-semibold text-gray-800 mb-4 pb-2 border-b border-gray-300">Shipment Details</h3>
+            <div class="space-y-3">
+              <div class="flex justify-between items-center">
+                <span class="text-sm font-medium text-gray-600">Shipper's Name:</span>
+                <span id="modal-shipper-name" class="text-sm font-semibold text-gray-800">-</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm font-medium text-gray-600">Shipper's Company:</span>
+                <span id="modal-shipper-company" class="text-sm font-semibold text-gray-800">-</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm font-medium text-gray-600">Shipper's Location:</span>
+                <span id="modal-shipper-location" class="text-sm font-semibold text-gray-800">-</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm font-medium text-gray-600">Wgt/Qty:</span>
+                <span id="modal-shipment-weight" class="text-sm font-semibold text-gray-800">-</span>
+              </div>
+              <div class="flex flex-col">
+                <span class="text-sm font-medium text-gray-600 mb-1">Description:</span>
+                <span id="modal-shipment-description" class="text-sm font-semibold text-gray-800">-</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Side: Recipient Details -->
+          <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+            <h3 class="text-lg font-semibold text-gray-800 mb-4 pb-2 border-b border-gray-300">Recipient Details</h3>
+            <div class="space-y-3">
+              <div class="flex justify-between items-center">
+                <span class="text-sm font-medium text-gray-600">Consignee Name:</span>
+                <span id="modal-consignee" class="text-sm font-semibold text-gray-800">-</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm font-medium text-gray-600">Company Name:</span>
+                <span id="modal-company" class="text-sm font-semibold text-gray-800">-</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm font-medium text-gray-600">Contact:</span>
+                <span id="modal-contact" class="text-sm font-semibold text-gray-800">-</span>
+              </div>
+              <div class="flex flex-col">
+                <span class="text-sm font-medium text-gray-600 mb-1">Location:</span>
+                <span id="modal-location" class="text-sm font-semibold text-gray-800">-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="modal-delivery-info" class="bg-gray-50 border border-gray-200 rounded-lg p-4 hidden">
+          <h3 class="text-lg font-semibold text-red-800 mb-3">Delivery Information</h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <p class="text-sm text-red-700"><span class="font-medium">Recipient:</span> <span id="modal-recipient-name">-</span></p>
               <p class="text-sm text-red-700"><span class="font-medium">Contact:</span> <span id="modal-recipient-contact">-</span></p>
             </div>
+            
             <div id="modal-pod-container" class="hidden">
               <p class="text-sm text-red-700 font-medium mb-2">Signature:</p>
-                <img id="modal-pod-image" src="" alt="Signature"class="rounded border border-red-300"style="width: 120px; height: auto;">
+              <img id="modal-pod-image" src="" alt="Signature" class="rounded border border-red-300" style="width: 120px; height: auto;">
             </div>
           </div>
         </div>
@@ -350,15 +386,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const colors = statusColors[statusKey] || statusColors["To Pick"];
     statusBadge.className = `px-4 py-2 rounded-full text-sm font-semibold ${colors.bg} ${colors.text} ${colors.border}`;
 
-    // Set consignee information from API data
-    const consigneeName = latestStatus.consignee_first_name
-      ? `${latestStatus.consignee_first_name} ${
-          latestStatus.consignee_last_name || ""
-        }`
-      : "Not Available";
+    // Set shipment details (left side)
+    document.getElementById("modal-shipper-name").textContent =
+      latestStatus.shipper_name || latestStatus.Sender_name || "N/A";
+    document.getElementById("modal-shipper-company").textContent =
+      latestStatus.shipper_company || latestStatus.sender_company_name || "N/A";
+    document.getElementById("modal-shipper-location").textContent =
+      latestStatus.shipper_location || latestStatus.location_pickup || "N/A";
+    document.getElementById("modal-shipment-weight").textContent =
+      latestStatus.shipment_weight || latestStatus.weight || "N/A";
+    document.getElementById("modal-shipment-description").textContent =
+      latestStatus.shipment_description ||
+      latestStatus.item_description ||
+      "N/A";
 
+    // Set recipient details (right side)
     document.getElementById("modal-consignee").textContent =
-      latestStatus.Receiver_name;
+      latestStatus.Receiver_name || "N/A";
     document.getElementById("modal-company").textContent =
       latestStatus.delivery_company_name || "N/A";
     document.getElementById("modal-contact").textContent =
@@ -475,7 +519,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const printDocument = iframe.contentWindow.document;
 
-    // Create print-friendly HTML
+    // Create print-friendly HTML with new layout
     const printContent = `
     <!DOCTYPE html>
     <html>
@@ -514,29 +558,47 @@ document.addEventListener("DOMContentLoaded", () => {
           color: #666;
           font-size: 14px;
         }
-        .shipment-info {
+        
+        /* New Two-Column Layout for Shipment Details */
+        .details-container {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 15px;
+          grid-template-columns: 1fr 1fr;
+          gap: 20px;
           margin-bottom: 20px;
         }
-        .info-card {
+        .details-section {
           border: 1px solid #ddd;
-          padding: 10px;
           border-radius: 5px;
+          padding: 15px;
           background: #f9f9f9;
         }
-        .info-card h3 {
-          margin: 0 0 5px 0;
-          font-size: 11px;
-          color: #666;
-          text-transform: uppercase;
-        }
-        .info-card p {
-          margin: 0;
+        .section-header {
+          font-size: 14px;
           font-weight: bold;
-          font-size: 12px;
+          color: #dc2626;
+          margin-bottom: 10px;
+          border-bottom: 1px solid #ddd;
+          padding-bottom: 5px;
         }
+        .detail-row {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 8px;
+        }
+        .detail-label {
+          font-weight: 600;
+          color: #666;
+        }
+        .detail-value {
+          font-weight: bold;
+          text-align: right;
+        }
+        .description-row {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 8px;
+        }
+        
         .timeline {
           margin-top: 20px;
         }
@@ -619,30 +681,84 @@ document.addEventListener("DOMContentLoaded", () => {
               </div>
             </div>
         
-        <div class="shipment-info">
-          <div class="info-card">
-            <h3>Waybill Number</h3>
-            <p>${number}</p>
+        <!-- New Two-Column Layout -->
+        <div class="details-container">
+          <!-- Left Column: Shipment Details -->
+          <div class="details-section">
+            <div class="section-header">SHIPMENT DETAILS</div>
+            <div class="detail-row">
+              <span class="detail-label">Waybill Number:</span>
+              <span class="detail-value">${number}</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Shipper's Name:</span>
+              <span class="detail-value">${
+                latestStatus.shipper_name || latestStatus.Sender_name || "N/A"
+              }</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Shipper's Company:</span>
+              <span class="detail-value">${
+                latestStatus.shipper_company ||
+                latestStatus.sender_company_name ||
+                "N/A"
+              }</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Shipper's Location:</span>
+              <span class="detail-value">${
+                latestStatus.shipper_location ||
+                latestStatus.location_pickup ||
+                "N/A"
+              }</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Shipment Weight:</span>
+              <span class="detail-value">${
+                latestStatus.shipment_weight || latestStatus.weight || "N/A"
+              }</span>
+            </div>
+            <div class="description-row">
+              <span class="detail-label">Shipment Description:</span>
+              <span class="detail-value">${
+                latestStatus.shipment_description ||
+                latestStatus.item_description ||
+                "N/A"
+              }</span>
+            </div>
           </div>
-          <div class="info-card">
-            <h3>Consignee Name</h3>
-            <p>${latestStatus.Receiver_name || "N/A"}</p>
-          </div>
-          <div class="info-card">
-            <h3>Company Name</h3>
-            <p>${latestStatus.delivery_company_name || "N/A"}</p>
-          </div>
-          <div class="info-card">
-            <h3>Contact</h3>
-            <p>${latestStatus.d_contact_number || "N/A"}</p>
-          </div>
-          <div class="info-card">
-            <h3>Delivery Location</h3>
-            <p>${latestStatus.location_delivery}</p>
-          </div>
-          <div class="info-card">
-            <h3>Last Updated</h3>
-            <p>${data[0].date_scaned}</p>
+
+          <!-- Right Column: Recipient Details -->
+          <div class="details-section">
+            <div class="section-header">RECIPIENT DETAILS</div>
+            <div class="detail-row">
+              <span class="detail-label">Consignee Name:</span>
+              <span class="detail-value">${
+                latestStatus.Receiver_name || "N/A"
+              }</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Company Name:</span>
+              <span class="detail-value">${
+                latestStatus.delivery_company_name || "N/A"
+              }</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Contact:</span>
+              <span class="detail-value">${
+                latestStatus.d_contact_number || "N/A"
+              }</span>
+            </div>
+            <div class="description-row">
+              <span class="detail-label">Location:</span>
+              <span class="detail-value">${
+                latestStatus.location_delivery || "N/A"
+              }</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Last Updated:</span>
+              <span class="detail-value">${data[0].date_scaned}</span>
+            </div>
           </div>
         </div>
 
@@ -739,48 +855,6 @@ document.addEventListener("DOMContentLoaded", () => {
     printDocument.open();
     printDocument.write(printContent);
     printDocument.close();
-  }
-
-  // Helper function to get status color for print
-  function getStatusColor(status) {
-    const statusText = status.description || status.activity_name;
-    const statusKey =
-      Object.keys(statusColors).find((key) =>
-        statusText.toLowerCase().includes(key.toLowerCase())
-      ) || "To Pick";
-
-    const colors = statusColors[statusKey] || statusColors["To Pick"];
-
-    // Convert Tailwind colors to hex for print
-    const colorMap = {
-      "bg-gray-100": "#f3f4f6",
-      "text-gray-800": "#1f2937",
-      "bg-blue-100": "#dbeafe",
-      "text-blue-800": "#1e40af",
-      "bg-indigo-100": "#e0e7ff",
-      "text-indigo-800": "#3730a3",
-      "bg-purple-100": "#f3e8ff",
-      "text-purple-800": "#6b21a8",
-      "bg-teal-100": "#ccfbf1",
-      "text-teal-800": "#115e59",
-      "bg-cyan-100": "#cffafe",
-      "text-cyan-800": "#155e75",
-      "bg-yellow-100": "#fef9c3",
-      "text-yellow-800": "#854d0e",
-      "bg-green-100": "#dcfce7",
-      "text-green-800": "#166534",
-      "bg-red-100": "#fee2e2",
-      "text-red-800": "#991b1b",
-      "bg-orange-100": "#ffedd5",
-      "text-orange-800": "#9a3412",
-      "bg-pink-100": "#fce7f3",
-      "text-pink-800": "#9d174d",
-    };
-
-    return {
-      bg: colorMap[colors.bg] || "#f3f4f6",
-      text: colorMap[colors.text] || "#1f2937",
-    };
   }
 
   // Helper function to get status color for print
