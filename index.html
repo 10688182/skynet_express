@@ -65,6 +65,14 @@
               "bounce-slow": "bounce 3s infinite",
               "slide-behind": "slideBehind 0.3s ease-in-out forwards",
               "slide-back": "slideBack 0.3s ease-in-out forwards",
+              "slide-in-left": "slideInLeft 0.5s ease-out forwards",
+              "slide-in-right": "slideInRight 0.5s ease-out forwards",
+              "fade-in-up": "fadeInUp 0.6s ease-out forwards",
+              "slide-out-left": "slideOutLeft 0.8s ease-in-out forwards",
+              "slide-out-right": "slideOutRight 0.8s ease-in-out forwards",
+              "zoom-out": "zoomOut 0.8s ease-in-out forwards",
+              "fade-out": "fadeOut 0.8s ease-in-out forwards",
+              "parallax-float": "parallaxFloat 20s ease-in-out infinite",
             },
             keyframes: {
               float: {
@@ -78,6 +86,38 @@
               slideBack: {
                 "0%": { transform: "translateY(-100px) scale(0.8)" },
                 "100%": { transform: "translateY(0)" },
+              },
+              slideInLeft: {
+                "0%": { transform: "translateX(-100%)", opacity: "0" },
+                "100%": { transform: "translateX(0)", opacity: "1" },
+              },
+              slideInRight: {
+                "0%": { transform: "translateX(100%)", opacity: "0" },
+                "100%": { transform: "translateX(0)", opacity: "1" },
+              },
+              fadeInUp: {
+                "0%": { transform: "translateY(30px)", opacity: "0" },
+                "100%": { transform: "translateY(0)", opacity: "1" },
+              },
+              slideOutLeft: {
+                "0%": { transform: "translateX(0)", opacity: "1" },
+                "100%": { transform: "translateX(-100%)", opacity: "0" },
+              },
+              slideOutRight: {
+                "0%": { transform: "translateX(0)", opacity: "1" },
+                "100%": { transform: "translateX(100%)", opacity: "0" },
+              },
+              zoomOut: {
+                "0%": { transform: "scale(1)", opacity: "1" },
+                "100%": { transform: "scale(0.8)", opacity: "0" },
+              },
+              fadeOut: {
+                "0%": { opacity: "1" },
+                "100%": { opacity: "0" },
+              },
+              parallaxFloat: {
+                "0%, 100%": { transform: "translateY(0px) scale(1.1)" },
+                "50%": { transform: "translateY(-10px) scale(1.1)" },
               },
             },
           },
@@ -152,6 +192,370 @@
       /* Show toggle when chat is closed */
       .chat-closed #chatbot-toggle {
         animation: slide-back 0.3s ease-in-out forwards;
+      }
+
+      /* Enhanced Hero Carousel Styles */
+      .hero-carousel {
+        position: relative;
+        height: 600px;
+        overflow: hidden;
+        perspective: 1000px;
+      }
+
+      .carousel-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      .carousel-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transform: scale(1.1);
+        transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        will-change: transform, opacity;
+      }
+
+      .carousel-slide.active {
+        opacity: 1;
+        transform: scale(1);
+        z-index: 10;
+      }
+
+      .carousel-slide.previous {
+        opacity: 0;
+        transform: translateX(-100%) scale(0.9);
+        z-index: 5;
+      }
+
+      .carousel-slide.next {
+        opacity: 0;
+        transform: translateX(100%) scale(0.9);
+        z-index: 5;
+      }
+
+      .carousel-slide.exiting {
+        opacity: 0;
+        transform: scale(0.8) rotateY(10deg);
+        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .slide-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        transform: scale(1.1);
+        transition: transform 12s ease-out;
+        will-change: transform;
+      }
+
+      .carousel-slide.active .slide-background {
+        transform: scale(1);
+      }
+
+      .slide-content {
+        position: relative;
+        z-index: 20;
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+
+      .slide-content > div {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+      }
+
+      .carousel-slide.active .slide-content > div {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Enhanced carousel controls */
+      .carousel-dot {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.4);
+        border: 2px solid transparent;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .carousel-dot::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: white;
+        border-radius: 50%;
+        transition: left 0.3s ease;
+      }
+
+      .carousel-dot.active {
+        background: transparent;
+        border-color: white;
+        transform: scale(1.2);
+      }
+
+      .carousel-dot.active::after {
+        left: 0;
+      }
+
+      .carousel-dot:hover {
+        transform: scale(1.3);
+        background: rgba(255, 255, 255, 0.8);
+      }
+
+      .carousel-arrow {
+        width: 50px;
+        height: 50px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        opacity: 0.7;
+      }
+
+      .carousel-arrow:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: scale(1.1);
+        opacity: 1;
+      }
+
+      .progress-bar {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        background: rgba(255, 255, 255, 0.8);
+        width: 0%;
+        transition: width 0.1s linear;
+        z-index: 30;
+      }
+
+      /* Text animation enhancements */
+      .text-reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: textReveal 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      }
+
+      @keyframes textReveal {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .delay-100 {
+        animation-delay: 0.1s;
+      }
+      .delay-200 {
+        animation-delay: 0.2s;
+      }
+      .delay-300 {
+        animation-delay: 0.3s;
+      }
+      .delay-400 {
+        animation-delay: 0.4s;
+      }
+
+      /* Testimonial Carousel Styles */
+      .testimonial-carousel-container {
+        position: relative;
+        overflow: hidden;
+        padding: 60px 0;
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      }
+
+      .testimonial-track {
+        display: flex;
+        transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        will-change: transform;
+      }
+
+      .testimonial-card {
+        flex: 0 0 33.333%;
+        padding: 0 20px;
+        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        opacity: 0.5;
+        transform: scale(0.85);
+        filter: blur(2px);
+      }
+
+      .testimonial-card.active {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+        z-index: 10;
+      }
+
+      .testimonial-content {
+        background: white;
+        border-radius: 20px;
+        padding: 40px 30px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(244, 5, 11, 0.1);
+      }
+
+      .testimonial-content::before {
+        content: "";
+        position: absolute;
+        top: 20px;
+        left: 25px;
+        font-size: 80px;
+        color: #f4050b;
+        opacity: 0.15;
+        font-family: serif;
+        line-height: 1;
+        z-index: 1;
+      }
+
+      .testimonial-content::after {
+        content: "";
+        position: absolute;
+        bottom: 20px;
+        right: 25px;
+        font-size: 80px;
+        color: #f4050b;
+        opacity: 0.15;
+        font-family: serif;
+        line-height: 1;
+        transform: rotate(180deg);
+        z-index: 1;
+      }
+
+      .customer-info {
+        display: flex;
+        align-items: center;
+        margin-top: 25px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .customer-avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        margin-right: 15px;
+        border: 3px solid #f4050b;
+        box-shadow: 0 4px 12px rgba(244, 5, 11, 0.2);
+        background: linear-gradient(135deg, #f4050b 0%, #dc2626 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+      }
+
+      .carousel-dots {
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+        gap: 12px;
+      }
+
+      .testimonial-dot {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #cbd5e1;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .testimonial-dot::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: #f4050b;
+        transition: left 0.3s ease;
+      }
+
+      .testimonial-dot.active {
+        background: #f4050b;
+        transform: scale(1.3);
+      }
+
+      .testimonial-dot.active::after {
+        left: 0;
+      }
+
+      .testimonial-text {
+        position: relative;
+        z-index: 2;
+      }
+
+      @media (max-width: 1024px) {
+        .testimonial-card {
+          flex: 0 0 50%;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .testimonial-card {
+          flex: 0 0 100%;
+        }
+
+        .testimonial-content {
+          padding: 30px 20px;
+        }
+
+        .hero-carousel {
+          height: 500px;
+        }
+
+        .carousel-arrow {
+          width: 40px;
+          height: 40px;
+        }
+      }
+
+      /* Animation for the header */
+      .text-gradient {
+        background: linear-gradient(135deg, #f4050b 0%, #dc2626 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* User vector styles */
+      .user-vector {
+        background: linear-gradient(135deg, #f4050b 0%, #dc2626 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
       }
     </style>
   </head>
@@ -265,176 +669,156 @@
       </div>
     </header>
 
-    <!-- Hero Carousel -->
+    <!-- Enhanced Hero Carousel -->
     <section class="relative pt-16 overflow-hidden">
-      <div class="carousel-container relative h-[600px] overflow-hidden">
-        <div
-          class="carousel flex h-full transition-transform duration-500 ease-in-out"
-          id="carousel"
-          style="transform: translateX(0%)"
-        >
+      <div class="hero-carousel">
+        <div class="carousel-container">
           <!-- Slide 1 -->
-          <div
-            class="carousel-item min-w-full h-full relative"
-            style="
-              background-image: url('images/Skynet_04.jpg');
-              background-size: cover;
-              background-position: center;
-            "
-          >
+          <div class="carousel-slide active" data-index="0">
             <div
-              class="absolute inset-0 bg-gradient-to-r from-primary/50 to-transparent"
+              class="slide-background animate-parallax-float"
+              style="background-image: url('images/Skynet_04.jpg')"
             ></div>
-            <div class="container mx-auto px-4 h-full flex items-center">
-              <div class="w-full md:w-1/2 text-white z-10">
-                <h1
-                  class="text-4xl md:text-5xl font-bold mb-4 animate-slide-up"
-                >
-                  Nationwide
-                  <span class="inline-block animate-bounce text-secondary"
-                    >Delivery</span
-                  >
-                  Services
-                </h1>
-                <p class="text-xl mb-8 animate-slide-up animate-delay-200">
-                  From bustling cities to remote towns, our expansive logistics
-                  network guarantees timely deliveries across all 16 regions. We
-                  make Ghana feel smaller with every shipment.
-                </p>
-                <div
-                  class="flex flex-wrap gap-4 animate-slide-up animate-delay-400"
-                >
-                  <a
-                    href="https://app.skynetexpressgh.com"
-                    class="bg-white text-primary px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-gray-100 transition-colors btn-hover"
-                    >Send a parcel</a
-                  >
-                  <a
-                    href="#track"
-                    class="bg-secondary text-white px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-secondary/90 transition-colors btn-hover"
-                    >Track Shipment</a
-                  >
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-primary/60 to-transparent"
+            ></div>
+            <div class="slide-content">
+              <div class="container mx-auto px-4">
+                <div class="w-full md:w-1/2 text-white">
+                  <h1 class="text-4xl md:text-5xl font-bold mb-4 text-reveal">
+                    Nationwide
+                    <span
+                      class="inline-block animate-bounce text-secondary delay-100"
+                      >Delivery</span
+                    >
+                    Services
+                  </h1>
+                  <p class="text-xl mb-8 text-reveal delay-200">
+                    From bustling cities to remote towns, our expansive
+                    logistics network guarantees timely deliveries across all 16
+                    regions. We make Ghana feel smaller with every shipment.
+                  </p>
+                  <div class="flex flex-wrap gap-4 text-reveal delay-300">
+                    <a
+                      href="https://app.skynetexpressgh.com"
+                      class="bg-white text-primary px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-gray-100 transition-all duration-300 btn-hover transform hover:scale-105"
+                      >Send a parcel</a
+                    >
+                    <a
+                      href="#track"
+                      class="bg-secondary text-white px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-secondary/90 transition-all duration-300 btn-hover transform hover:scale-105"
+                      >Track Shipment</a
+                    >
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+
           <!-- Slide 2 -->
-          <div
-            class="carousel-item min-w-full h-full relative"
-            style="
-              background-image: url('images/hero3.webp');
-              background-size: cover;
-              background-position: center;
-            "
-          >
+          <div class="carousel-slide" data-index="1">
             <div
-              class="absolute inset-0 bg-gradient-to-r from-primary/50 to-transparent"
+              class="slide-background animate-parallax-float"
+              style="background-image: url('images/hero3.webp')"
             ></div>
-            <div class="container mx-auto px-4 h-full flex items-center">
-              <div class="w-full md:w-1/2 text-white z-10">
-                <h1
-                  class="text-4xl md:text-5xl font-bold mb-4 animate-slide-up"
-                >
-                  Fast &
-                  <span id="rewriting-text" class="text-secondary"></span>
-                  Delivery
-                </h1>
-                <p class="text-xl mb-8 animate-slide-up animate-delay-200">
-                  Get your packages delivered on time, every time. Our
-                  nationwide courier service ensures swift, secure, and reliable
-                  deliveries no matter the destination.
-                </p>
-                <div
-                  class="flex flex-wrap gap-4 animate-slide-up animate-delay-400"
-                >
-                  <a
-                    href="https://app.skynetexpressgh.com"
-                    class="bg-white text-primary px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-gray-100 transition-colors btn-hover"
-                    >Send a parcel</a
-                  >
-                  <a
-                    href="#contact"
-                    class="bg-secondary text-white px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-secondary/90 transition-colors btn-hover"
-                    >Contact Us</a
-                  >
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-primary/60 to-transparent"
+            ></div>
+            <div class="slide-content">
+              <div class="container mx-auto px-4">
+                <div class="w-full md:w-1/2 text-white">
+                  <h1 class="text-4xl md:text-5xl font-bold mb-4">
+                    Fast &
+                    <span id="rewriting-text" class="text-secondary"></span>
+                    Delivery
+                  </h1>
+                  <p class="text-xl mb-8">
+                    Get your packages delivered on time, every time. Our
+                    nationwide courier service ensures swift, secure, and
+                    reliable deliveries no matter the destination.
+                  </p>
+                  <div class="flex flex-wrap gap-4">
+                    <a
+                      href="https://app.skynetexpressgh.com"
+                      class="bg-white text-primary px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-gray-100 transition-all duration-300 btn-hover transform hover:scale-105"
+                      >Send a parcel</a
+                    >
+                    <a
+                      href="#contact"
+                      class="bg-secondary text-white px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-secondary/90 transition-all duration-300 btn-hover transform hover:scale-105"
+                      >Contact Us</a
+                    >
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+
           <!-- Slide 3 -->
-          <div
-            class="carousel-item min-w-full h-full relative"
-            style="
-              background-image: url('images/hero1.jpg');
-              background-size: cover;
-              background-position: center;
-            "
-          >
+          <div class="carousel-slide" data-index="2">
             <div
-              class="absolute inset-0 bg-gradient-to-r from-primary/50 to-transparent"
+              class="slide-background animate-parallax-float"
+              style="background-image: url('images/hero1.jpg')"
             ></div>
-            <div class="container mx-auto px-4 h-full flex items-center">
-              <div class="w-full md:w-1/2 text-white z-10">
-                <h1
-                  class="text-4xl md:text-5xl font-bold mb-4 animate-slide-up"
-                >
-                  <span class="inline-block animate-bounce text-secondary"
-                    >Safe Handling,</span
-                  >
-                  Every Step of the Way
-                </h1>
-                <p class="text-xl mb-8 animate-slide-up animate-delay-200">
-                  From pickup to delivery, we treat every item with care. Our
-                  trained agents ensure your shipments are protected, tracked,
-                  and delivered with a smile.
-                </p>
-                <div
-                  class="flex flex-wrap gap-4 animate-slide-up animate-delay-400"
-                >
-                  <a
-                    href="https://app.skynetexpressgh.com"
-                    class="bg-white text-primary px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-gray-100 transition-colors btn-hover"
-                    >Send a parcel</a
-                  >
-                  <a
-                    href="sectors.html"
-                    class="bg-secondary text-white px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-secondary/90 transition-colors btn-hover"
-                    >Our Sectors</a
-                  >
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-primary/60 to-transparent"
+            ></div>
+            <div class="slide-content">
+              <div class="container mx-auto px-4">
+                <div class="w-full md:w-1/2 text-white">
+                  <h1 class="text-4xl md:text-5xl font-bold mb-4">
+                    <span class="inline-block animate-bounce text-secondary"
+                      >Safe Handling,</span
+                    >
+                    Every Step of the Way
+                  </h1>
+                  <p class="text-xl mb-8">
+                    From pickup to delivery, we treat every item with care. Our
+                    trained agents ensure your shipments are protected, tracked,
+                    and delivered with a smile.
+                  </p>
+                  <div class="flex flex-wrap gap-4">
+                    <a
+                      href="https://app.skynetexpressgh.com"
+                      class="bg-white text-primary px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-gray-100 transition-all duration-300 btn-hover transform hover:scale-105"
+                      >Send a parcel</a
+                    >
+                    <a
+                      href="sectors.html"
+                      class="bg-secondary text-white px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-secondary/90 transition-all duration-300 btn-hover transform hover:scale-105"
+                      >Our Sectors</a
+                    >
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-bar" id="progress-bar"></div>
+
         <!-- Carousel Controls -->
         <div
-          class="absolute bottom-6 left-0 right-0 flex justify-center space-x-2"
+          class="absolute bottom-8 left-0 right-0 flex justify-center space-x-3"
         >
-          <button
-            class="w-3 h-3 rounded-full bg-white/50 carousel-dot active hover-grow"
-            data-index="0"
-          ></button>
-          <button
-            class="w-3 h-3 rounded-full bg-white/50 carousel-dot hover-grow"
-            data-index="1"
-          ></button>
-          <button
-            class="w-3 h-3 rounded-full bg-white/50 carousel-dot hover-grow"
-            data-index="2"
-          ></button>
+          <button class="carousel-dot active" data-index="0"></button>
+          <button class="carousel-dot" data-index="1"></button>
+          <button class="carousel-dot" data-index="2"></button>
         </div>
+
         <!-- Carousel Arrows -->
         <button
-          class="absolute top-1/2 left-4 transform -translate-y-1/2 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors hover-grow"
+          class="carousel-arrow absolute top-1/2 left-6 transform -translate-y-1/2 z-30"
           id="prev-slide"
         >
-          <i class="ri-arrow-left-s-line ri-lg"></i>
+          <i class="ri-arrow-left-s-line ri-xl"></i>
         </button>
         <button
-          class="absolute top-1/2 right-4 transform -translate-y-1/2 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors hover-grow"
+          class="carousel-arrow absolute top-1/2 right-6 transform -translate-y-1/2 z-30"
           id="next-slide"
         >
-          <i class="ri-arrow-right-s-line ri-lg"></i>
+          <i class="ri-arrow-right-s-line ri-xl"></i>
         </button>
       </div>
     </section>
@@ -934,13 +1318,13 @@
                 class="h-100 opacity-80 hover:opacity-100 transition-opacity"
               />
             </div>
-            <div class="swiper-slide flex justify-center hover-grow">
+            <!-- <div class="swiper-slide flex justify-center hover-grow">
               <img
                 src="images/v2.jpg"
                 alt="Apple"
                 class="h-100 opacity-80 hover:opacity-100 transition-opacity"
               />
-            </div>
+            </div> -->
             <div class="swiper-slide flex justify-center hover-grow">
               <img
                 src="images/v3.jpg"
@@ -957,7 +1341,21 @@
             </div>
             <div class="swiper-slide flex justify-center hover-grow">
               <img
+                src="images/v1.jpg"
+                alt="Samsung"
+                class="h-100 opacity-80 hover:opacity-100 transition-opacity"
+              />
+            </div>
+            <!-- <div class="swiper-slide flex justify-center hover-grow">
+              <img
                 src="images/v2.jpg"
+                alt="Unilever"
+                class="h-100 opacity-80 hover:opacity-100 transition-opacity"
+              />
+            </div> -->
+            <div class="swiper-slide flex justify-center hover-grow">
+              <img
+                src="images/v3.jpg"
                 alt="Unilever"
                 class="h-100 opacity-80 hover:opacity-100 transition-opacity"
               />
@@ -1029,6 +1427,194 @@
               />
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonial-carousel-container">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center mb-12" data-aos="fade-up">
+          <span class="text-sm font-medium text-primary mb-2 inline-block">
+            <span class="inline-block animate-bounce">
+              <i class="ri-double-quotes-l mr-1"></i>
+              CLIENT TESTIMONIALS
+              <i class="ri-double-quotes-r ml-1"></i>
+            </span>
+          </span>
+          <h2 class="text-3xl font-bold mb-4">
+            What Our <span class="text-gradient">Clients Say</span>
+          </h2>
+          <p class="text-gray-600">
+            Don't just take our word for it - hear from our satisfied customers.
+          </p>
+        </div>
+
+        <div class="relative">
+          <div class="testimonial-track" id="testimonial-track">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-card" data-index="0">
+              <div class="testimonial-content">
+                <div class="text-amber-400 mb-4 text-lg">
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                </div>
+                <p
+                  class="text-gray-700 mb-6 text-lg leading-relaxed testimonial-text"
+                >
+                  "SkyNet Express has revolutionized our supply chain. Their
+                  nationwide coverage and real-time tracking give us complete
+                  peace of mind. Packages that used to take weeks now arrive in
+                  days!"
+                </p>
+                <div class="customer-info">
+                  <div class="customer-avatar user-vector">KM</div>
+                  <div>
+                    <h4 class="font-bold text-gray-900 text-lg">
+                      Kwame Mensah
+                    </h4>
+                    <p class="text-gray-600">
+                      Operations Manager, Accra Retail
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card" data-index="1">
+              <div class="testimonial-content">
+                <div class="text-amber-400 mb-4 text-lg">
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-half-fill"></i>
+                </div>
+                <p
+                  class="text-gray-700 mb-6 text-lg leading-relaxed testimonial-text"
+                >
+                  "The cold-chain transportation service is exceptional. Our
+                  perishable goods arrive fresh and perfectly preserved. Their
+                  attention to temperature control is impressive."
+                </p>
+                <div class="customer-info">
+                  <div class="customer-avatar user-vector">AS</div>
+                  <div>
+                    <h4 class="font-bold text-gray-900 text-lg">Ama Serwaa</h4>
+                    <p class="text-gray-600">CEO, FreshFarm Produce</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="testimonial-card" data-index="2">
+              <div class="testimonial-content">
+                <div class="text-amber-400 mb-4 text-lg">
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                </div>
+                <p
+                  class="text-gray-700 mb-6 text-lg leading-relaxed testimonial-text"
+                >
+                  "As an e-commerce business, reliable delivery is everything.
+                  SkyNet's fulfillment services have helped us scale across
+                  Ghana while maintaining customer satisfaction."
+                </p>
+                <div class="customer-info">
+                  <div class="customer-avatar user-vector">KA</div>
+                  <div>
+                    <h4 class="font-bold text-gray-900 text-lg">Kofi Asante</h4>
+                    <p class="text-gray-600">Founder, GhanaShop Online</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Testimonial 4 -->
+            <div class="testimonial-card" data-index="3">
+              <div class="testimonial-content">
+                <div class="text-amber-400 mb-4 text-lg">
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-line"></i>
+                </div>
+                <p
+                  class="text-gray-700 mb-6 text-lg leading-relaxed testimonial-text"
+                >
+                  "Their document delivery service is fast and secure. Important
+                  contracts and legal documents always reach their destination
+                  on time. Highly recommended for corporate needs."
+                </p>
+                <div class="customer-info">
+                  <div class="customer-avatar user-vector">NY</div>
+                  <div>
+                    <h4 class="font-bold text-gray-900 text-lg">Nana Yaa</h4>
+                    <p class="text-gray-600">Legal Counsel, Kumasi Law Firm</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Testimonial 5 -->
+            <div class="testimonial-card" data-index="4">
+              <div class="testimonial-content">
+                <div class="text-amber-400 mb-4 text-lg">
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                  <i class="ri-star-fill"></i>
+                </div>
+                <p
+                  class="text-gray-700 mb-6 text-lg leading-relaxed testimonial-text"
+                >
+                  "The distribution network is incredible! We've expanded to
+                  remote areas we never thought possible. SkyNet makes
+                  nationwide business truly accessible."
+                </p>
+                <div class="customer-info">
+                  <div class="customer-avatar user-vector">EB</div>
+                  <div>
+                    <h4 class="font-bold text-gray-900 text-lg">Esi Boateng</h4>
+                    <p class="text-gray-600">Supply Chain Director, Takoradi</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navigation Arrows -->
+          <button
+            class="absolute top-1/2 left-0 transform -translate-y-1/2 -translate-x-4 w-12 h-12 bg-white shadow-xl rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110 z-20"
+            id="testimonial-prev"
+          >
+            <i class="ri-arrow-left-s-line ri-xl"></i>
+          </button>
+          <button
+            class="absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-4 w-12 h-12 bg-white shadow-xl rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110 z-20"
+            id="testimonial-next"
+          >
+            <i class="ri-arrow-right-s-line ri-xl"></i>
+          </button>
+        </div>
+
+        <!-- Carousel Dots -->
+        <div class="carousel-dots">
+          <button class="carousel-dot active" data-index="0"></button>
+          <button class="carousel-dot" data-index="1"></button>
+          <button class="carousel-dot" data-index="2"></button>
+          <button class="carousel-dot" data-index="3"></button>
+          <button class="carousel-dot" data-index="4"></button>
         </div>
       </div>
     </section>
@@ -1338,7 +1924,7 @@
                   <i
                     class="ri-arrow-right-s-line mr-2 text-primary group-hover:translate-x-1 transition-transform"
                   ></i>
-                  SkyNet Parcel
+                  Parcel Delivery
                 </a>
               </li>
               <li>
@@ -1349,7 +1935,7 @@
                   <i
                     class="ri-arrow-right-s-line mr-2 text-primary group-hover:translate-x-1 transition-transform"
                   ></i>
-                  SkyNet Logistics
+                  Logistics
                 </a>
               </li>
               <li>
@@ -1360,7 +1946,7 @@
                   <i
                     class="ri-arrow-right-s-line mr-2 text-primary group-hover:translate-x-1 transition-transform"
                   ></i>
-                  SkyNet Distribution
+                  Distribution
                 </a>
               </li>
               <li>
@@ -1371,7 +1957,7 @@
                   <i
                     class="ri-arrow-right-s-line mr-2 text-primary group-hover:translate-x-1 transition-transform"
                   ></i>
-                  SkyNet Cold Chain
+                  Cold Chain Transportation
                 </a>
               </li>
               <li>
@@ -1382,7 +1968,7 @@
                   <i
                     class="ri-arrow-right-s-line mr-2 text-primary group-hover:translate-x-1 transition-transform"
                   ></i>
-                  SkyNet Document
+                  Document Delivery
                 </a>
               </li>
               <li>
@@ -1393,7 +1979,7 @@
                   <i
                     class="ri-arrow-right-s-line mr-2 text-primary group-hover:translate-x-1 transition-transform"
                   ></i>
-                  SkyNet E-Commerce
+                  E-Commerce Fulfillment
                 </a>
               </li>
             </ul>
@@ -1518,10 +2104,313 @@
         mirror: false,
       });
 
+      // Enhanced Hero Carousel Functionality - Fixed Auto-Rotation
+      document.addEventListener("DOMContentLoaded", function () {
+        const slides = document.querySelectorAll(".carousel-slide");
+        const dots = document.querySelectorAll(".carousel-dot");
+        const prevBtn = document.getElementById("prev-slide");
+        const nextBtn = document.getElementById("next-slide");
+        const progressBar = document.getElementById("progress-bar");
+
+        let currentIndex = 0;
+        let isAnimating = false;
+        let autoRotateInterval;
+        const slideDuration = 10000; // 10 seconds per slide
+
+        // Initialize carousel
+        updateCarousel();
+        startAutoRotate();
+
+        function updateCarousel() {
+          // Remove all classes
+          slides.forEach((slide) => {
+            slide.classList.remove("active", "previous", "next", "exiting");
+          });
+          dots.forEach((dot) => dot.classList.remove("active"));
+
+          // Set current slide as active
+          slides[currentIndex].classList.add("active");
+          dots[currentIndex].classList.add("active");
+
+          // Set previous and next slides
+          const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+          const nextIndex = (currentIndex + 1) % slides.length;
+
+          slides[prevIndex].classList.add("previous");
+          slides[nextIndex].classList.add("next");
+
+          // Reset progress bar
+          if (progressBar) {
+            progressBar.style.width = "0%";
+          }
+
+          // Animate content for active slide
+          const activeContent = slides[currentIndex].querySelector(
+            ".slide-content > div"
+          );
+          if (activeContent) {
+            activeContent.style.opacity = "0";
+            activeContent.style.transform = "translateY(50px)";
+
+            setTimeout(() => {
+              activeContent.style.opacity = "1";
+              activeContent.style.transform = "translateY(0)";
+            }, 300);
+          }
+        }
+
+        function nextSlide() {
+          if (isAnimating) return;
+          isAnimating = true;
+
+          // Add exiting animation to current slide
+          slides[currentIndex].classList.add("exiting");
+
+          setTimeout(() => {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateCarousel();
+            isAnimating = false;
+          }, 800);
+        }
+
+        function prevSlide() {
+          if (isAnimating) return;
+          isAnimating = true;
+
+          // Add exiting animation to current slide
+          slides[currentIndex].classList.add("exiting");
+
+          setTimeout(() => {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateCarousel();
+            isAnimating = false;
+          }, 800);
+        }
+
+        function goToSlide(index) {
+          if (isAnimating || index === currentIndex) return;
+          isAnimating = true;
+
+          // Add exiting animation to current slide
+          slides[currentIndex].classList.add("exiting");
+
+          setTimeout(() => {
+            currentIndex = index;
+            updateCarousel();
+            isAnimating = false;
+          }, 800);
+        }
+
+        function startAutoRotate() {
+          // Clear any existing interval first
+          clearInterval(autoRotateInterval);
+
+          // Start new interval
+          autoRotateInterval = setInterval(() => {
+            if (!isAnimating) {
+              nextSlide();
+            }
+          }, slideDuration);
+
+          // Start progress bar animation
+          startProgressBar();
+        }
+
+        function startProgressBar() {
+          if (!progressBar) return;
+
+          progressBar.style.width = "0%";
+          progressBar.style.transition =
+            "width " + (slideDuration - 100) + "ms linear";
+
+          // Use requestAnimationFrame for smooth progress
+          let startTime = Date.now();
+
+          function animateProgress() {
+            if (!autoRotateInterval) return; // Stop if auto-rotate is disabled
+
+            const elapsed = Date.now() - startTime;
+            const progress = Math.min(elapsed / (slideDuration - 100), 1) * 100;
+
+            progressBar.style.width = progress + "%";
+
+            if (progress < 100) {
+              requestAnimationFrame(animateProgress);
+            }
+          }
+
+          requestAnimationFrame(animateProgress);
+        }
+
+        function pauseAutoRotate() {
+          clearInterval(autoRotateInterval);
+          autoRotateInterval = null;
+          if (progressBar) {
+            progressBar.style.transition = "none";
+          }
+        }
+
+        // Event listeners
+        nextBtn.addEventListener("click", () => {
+          pauseAutoRotate();
+          nextSlide();
+          setTimeout(startAutoRotate, slideDuration);
+        });
+
+        prevBtn.addEventListener("click", () => {
+          pauseAutoRotate();
+          prevSlide();
+          setTimeout(startAutoRotate, slideDuration);
+        });
+
+        dots.forEach((dot, index) => {
+          dot.addEventListener("click", () => {
+            pauseAutoRotate();
+            goToSlide(index);
+            setTimeout(startAutoRotate, slideDuration);
+          });
+        });
+
+        // Pause on hover
+        const carousel = document.querySelector(".hero-carousel");
+        if (carousel) {
+          carousel.addEventListener("mouseenter", pauseAutoRotate);
+          carousel.addEventListener("mouseleave", startAutoRotate);
+        }
+
+        // Touch support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        if (carousel) {
+          carousel.addEventListener("touchstart", (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            pauseAutoRotate();
+          });
+
+          carousel.addEventListener("touchend", (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+            setTimeout(startAutoRotate, slideDuration);
+          });
+        }
+
+        function handleSwipe() {
+          const swipeThreshold = 50;
+          const difference = touchStartX - touchEndX;
+
+          if (Math.abs(difference) > swipeThreshold) {
+            if (difference > 0) {
+              // Swipe left - next slide
+              nextSlide();
+            } else {
+              // Swipe right - previous slide
+              prevSlide();
+            }
+          }
+        }
+
+        // Make sure auto-rotate starts
+        setTimeout(() => {
+          if (!autoRotateInterval) {
+            startAutoRotate();
+          }
+        }, 1000);
+      });
+
+      // Testimonial Carousel Functionality (unchanged)
+      document.addEventListener("DOMContentLoaded", function () {
+        const track = document.getElementById("testimonial-track");
+        const cards = document.querySelectorAll(".testimonial-card");
+        const dots = document.querySelectorAll(".testimonial-dot");
+        const prevBtn = document.getElementById("testimonial-prev");
+        const nextBtn = document.getElementById("testimonial-next");
+
+        let currentIndex = 2;
+        const totalCards = cards.length;
+        let isAnimating = false;
+
+        let autoRotate = setInterval(() => {
+          nextTestimonial();
+        }, 4000);
+
+        function updateCarousel() {
+          if (isAnimating) return;
+          isAnimating = true;
+
+          cards.forEach((card) => {
+            card.classList.remove("active");
+          });
+
+          cards[currentIndex].classList.add("active");
+
+          dots.forEach((dot, index) => {
+            dot.classList.toggle("active", index === currentIndex);
+          });
+
+          const activeCard = cards[currentIndex];
+          const cardWidth = activeCard.offsetWidth;
+          const trackWidth = track.offsetWidth;
+          const offset =
+            trackWidth / 2 - cardWidth / 2 - currentIndex * cardWidth;
+
+          track.style.transform = `translateX(${offset}px)`;
+
+          setTimeout(() => {
+            isAnimating = false;
+          }, 800);
+
+          clearInterval(autoRotate);
+          autoRotate = setInterval(() => {
+            nextTestimonial();
+          }, 4000);
+        }
+
+        function nextTestimonial() {
+          if (isAnimating) return;
+          currentIndex = (currentIndex + 1) % totalCards;
+          updateCarousel();
+        }
+
+        function prevTestimonial() {
+          if (isAnimating) return;
+          currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+          updateCarousel();
+        }
+
+        nextBtn.addEventListener("click", nextTestimonial);
+        prevBtn.addEventListener("click", prevTestimonial);
+
+        dots.forEach((dot, index) => {
+          dot.addEventListener("click", () => {
+            if (isAnimating) return;
+            currentIndex = index;
+            updateCarousel();
+          });
+        });
+
+        const carousel = document.querySelector(
+          ".testimonial-carousel-container"
+        );
+        carousel.addEventListener("mouseenter", () => {
+          clearInterval(autoRotate);
+        });
+
+        carousel.addEventListener("mouseleave", () => {
+          autoRotate = setInterval(() => {
+            nextTestimonial();
+          }, 4000);
+        });
+
+        updateCarousel();
+        window.addEventListener("resize", updateCarousel);
+      });
+
+      // Rest of your existing JavaScript remains the same
       // Function to play notification sound
       function playNotificationSound() {
         const sound = document.getElementById("notification-sound");
-        sound.currentTime = 0; // Reset to start
+        sound.currentTime = 0;
         sound.play().catch((e) => console.log("Audio play failed:", e));
       }
 
@@ -1529,11 +2418,7 @@
       function showNotification() {
         const notification = document.getElementById("chatbot-notification");
         notification.classList.add("show");
-
-        // Play notification sound
         playNotificationSound();
-
-        // Auto-hide after 4 seconds
         setTimeout(() => {
           closeNotification();
         }, 4000);
@@ -1546,7 +2431,6 @@
 
       // Show notification when page loads
       document.addEventListener("DOMContentLoaded", function () {
-        // Wait a moment before showing the notification
         setTimeout(showNotification, 2000);
       });
 
@@ -1557,12 +2441,10 @@
         const isHidden = chatbotContainer.classList.contains("hidden");
 
         if (isHidden) {
-          // Open chatbot
           chatbotContainer.classList.remove("hidden");
           chatbotToggle.classList.remove("chat-closed");
           chatbotToggle.classList.add("chat-open");
         } else {
-          // Close chatbot
           chatbotContainer.classList.add("hidden");
           chatbotToggle.classList.remove("chat-open");
           chatbotToggle.classList.add("chat-closed");
@@ -1575,27 +2457,20 @@
         const chatWindow = document.getElementById("chat-window");
 
         if (chatInput.value.trim() !== "") {
-          // Add user message
           const userMessage = document.createElement("div");
           userMessage.className = "text-right";
           userMessage.innerHTML = `<span class="inline-block bg-primary text-white px-3 py-2 rounded-lg">${chatInput.value}</span>`;
           chatWindow.appendChild(userMessage);
 
-          // Clear input
           chatInput.value = "";
-
-          // Scroll to bottom
           chatWindow.scrollTop = chatWindow.scrollHeight;
 
-          // Simulate bot response after a short delay
           setTimeout(() => {
             const botMessage = document.createElement("div");
             botMessage.className = "text-gray-600";
             botMessage.innerHTML =
               "I'm a simple chatbot. For real assistance, please contact our support team at info@skynetexpressgh.com";
             chatWindow.appendChild(botMessage);
-
-            // Scroll to bottom again
             chatWindow.scrollTop = chatWindow.scrollHeight;
           }, 1000);
         }
@@ -1648,25 +2523,22 @@
         const currentWord = words[wordIndex];
 
         if (isDeleting) {
-          // Deleting characters
           element.textContent = currentWord.substring(0, charIndex - 1);
           charIndex--;
           typingSpeed = 50;
         } else {
-          // Adding characters
           element.textContent = currentWord.substring(0, charIndex + 1);
           charIndex++;
           typingSpeed = 150;
         }
 
-        // Check if word is complete
         if (!isDeleting && charIndex === currentWord.length) {
           isDeleting = true;
-          typingSpeed = 1000; // Pause at end of word
+          typingSpeed = 1000;
         } else if (isDeleting && charIndex === 0) {
           isDeleting = false;
-          wordIndex = (wordIndex + 1) % words.length; // Move to next word
-          typingSpeed = 500; // Pause before typing next word
+          wordIndex = (wordIndex + 1) % words.length;
+          typingSpeed = 500;
         }
 
         setTimeout(typeWriter, typingSpeed);
@@ -1677,7 +2549,6 @@
 
       // Set target values for counters
       document.addEventListener("DOMContentLoaded", function () {
-        // Start counter animation when stats come into view
         const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
@@ -1706,7 +2577,7 @@
         .addEventListener("keypress", function (e) {
           if (e.key === "Enter") {
             e.preventDefault();
-            sendMessage(); // Call the same function as the send button
+            sendMessage();
           }
         });
 
@@ -1725,9 +2596,6 @@
         const tracking_number = document
           .querySelector(".tracking_number")
           .value.trim();
-
-        // console.log(tracking_number);
-        // const res = trackshipment("1287843318");
       });
     </script>
 
