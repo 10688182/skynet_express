@@ -388,15 +388,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Set shipment details (left side)
     document.getElementById("modal-shipper-name").textContent =
-      latestStatus.shipper_name || latestStatus.Sender_name || "N/A";
+      latestStatus.ShipperInformation?.sender_client ||
+      latestStatus.Sender_name ||
+      "N/A";
     document.getElementById("modal-shipper-company").textContent =
-      latestStatus.shipper_company || latestStatus.sender_company_name || "N/A";
+      latestStatus.ShipperInformation?.firstname_nclient ||
+      latestStatus.sender_client ||
+      "N/A";
     document.getElementById("modal-shipper-location").textContent =
-      latestStatus.shipper_location || latestStatus.location_pickup || "N/A";
+      latestStatus.ShipperInformation?.location_pick ||
+      latestStatus.location_pickup ||
+      "N/A";
+
+    // Join weight number and unit from different tables/IDs
+    const weight =
+      latestStatus.ParcelInformation?.weight || latestStatus.weight || "N/A";
+    const unit =
+      latestStatus.ParcelInformation?.unit || latestStatus.unit || ""; // Get unit from the other table/ID
+
+    // Combine weight and unit for display
     document.getElementById("modal-shipment-weight").textContent =
-      latestStatus.shipment_weight || latestStatus.weight || "N/A";
+      weight !== "N/A" && unit ? `${weight} ${unit}` : weight;
+
     document.getElementById("modal-shipment-description").textContent =
-      latestStatus.shipment_description ||
+      latestStatus.ParcelInformation?.description ||
       latestStatus.item_description ||
       "N/A";
 
@@ -499,7 +514,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Enhanced Print Function - Direct to Print Preview
+  // Enhanced Print Function - Using tracking information for print preview
   function printTrackingDetails() {
     if (!window.currentTrackingData) return;
 
@@ -519,7 +534,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const printDocument = iframe.contentWindow.document;
 
-    // Create print-friendly HTML with new layout
+    // Create print-friendly HTML using tracking information
     const printContent = `
     <!DOCTYPE html>
     <html>
@@ -559,7 +574,7 @@ document.addEventListener("DOMContentLoaded", () => {
           font-size: 14px;
         }
         
-        /* New Two-Column Layout for Shipment Details */
+        /* Two-Column Layout for Shipment Details */
         .details-container {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -681,9 +696,9 @@ document.addEventListener("DOMContentLoaded", () => {
               </div>
             </div>
         
-        <!-- New Two-Column Layout -->
+        <!-- Two-Column Layout using tracking information -->
         <div class="details-container">
-          <!-- Left Column: Shipment Details -->
+          <!-- Left Column: Shipment Details from tracking data -->
           <div class="details-section">
             <div class="section-header">SHIPMENT DETAILS</div>
             <div class="detail-row">
@@ -693,21 +708,23 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="detail-row">
               <span class="detail-label">Shipper's Name:</span>
               <span class="detail-value">${
-                latestStatus.shipper_name || latestStatus.Sender_name || "N/A"
+                latestStatus.ShipperInformation?.sender_client ||
+                latestStatus.Sender_name ||
+                "N/A"
               }</span>
             </div>
             <div class="detail-row">
               <span class="detail-label">Shipper's Company:</span>
               <span class="detail-value">${
-                latestStatus.shipper_company ||
-                latestStatus.sender_company_name ||
+                latestStatus.ShipperInformation?.firstname_nclient ||
+                latestStatus.sender_client ||
                 "N/A"
               }</span>
             </div>
             <div class="detail-row">
               <span class="detail-label">Shipper's Location:</span>
               <span class="detail-value">${
-                latestStatus.shipper_location ||
+                latestStatus.ShipperInformation?.location_pick ||
                 latestStatus.location_pickup ||
                 "N/A"
               }</span>
@@ -715,20 +732,27 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="detail-row">
               <span class="detail-label">Shipment Weight:</span>
               <span class="detail-value">${
-                latestStatus.shipment_weight || latestStatus.weight || "N/A"
+                (latestStatus.ParcelInformation?.weight ||
+                  latestStatus.weight ||
+                  "N/A") +
+                (latestStatus.ParcelInformation?.unit
+                  ? ` ${latestStatus.ParcelInformation.unit}`
+                  : latestStatus.unit
+                  ? ` ${latestStatus.unit}`
+                  : "")
               }</span>
             </div>
             <div class="description-row">
               <span class="detail-label">Shipment Description:</span>
               <span class="detail-value">${
-                latestStatus.shipment_description ||
+                latestStatus.ParcelInformation?.description ||
                 latestStatus.item_description ||
                 "N/A"
               }</span>
             </div>
           </div>
 
-          <!-- Right Column: Recipient Details -->
+          <!-- Right Column: Recipient Details from tracking data -->
           <div class="details-section">
             <div class="section-header">RECIPIENT DETAILS</div>
             <div class="detail-row">
@@ -798,14 +822,15 @@ document.addEventListener("DOMContentLoaded", () => {
         ${
           (latestStatus.description || latestStatus.activity_name)
             .toLowerCase()
-            .includes("delivered")
+            .includes("delivered") &&
+          (latestStatus.consignee_first_name || latestStatus.pod)
             ? `
           <div style="margin-top: 20px; padding: 15px; background: #f0f9f0; border: 1px solid #d1f0d1; border-radius: 5px;">
             <h3 style="color: #166534; margin: 0 0 10px 0;">DELIVERY INFORMATION</h3>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
               <div>
                 <p style="margin: 2px 0;"><strong>Recipient:</strong> ${
-                  latestStatus.consignee_first_name
+                  latestStatus.consignee_first_name || "N/A"
                 } ${latestStatus.consignee_last_name || ""}</p>
                 <p style="margin: 2px 0;"><strong>Contact:</strong> ${
                   latestStatus.consignee_contact || "N/A"
